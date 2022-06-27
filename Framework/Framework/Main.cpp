@@ -1,6 +1,7 @@
-// ** Framework v.0.4
+// ** Framework v.0.5
 #include <iostream>
 #include <Windows.h>
+
 using namespace std;
 
 // ** [Class] 5가지 특징(OOP : 객체 지향 프로그래밍)
@@ -14,6 +15,16 @@ using namespace std;
 // ** 순수 가상 함수는 함수는 존재하지만 기능은 존재해선 안됨
 // ** 오버로딩 = 매개변수를 통해 어떤 함수를 호출할지 결정
 // ** 오버라이딩 = 상속관계의 클래스에서 클래스의 영역이 다를떄 결정
+
+// ** [&] 사용 용도
+// ** 1. 2항 연산자
+// **   - & <- 1번만 쓰면 [비트 연산]
+// **   - && <- 2번 쓰면 [비교 연산 & 논리 연산]
+
+// ** 2. 단항 연산자
+// **   - &변수 <- 변수 앞쪽에 붙으면 [ 주소 반환 연산자]
+// **   - 자료형(형태)& <- 자료형 뒷쪽에 붙은 경우 [레퍼런스 연산자]
+
 
 /*
 class Object
@@ -115,6 +126,8 @@ public:
 	Object(string _str) : Parent(_str) {}
 };
 */
+
+/*
 struct Vector3
 {
 	float x, y, z;
@@ -163,12 +176,6 @@ public:
 	A(string _str) : Child(_str) {}
 };
 
-
-
-
-
-
-
 class Object : public Parent
 {
 public:
@@ -178,7 +185,73 @@ public:
 	Object() {}
 	Object(string _str) : Parent(_str) {}
 };
+*/
 
+/*
+class Object
+{
+private:
+	int Number;
+public:
+	Object();
+	Object(int _number) : Number(_number) {};
+	~Object();
+	Object& operator+=(Object& _obj)
+	{
+		this->Number += _obj.Number;
+		return (*this);
+	}
+	Object& operator+=(int _Number)
+	{
+		this->Number += _Number;
+		return (*this);
+	}
+
+	Object& operator+(int _Number)
+	{
+		Object Temp = Object(this->Number + _Number);
+		return Temp;
+	}
+	Object& operator+(Object& _obj1)
+	{
+		Object Temp = Object(this->Number + _obj1.Number);
+		return Temp;
+	}
+	Object& operator/ (Object& _obj1)
+	{
+		this->Number /=  _obj1.Number;
+		return (*this);
+	}
+
+	Object& operator++ ( )
+	{
+		this->Number++;
+		return (*this);
+	}
+
+	Object& operator<< (Object& _obj1)
+	{
+		this->Number = this->Number << _obj1.Number;
+		return (*this);
+	}
+
+	Object& operator>>(int _Number)
+	{
+		this->Number = this->Number >> _Number;
+		return (*this);
+	}
+
+	int  GetNumber() { return Number; }
+
+};
+
+Object::Object()
+{
+}
+Object::~Object()
+{
+}
+*/
 
 int main(void)
 {
@@ -202,7 +275,7 @@ int main(void)
 		p[i]->Output();
 	*/
 
-
+	/*
 	Parent* p[3];
 
 	p[0] = new Child("홍길동");
@@ -214,6 +287,38 @@ int main(void)
 	p[1]->Output();
 
 	p[2]->Output();
+	*/
+	
+	/*
+	Object o1(1), o2(2);
+	Object o3;
+	
+	o1 += o2;
+	cout << o1.GetNumber() << endl;
+
+	o1 += 7;
+	cout << o1.GetNumber() << endl;
+
+	o1 / o2;
+	cout << o1.GetNumber() << endl;
+
+	++o1;
+	cout << o1.GetNumber() << endl;
+
+	o1 << o2;
+	cout << o1.GetNumber() << endl;
+
+	o1 >> 2;
+	cout << o1.GetNumber() << endl;
+
+	o3 = o1 + 7;
+	cout << o3.GetNumber() << endl;
+	cout << o1.GetNumber() << endl;
+
+	o3 = o1 + o2;
+	cout << o3.GetNumber() << endl;
+	cout << o1.GetNumber() << endl;
+	*/
 
 	return 0;
 }
