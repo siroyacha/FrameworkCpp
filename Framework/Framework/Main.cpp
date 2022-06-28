@@ -1,12 +1,4 @@
-/*
-?Zoom 회의 참가
-https://zoom.us/j/6367483103?pwd=QzlMazRvSlhGTVVxakEvSm8zaUlBUT09
-
-회의 ID: 636 748 3103
-암호: M9XKQ0
-*/
-
-// ** Framework v1.0
+// ** Framework v1.0.1
 #include <iostream>
 #include <Windows.h>
 
