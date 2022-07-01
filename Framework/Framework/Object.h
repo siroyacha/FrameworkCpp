@@ -3,15 +3,14 @@
 
 class Object
 {
-private:
-	int Time;
 public:
-	void Start();		// 초기화
-	void Update();	// 변경사항 및 출돌 등의 이벤트 체크
-	void Render();	// 그리기
-	void Release();	//메모리 해제
+	virtual void Start()PURE;
+	virtual void Update()PURE;
+	virtual void Render()PURE;
+	virtual void Release()PURE;
 public:
 	Object();
-	~Object();
+	virtual ~Object();
 };
+
 
