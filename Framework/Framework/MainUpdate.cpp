@@ -1,9 +1,6 @@
 #include "MainUpdate.h"
-#include "Player.h"
-#include "Enemy.h"
-#include "Singleton.h"
-
-MainUpdate::MainUpdate()
+#include "SceneManager.h"
+MainUpdate::MainUpdate():Count(0)
 {
 
 }
@@ -15,30 +12,32 @@ MainUpdate::~MainUpdate()
 
 void MainUpdate::Start()
 {
-	pPlayer = new Player;
-	pPlayer->Start();
-
-	pEnemy = new Enemy;
-	pEnemy->Start();
+	SceneManager::GetInstance()->SetScene(LOGO);
 }
 
 void MainUpdate::Update()
 {
-	pPlayer->Update();
-	pEnemy->Update();
+	++Count;
+	switch (Count)
+	{
+	case 100:
+		SceneManager::GetInstance()->SetScene(MENU);
+		break;
+	case 150:
+		SceneManager::GetInstance()->SetScene(STAGE);
+		break;
+	case 200:
+		SceneManager::GetInstance()->SetScene(EXIT);
+		break;
+	}
 }
 
 void MainUpdate::Render()
 {
-	pPlayer->Render();
-	pEnemy->Render();
+	cout << Count << endl;
 }
 
 void MainUpdate::Release()
 {
-	delete pPlayer;
-	pPlayer = nullptr;
 
-	delete pEnemy;
-	pEnemy = nullptr;
 }

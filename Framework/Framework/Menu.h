@@ -1,15 +1,14 @@
 #pragma once
-#include "Object.h"
+#include "Scene.h"
 
-class Enemy : public Object
+class Menu :public Scene
 {
 public:
 	virtual void Start()override;
 	virtual void Update()override;
 	virtual void Render()override;
 	virtual void Release()override;
-public:
-	Enemy();
-	virtual ~Enemy();
+private:
+	Menu();
+	virtual	~Menu();
 };
-
