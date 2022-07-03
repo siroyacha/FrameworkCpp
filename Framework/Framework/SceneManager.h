@@ -3,6 +3,7 @@
 
 
 
+
 class Scene;
 class SceneManager
 {
@@ -15,13 +16,10 @@ public:
 			Instance = new SceneManager;
 		return Instance;
 	}
-
 private:
 	Scene* SceneState;
 public:
-	void SetScene(SCENEID _State);
-
-	void Start();
+	void SetScene(SCENEID _SceneID);
 	void Update();
 	void Render();
 	void Release();

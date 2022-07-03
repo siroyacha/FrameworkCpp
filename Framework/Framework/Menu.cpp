@@ -1,20 +1,5 @@
 #include "Menu.h"
-
-void Menu::Start()
-{
-}
-
-void Menu::Update()
-{
-}
-
-void Menu::Render()
-{
-}
-
-void Menu::Release()
-{
-}
+#include "SceneManager.h"
 
 Menu::Menu()
 {
@@ -22,4 +7,27 @@ Menu::Menu()
 
 Menu::~Menu()
 {
+}
+
+void Menu::Start()
+{
+	Count = 0;
+}
+
+void Menu::Update()
+{
+	Count++;
+
+	if (Count >= 50)
+		SceneManager::GetInstance()->SetScene(SCENEID::STAGE);
+}
+
+void Menu::Render()
+{
+	cout << "Menu : " << Count << endl;
+}
+
+void Menu::Release()
+{
+
 }

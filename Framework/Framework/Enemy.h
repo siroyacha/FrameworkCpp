@@ -1,6 +1,7 @@
 #pragma once
 #include "Object.h"
 
+class Singleton;
 class Enemy : public Object
 {
 public:

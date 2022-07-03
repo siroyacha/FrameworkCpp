@@ -8,20 +8,23 @@ SceneManager* SceneManager::Instance = nullptr;
 
 SceneManager::SceneManager() : SceneState(nullptr)
 {
+
 }
 
 SceneManager::~SceneManager()
 {
+	Release();
 }
 
-void SceneManager::SetScene(SCENEID _State)
+void SceneManager::SetScene(SCENEID _SceneID)
 {
 	if (SceneState != nullptr)
 	{
 		delete SceneState;
 		SceneState = nullptr;
 	}
-	switch (_State)
+
+	switch (_SceneID)
 	{
 	case SCENEID::LOGO:
 		//SceneState = new Logo;
@@ -36,9 +39,24 @@ void SceneManager::SetScene(SCENEID _State)
 		break;
 
 	case SCENEID::EXIT:
-		cout << "EXIT" << endl;
 		exit(NULL);
 		break;
 	}
 	SceneState->Start();
+}
+
+void SceneManager::Update()
+{
+	SceneState->Update();
+}
+
+void SceneManager::Render()
+{
+	SceneState->Render();
+}
+
+void SceneManager::Release()
+{
+	delete SceneState;
+	SceneState = nullptr;
 }
