@@ -18,7 +18,7 @@ void Menu::Update()
 {
 	Count++;
 
-	if (Count >= 50)
+	if (Count >=20)
 		SceneManager::GetInstance()->SetScene(SCENEID::STAGE);
 }
 

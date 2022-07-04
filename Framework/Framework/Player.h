@@ -4,6 +4,7 @@
 class Singleton;
 class Player : public Object
 {
+
 public:
 	virtual void Start()override;
 	virtual void Update()override;

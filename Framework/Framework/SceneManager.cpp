@@ -26,15 +26,15 @@ void SceneManager::SetScene(SCENEID _SceneID)
 	switch (_SceneID)
 	{
 	case SCENEID::LOGO:
-		//SceneState = new Logo;
+		SceneState = new Logo;
 		break;
 
 	case SCENEID::MENU:
-		//SceneState = new Menu;
+		SceneState = new Menu;
 		break;
 
 	case SCENEID::STAGE:
-		//SceneState = new Stage;
+		SceneState = new Stage;
 		break;
 
 	case SCENEID::EXIT:

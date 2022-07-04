@@ -8,7 +8,7 @@ public:
 	virtual void Update()override;
 	virtual void Render()override;
 	virtual void Release()override;
-private:
+public:
 	Menu();
 	virtual	~Menu();
 };
