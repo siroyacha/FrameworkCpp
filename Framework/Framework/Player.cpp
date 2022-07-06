@@ -10,35 +10,36 @@ Player::~Player()
 
 void Player::Start()
 {
-	Info.Position;
+	Info.Position = Vector3(0.0f, 0.0f);
+	Info.Rotation = Vector3(0.0f, 0.0f);
+	Info.Scale = Vector3(0.0f, 0.0f);
 }
 
 void Player::Update()
 {
 	DWORD dwKey = InputManager::GetInstance()->GetKey();
+
+	Vector3 vTarget = Vector3(10.0f, 10.0f);
+
+	float Width = vTarget.x - Info.Position.x;
+	float Height = vTarget.y - Info.Position.y;
+
+	Vector3 vDirection = vTarget-Info.Position;
 	if (dwKey & KEY_UP)
 	{
-		cout << "Key_up" << endl;		
 		++Info.Position.y;
-		cout << Info.Position.x << ", " << Info.Position.y << endl;
 	}	
 	if (dwKey & KEY_DOWN)
 	{
-		cout << "Key_DOWN" << endl;
 		--Info.Position.y;
-		cout << Info.Position.x << ", " << Info.Position.y << endl;
 	}	
 	if (dwKey & KEY_LEFT)
 	{
-		cout << "Key_LEFT" << endl;
 		--Info.Position.x;
-		cout << Info.Position.x << ", " << Info.Position.y << endl;
 	}	
 	if (dwKey & KEY_RIGHT)
 	{
-		cout << "Key_RIGHT" << endl;
 		++Info.Position.x;
-		cout << Info.Position.x << ", " << Info.Position.y << endl;
 	}
 	if (dwKey & KEY_SPACE)
 	{
@@ -50,12 +51,14 @@ void Player::Update()
 	}
 	if (dwKey & KEY_ESCAPE)
 	{
-		cout << "Key_ESCAPE" << endl;
+		Info.Position = Vector3(0.0f, 0.0f);
 	}
 }
 
 void Player::Render()
 {
+	cout << "X : " << Info.Position.x << endl;
+	cout << "Y : " << Info.Position.y << endl;
 
 }
 
