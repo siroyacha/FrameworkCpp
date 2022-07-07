@@ -1,5 +1,8 @@
 #include "Player.h"
+#include"Bullet.h"
 #include "InputManager.h"
+#include"ObjectManager.h"
+
 Player::Player()
 {
 }
@@ -13,18 +16,13 @@ void Player::Start()
 	Info.Position = Vector3(0.0f, 0.0f);
 	Info.Rotation = Vector3(0.0f, 0.0f);
 	Info.Scale = Vector3(0.0f, 0.0f);
+	
 }
 
 void Player::Update()
 {
 	DWORD dwKey = InputManager::GetInstance()->GetKey();
 
-	Vector3 vTarget = Vector3(10.0f, 10.0f);
-
-	float Width = vTarget.x - Info.Position.x;
-	float Height = vTarget.y - Info.Position.y;
-
-	Vector3 vDirection = vTarget-Info.Position;
 	if (dwKey & KEY_UP)
 	{
 		++Info.Position.y;
@@ -43,12 +41,9 @@ void Player::Update()
 	}
 	if (dwKey & KEY_SPACE)
 	{
-		cout << "Key_SPACE" << endl;
+		ObjectManager::GetInstance()->CreateObject();
 	}
-	if (dwKey & KEY_RETURN)
-	{
-		cout << "Key_RETURN" << endl;
-	}
+
 	if (dwKey & KEY_ESCAPE)
 	{
 		Info.Position = Vector3(0.0f, 0.0f);
@@ -57,8 +52,9 @@ void Player::Update()
 
 void Player::Render()
 {
-	cout << "X : " << Info.Position.x << endl;
-	cout << "Y : " << Info.Position.y << endl;
+	cout << "Player X : " << Info.Position.x << endl;
+	cout << "Player Y : " << Info.Position.y << endl;
+
 
 }
 

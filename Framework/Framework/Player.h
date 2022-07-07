@@ -1,10 +1,9 @@
 #pragma once
 #include "Object.h"
 
-class Singleton;
+class Bullet;
 class Player : public Object
 {
-
 public:
 	virtual void Start()override;
 	virtual void Update()override;

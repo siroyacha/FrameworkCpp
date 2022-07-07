@@ -4,8 +4,12 @@
 class Object;
 class Stage :public Scene
 {
+	/*
 private:
 	Object* pPlayer;
+	Object* pEnemy;
+	Object* pBullet[128];
+	*/
 public:
 	virtual void Start()override;
 	virtual void Update()override;

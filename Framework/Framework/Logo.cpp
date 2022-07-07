@@ -25,7 +25,7 @@ void Logo::Update()
 
 void Logo::Render()
 {
-	cout << "Logo : " << Count << endl;
+	cout << "Logo : " << endl;
 }
 
 void Logo::Release()

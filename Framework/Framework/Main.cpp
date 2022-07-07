@@ -1,9 +1,9 @@
-// ** Framework v4.0
+// ** Framework v5.0
 #include "MainUpdate.h"
 
 int main(void)
 {
-	/*
+	
 	MainUpdate Main;
 	Main.Start();
 
@@ -21,7 +21,7 @@ int main(void)
 			Main.Render();
 		}
 	}
-	*/
+	/*
 	Vector3 V1 = Vector3(1.0f, 1.0f);
 	Vector3 V2 = Vector3(10.0f, 10.0f);
 	Vector3 V3 = V1 - V2;
@@ -29,6 +29,7 @@ int main(void)
 
 	cout << "v3 " << endl << "X : " << V3.x << " Y : " << V3.y << endl;
 	cout << "v4 " << endl << "X : " << V4.x << " Y : " << V4.y << endl;
+	*/
 	
 	return 0;
 }
