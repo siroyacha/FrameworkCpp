@@ -3,9 +3,9 @@
 #include"Player.h"
 #include"Enemy.h"
 
-ObjectManager* ::ObjectManager::Instance = nullptr;
+ObjectManager* ObjectManager::Instance = nullptr;
 
-ObjectManager::ObjectManager()
+ObjectManager::ObjectManager() : pPlayer(nullptr), pEnemy(nullptr)
 {
 	for (int i = 0; i < 128; ++i)
 		pBullet[i] = nullptr;
