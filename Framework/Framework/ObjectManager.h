@@ -18,7 +18,7 @@ private:
 	Object* pEnemy;
 	Object* pBullet[128];
 public:
-	void CreateObject();
+	void CreateObject(int _StateIndex);
 	void Start();
 	void Update();
 	void Render();

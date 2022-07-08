@@ -52,6 +52,9 @@
     <Filter Include="소스 파일\01.Object\Bullet">
       <UniqueIdentifier>{f4c0ab0f-8a2f-423a-bc1e-16dcca19a9b6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\99.Manager\CursorManager">
+      <UniqueIdentifier>{9f3616a1-8bc8-424d-b726-29aafd9a3ac6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MainUpdate.cpp">
@@ -92,6 +95,9 @@
     </ClCompile>
     <ClCompile Include="Bullet.cpp">
       <Filter>소스 파일\01.Object\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="CursorManager.cpp">
+      <Filter>소스 파일\99.Manager\CursorManager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -142,6 +148,9 @@
     </ClInclude>
     <ClInclude Include="Bullet.h">
       <Filter>소스 파일\01.Object\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="CursorManager.h">
+      <Filter>소스 파일\99.Manager\CursorManager</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

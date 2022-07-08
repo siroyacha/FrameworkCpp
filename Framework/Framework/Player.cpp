@@ -2,7 +2,7 @@
 #include"Bullet.h"
 #include "InputManager.h"
 #include"ObjectManager.h"
-
+#include"CursorManager.h"
 Player::Player()
 {
 }
@@ -13,23 +13,24 @@ Player::~Player()
 
 void Player::Start()
 {
-	Info.Position = Vector3(0.0f, 0.0f);
+	Info.Position = Vector3(60.0f, 30.0f);
 	Info.Rotation = Vector3(0.0f, 0.0f);
 	Info.Scale = Vector3(0.0f, 0.0f);
 	
+	Target = nullptr;
 }
 
-void Player::Update()
+int Player::Update()
 {
 	DWORD dwKey = InputManager::GetInstance()->GetKey();
 
 	if (dwKey & KEY_UP)
 	{
-		++Info.Position.y;
+		--Info.Position.y;
 	}	
 	if (dwKey & KEY_DOWN)
 	{
-		--Info.Position.y;
+		++Info.Position.y;
 	}	
 	if (dwKey & KEY_LEFT)
 	{
@@ -39,23 +40,19 @@ void Player::Update()
 	{
 		++Info.Position.x;
 	}
-	if (dwKey & KEY_SPACE)
-	{
-		ObjectManager::GetInstance()->CreateObject();
-	}
+	//if (dwKey & KEY_SPACE)	
+		//ObjectManager::GetInstance()->CreateObject();
+	
 
-	if (dwKey & KEY_ESCAPE)
-	{
-		Info.Position = Vector3(0.0f, 0.0f);
-	}
+	//if (dwKey & KEY_ESCAPE)	
+		//Info.Position = Vector3(0.0f, 0.0f);
+	
+	return 0;
 }
 
 void Player::Render()
 {
-	cout << "Player X : " << Info.Position.x << endl;
-	cout << "Player Y : " << Info.Position.y << endl;
-
-
+	CursorManager::GetInstance()->SetCursorPosition(Info.Position, (char*)"¡Ù");
 }
 
 void Player::Release()
