@@ -15,7 +15,7 @@ void Player::Start()
 {
 	Info.Position = Vector3(60.0f, 30.0f);
 	Info.Rotation = Vector3(0.0f, 0.0f);
-	Info.Scale = Vector3(0.0f, 0.0f);
+	Info.Scale = Vector3(2.0f, 1.0f);
 	
 	Target = nullptr;
 }

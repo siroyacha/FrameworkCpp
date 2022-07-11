@@ -1,4 +1,5 @@
-// ** Framework v7.0
+// ** Framework v8.0
+// 차징+게이지+스피드
 #include "MainUpdate.h"
 
 int main(void)

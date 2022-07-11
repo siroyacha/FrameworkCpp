@@ -2,6 +2,9 @@
 #include"Bullet.h"
 #include"Player.h"
 #include"Enemy.h"
+#include"CollisionManager.h"
+#include"CursorManager.h"
+#include"SceneManager.h"
 
 ObjectManager* ObjectManager::Instance = nullptr;
 
@@ -24,7 +27,7 @@ void ObjectManager::CreateObject(int _StateIndex)
 		{
 			pBullet[i] = new Bullet;
 			pBullet[i]->Start();
-			pBullet[i]->SetPosition(74.0f, 1.0f);
+			pBullet[i]->SetPosition(pEnemy->GetPosition().x,pEnemy->GetPosition().y);
 
 			switch (_StateIndex)
 			{
@@ -51,18 +54,29 @@ void ObjectManager::Start()
 	pPlayer->Start();
 	pEnemy = new Enemy;
 	pEnemy->Start();
+	pEnemy->SetTarget(pPlayer);
 }
 
 void ObjectManager::Update()
 {
 	pPlayer->Update();
-	pEnemy->Update();
+	if (pEnemy)
+		pEnemy->Update();
 
 	int result = 0;
 	for (int i = 0; i < 128; ++i)
 	{
 		if (pBullet[i])
+		{
 			result = pBullet[i]->Update();
+			if (CollisionManager::RectCollision(
+				pPlayer->GetTransform(),
+				pBullet[i]->GetTransform()))
+			{
+				CursorManager::GetInstance()->SetCursorPosition(0.0f, 0.0f, (char*)"충돌입니다");				
+				result =1;
+			}
+		}
 
 		if (result == 1)
 		{
@@ -70,12 +84,29 @@ void ObjectManager::Update()
 			pBullet[i] = nullptr;
 		}
 	}
+	
+	if (pEnemy)
+	{
+		if (CollisionManager::RectCollision(
+			pPlayer->GetTransform(),
+			pEnemy->GetTransform()))
+		{
+			CursorManager::GetInstance()->SetCursorPosition(0.0f, 3.0f, (char*)"적과 충돌입니다");
+
+			delete pEnemy;
+			pEnemy = nullptr;
+		}
+	}
+	if (pEnemy == nullptr)
+		SceneManager::GetInstance()->SetScene(SCENEID::EXIT);
+
 }
 
 void ObjectManager::Render()
 {
 	pPlayer->Render();
-	pEnemy->Render();
+	if (pEnemy)
+		pEnemy->Render();
 	for (int i = 0; i < 128; ++i)
 	{
 		if (pBullet[i])

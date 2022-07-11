@@ -12,7 +12,7 @@ void Bullet::Start()
 {
 	Info.Position = Vector3(0.0f, 0.0f);
 	Info.Rotation = Vector3(0.0f, 0.0f);
-	Info.Scale = Vector3(0.0f, 0.0f);
+	Info.Scale = Vector3(1.0f, 1.0f);
 	Time = GetTickCount64();
 	Target = nullptr;
 }
@@ -33,7 +33,7 @@ int Bullet::Update()
 	{
 		Info.Direction = Target->GetPosition() - Info.Position;
 		Info.Position += Info.Direction * 0.025f;
-		if (Time + 5000 <= GetTickCount64())
+		if (Time + 10000 <= GetTickCount64())
 		{
 			Time = GetTickCount64();
 			return 1;
