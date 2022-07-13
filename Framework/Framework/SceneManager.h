@@ -1,9 +1,6 @@
 #pragma once
 #include "Headers.h"
 
-
-
-
 class Scene;
 class SceneManager
 {
