@@ -13,7 +13,7 @@ Player::~Player()
 
 void Player::Start()
 {
-	Info.Position = Vector3(60.0f, 30.0f);
+	Info.Position = Vector3(75.0f, 20.0f);
 	Info.Rotation = Vector3(0.0f, 0.0f);
 	Info.Scale = Vector3(2.0f, 1.0f);
 	
@@ -52,7 +52,7 @@ int Player::Update()
 
 void Player::Render()
 {
-	CursorManager::GetInstance()->SetCursorPosition(Info.Position, (char*)"¡Ù");
+	CursorManager::GetInstance()->WriteBuffer(Info.Position, (char*)"¡Ù");
 }
 
 void Player::Release()

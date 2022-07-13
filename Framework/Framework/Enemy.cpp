@@ -47,7 +47,7 @@ int Enemy::Update()
 
 void Enemy::Render()
 {
-	CursorManager::GetInstance()->SetCursorPosition(Info.Position, (char*)"£À");
+	CursorManager::GetInstance()->WriteBuffer(Info.Position, (char*)"£À");
 }
 
 void Enemy::Release()

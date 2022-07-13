@@ -1,6 +1,7 @@
 #include "Stage.h"
 #include "SceneManager.h"
 #include"ObjectManager.h"
+#include "CursorManager.h"
 
 Stage::Stage()
 {
@@ -24,6 +25,7 @@ void Stage::Update()
 
 void Stage::Render()
 {
+
 	ObjectManager::GetInstance()->Render();
 }
 
