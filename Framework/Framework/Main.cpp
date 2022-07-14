@@ -1,5 +1,5 @@
-// ** Framework v9.0
-// 차징+게이지+스피드
+// ** Framework v10.0
+// 2주 기한안에 만들기
 #include "MainUpdate.h"
 
 int main(void)
