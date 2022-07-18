@@ -1,5 +1,5 @@
 // ** Framework v10.0
-// 2주 기한안에 만들기
+// 8/4까지 작업 완료
 #include "MainUpdate.h"
 
 int main(void)

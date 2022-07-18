@@ -40,15 +40,6 @@ void CursorManager::WriteBuffer(float _x, float _y, char* _str, int _Color)
 	DWORD dw;
 
 	WriteFile(HBuffer[BufferIndex], _str, (DWORD)strlen(_str), &dw, NULL);
-	/*
-	COORD pos = { (SHORT)_x,(SHORT)_y };
-
-	SetConsoleCursorPosition(
-		GetStdHandle(STD_OUTPUT_HANDLE), pos);
-	SetColor(_Color);
-
-	cout << _str;
-	*/
 }
 
 void CursorManager::WriteBuffer(Vector3 _Position, char* _str, int _Color)

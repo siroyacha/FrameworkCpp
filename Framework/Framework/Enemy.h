@@ -6,6 +6,7 @@ class Enemy : public Object
 private:
 	ULONGLONG Time;
 	int Count;
+	int SpownPoint;
 public:
 	virtual void Start()override;
 	virtual int Update()override;

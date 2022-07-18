@@ -15,8 +15,10 @@ public:
 	}
 private:
 	Object* pPlayer;
-	Object* pEnemy;
+	Object* pEnemy[32];
 	Object* pBullet[128];
+	ULONGLONG EnemyTimer = GetTickCount64();
+
 public:
 	void CreateObject(int _StateIndex);
 	void Start();
