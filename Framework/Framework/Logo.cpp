@@ -25,7 +25,7 @@ void Logo::Update()
 
 void Logo::Render()
 {
-	CursorManager::GetInstance()->WriteBuffer(0.0f, 0.0f, (char*)"Logo");
+	CursorManager::GetInstance()->WriteBuffer(0.0f, 0.0f, (char*)"Crusader Subaver",10);
 }
 
 void Logo::Release()

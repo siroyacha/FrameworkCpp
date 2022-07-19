@@ -17,6 +17,7 @@ private:
 	Object* pPlayer;
 	Object* pEnemy[32];
 	Object* pBullet[128];
+	Object* pItem[128];
 	ULONGLONG EnemyTimer = GetTickCount64();
 
 public:

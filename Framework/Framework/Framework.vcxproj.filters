@@ -64,6 +64,12 @@
     <Filter Include="소스 파일\99.Manager\ObjectFactory">
       <UniqueIdentifier>{7e0aa81b-f851-4289-a497-a8b526c4b4a6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\01.Object\Item">
+      <UniqueIdentifier>{c68f659d-e2c8-4e80-ab8b-48729d703e78}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\02.Scene\Shop">
+      <UniqueIdentifier>{73633bec-b7a0-423a-b6ac-5df43d421af0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MainUpdate.cpp">
@@ -107,6 +113,12 @@
     </ClCompile>
     <ClCompile Include="CursorManager.cpp">
       <Filter>소스 파일\99.Manager\CursorManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Item.cpp">
+      <Filter>소스 파일\01.Object\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="Shop.cpp">
+      <Filter>소스 파일\02.Scene\Shop</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -169,6 +181,12 @@
     </ClInclude>
     <ClInclude Include="ObjectFactory.h">
       <Filter>소스 파일\99.Manager\ObjectFactory</Filter>
+    </ClInclude>
+    <ClInclude Include="Item.h">
+      <Filter>소스 파일\01.Object\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="Shop.h">
+      <Filter>소스 파일\02.Scene\Shop</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

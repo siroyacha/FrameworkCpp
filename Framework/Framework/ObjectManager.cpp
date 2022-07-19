@@ -2,6 +2,7 @@
 #include"Bullet.h"
 #include"Player.h"
 #include"Enemy.h"
+#include"Item.h"
 #include"CollisionManager.h"
 #include"CursorManager.h"
 #include"SceneManager.h"
@@ -16,6 +17,8 @@ ObjectManager::ObjectManager() : pPlayer(nullptr)
 		pEnemy[i] = nullptr;
 	for (int i = 0; i < 128; ++i)
 		pBullet[i] = nullptr;
+	for (int i = 0; i < 128; ++i)
+		pItem[i] = nullptr;
 }
 
 ObjectManager::~ObjectManager()
@@ -60,31 +63,36 @@ void ObjectManager::Start()
 {
 	pPlayer = ObjectFactory::CreatePlayer();
 
-	for (int i = 0; i < 32; i++)
+	if (pEnemy[0] == nullptr)
 	{
-		if (EnemyTimer + 1000 < GetTickCount64())
-		{
-			EnemyTimer = GetTickCount64();
-
-			if (pEnemy[i] == nullptr)
-			{
-				pEnemy[i] = ObjectFactory::CreateEnemy();
-				pEnemy[i]->SetTarget(pPlayer);
-			}
-		}
-	/*
-	*/
+		pEnemy[0] = ObjectFactory::CreateEnemy();
+		pEnemy[0]->SetTarget(pPlayer);
 	}
 }
 
 void ObjectManager::Update()
 {
 	pPlayer->Update();
+	for (int i = 1; i < 32; i++)
+	{
+		if (pEnemy[i] == nullptr)
+		{
+			if (EnemyTimer + 2000 < GetTickCount64())
+			{
+				EnemyTimer = GetTickCount64();
+
+				pEnemy[i] = ObjectFactory::CreateEnemy();
+				pEnemy[i]->SetTarget(pPlayer);
+			}
+		}
+	}
+	int Itemresult = 0;
+
 	for (int i = 0; i < 32; i++)
 	{
 		if (pEnemy[i])
 			pEnemy[i]->Update();
-		/*
+		
 		if (pEnemy[i])
 		{
 			if (CollisionManager::RectCollision(
@@ -93,16 +101,28 @@ void ObjectManager::Update()
 			{
 				CursorManager::GetInstance()->WriteBuffer(0.0f, 3.0f, (char*)"적과 충돌입니다");
 
+				for (int j = 0; j < 128; ++j)
+				{
+					if (pItem[j] == nullptr)
+					{
+						pItem[j] = ObjectFactory::CreateItem(Vector3(pEnemy[i]->GetPosition().x, pEnemy[i]->GetPosition().y));
+
+					}
+					Itemresult = pItem[j]->Update();
+					if (Itemresult == 1)
+					{
+						delete pItem[i];
+						pItem[i] = nullptr;
+					}
+				}
 				delete pEnemy[i];
-				pEnemy[i] = nullptr;
+				pEnemy[i] = nullptr;	
 			}
 		}
-		*/
 		/*
 		if (pEnemy[i] == nullptr)
 			SceneManager::GetInstance()->SetScene(SCENEID::EXIT);
 		*/
-		
 	}
 
 	int result = 0;
@@ -134,15 +154,22 @@ void ObjectManager::Render()
 {
 	pPlayer->Render();
 
+	for (int i = 0; i < 128; ++i)
+	{
+		if (pBullet[i])
+			pBullet[i]->Render();
+	}
+
 	for (int i = 0; i < 32; i++)
 	{
 		if (pEnemy[i])
 			pEnemy[i]->Render();
 	}
+
 	for (int i = 0; i < 128; ++i)
 	{
-		if (pBullet[i])
-			pBullet[i]->Render();
+		if (pItem[i])
+			pItem[i]->Render();
 	}
 }
 
@@ -165,6 +192,14 @@ void ObjectManager::Release()
 		{
 			delete pBullet[i];
 			pBullet[i] = nullptr;
+		}
+	}
+	for (int i = 0; i < 128; ++i)
+	{
+		if (pItem[i])
+		{
+			delete pItem[i];
+			pItem[i] = nullptr;
 		}
 	}
 }

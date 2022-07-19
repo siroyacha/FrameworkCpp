@@ -1,5 +1,6 @@
 #include "Player.h"
 #include"Bullet.h"
+#include"SceneManager.h"
 #include "InputManager.h"
 #include"ObjectManager.h"
 #include"CursorManager.h"
@@ -40,12 +41,17 @@ int Player::Update()
 	{
 		++Info.Position.x;
 	}
-	//if (dwKey & KEY_SPACE)	
-		//ObjectManager::GetInstance()->CreateObject();
+	if (dwKey & KEY_SPACE)
+	{
+		// Àû ÅºÈ¯ÀÌ¶ó »õ·Î ¸¸µé¾î¼­ ¹Ù²ãÁà¾ßÇÔ
+		ObjectManager::GetInstance()->CreateObject(0);
+	}
 	
 
-	//if (dwKey & KEY_ESCAPE)	
-		//Info.Position = Vector3(0.0f, 0.0f);
+	if (dwKey & KEY_ESCAPE)
+	{
+		SceneManager::GetInstance()->SetScene(SCENEID::MENU);
+	}
 	
 	return 0;
 }
