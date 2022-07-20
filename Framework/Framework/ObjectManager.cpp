@@ -16,7 +16,9 @@ ObjectManager::ObjectManager() : pPlayer(nullptr)
 	for (int i = 0; i < 32; ++i)
 		pEnemy[i] = nullptr;
 	for (int i = 0; i < 128; ++i)
-		pBullet[i] = nullptr;
+		pEBullet[i] = nullptr;
+	for (int i = 0; i < 128; ++i)
+		pPBullet[i] = nullptr;
 	for (int i = 0; i < 128; ++i)
 		pItem[i] = nullptr;
 }
@@ -34,29 +36,112 @@ void ObjectManager::CreateObject(int _StateIndex)
 		{
 			for (int i = 0; i < 128; ++i)
 			{
-				if (pBullet[i] == nullptr)
+				if (pEBullet[i] == nullptr)
 				{
-					pBullet[i] = ObjectFactory::CreateBullet(Vector3(pEnemy[j]->GetPosition().x, pEnemy[j]->GetPosition().y));
+					pEBullet[i] = ObjectFactory::CreateBullet(pEnemy[j]->GetPosition());
 
-					switch (_StateIndex)
+					if (pEBullet[i])
 					{
-					case 0:
-					{
-						Vector3 Direction = MathManager::GetDirection(pBullet[i]->GetPosition(), pPlayer->GetPosition());
-						pBullet[i]->SetDirection(Direction);
-						((Bullet*)pBullet[i])->SetIndex(_StateIndex);
-					}
-					break;
-					case 1:
-						pBullet[i]->SetTarget(pPlayer);
-						((Bullet*)pBullet[i])->SetIndex(_StateIndex);
+						switch (_StateIndex)
+						{
+						case 0:
+						{
+							Vector3 Direction = MathManager::GetDirection(pEBullet[i]->GetPosition(), pPlayer->GetPosition());
+							pEBullet[i]->SetDirection(Direction);
+							((Bullet*)pEBullet[i])->SetIndex(_StateIndex);
+						}
 						break;
+						case 1:
+							pEBullet[i]->SetTarget(pPlayer);
+							((Bullet*)pEBullet[i])->SetIndex(_StateIndex);
+							break;
+						}
 					}
 					break;
 				}
 			}
 		}
 	}
+}
+
+void ObjectManager::CreatePlayerObject(int _StateIndex, int dwKey)
+{
+	for (int i = 0; i < 128; ++i)
+	{
+		if (pPBullet[i] == nullptr)
+		{
+			pPBullet[i] = ObjectFactory::CreateBullet(pPlayer->GetPosition());
+
+			switch (dwKey)
+			{
+			case 1:
+			{
+				Vector3 Direction = MathManager::GetDirection(pPBullet[i]->GetPosition(),
+					Vector3(pPBullet[i]->GetPosition().x, pPBullet[i]->GetPosition().y + 10.0f));
+				pPBullet[i]->SetDirection(Direction);
+				((Bullet*)pPBullet[i])->SetIndex(_StateIndex);
+			}
+			break;
+			case 2:
+			{
+				Vector3 Direction = MathManager::GetDirection(pPBullet[i]->GetPosition(),
+					Vector3(pPBullet[i]->GetPosition().x, pPBullet[i]->GetPosition().y - 10.0f));
+				pPBullet[i]->SetDirection(Direction);
+				((Bullet*)pPBullet[i])->SetIndex(_StateIndex);
+			}
+			break;
+			case 4:
+			{
+				Vector3 Direction = MathManager::GetDirection(pPBullet[i]->GetPosition(),
+					Vector3(pPBullet[i]->GetPosition().x + 10.0f, pPBullet[i]->GetPosition().y));
+				pPBullet[i]->SetDirection(Direction);
+				((Bullet*)pPBullet[i])->SetIndex(_StateIndex);
+			}
+			break;
+			case 8:
+			{
+				Vector3 Direction = MathManager::GetDirection(pPBullet[i]->GetPosition(),
+					Vector3(pPBullet[i]->GetPosition().x - 10.0f, pPBullet[i]->GetPosition().y));
+				pPBullet[i]->SetDirection(Direction);
+				((Bullet*)pPBullet[i])->SetIndex(_StateIndex);
+			}
+			break;
+			case 5:
+			{
+				Vector3 Direction = MathManager::GetDirection(pPBullet[i]->GetPosition(),
+					Vector3(pPBullet[i]->GetPosition().x + 10.0f, pPBullet[i]->GetPosition().y + 5.0f));
+				pPBullet[i]->SetDirection(Direction);
+				((Bullet*)pPBullet[i])->SetIndex(_StateIndex);
+			}
+			break;
+			case 6:
+			{
+				Vector3 Direction = MathManager::GetDirection(pPBullet[i]->GetPosition(),
+					Vector3(pPBullet[i]->GetPosition().x + 10.0f, pPBullet[i]->GetPosition().y - 5.0f));
+				pPBullet[i]->SetDirection(Direction);
+				((Bullet*)pPBullet[i])->SetIndex(_StateIndex);
+			}
+			break;
+			case 9:
+			{
+				Vector3 Direction = MathManager::GetDirection(pPBullet[i]->GetPosition(),
+					Vector3(pPBullet[i]->GetPosition().x - 10.0f, pPBullet[i]->GetPosition().y + 5.0f));
+				pPBullet[i]->SetDirection(Direction);
+				((Bullet*)pPBullet[i])->SetIndex(_StateIndex);
+			}
+			break;
+			case 10:
+			{
+				Vector3 Direction = MathManager::GetDirection(pPBullet[i]->GetPosition(),
+					Vector3(pPBullet[i]->GetPosition().x - 10.0f, pPBullet[i]->GetPosition().y - 5.0f));
+				pPBullet[i]->SetDirection(Direction);
+				((Bullet*)pPBullet[i])->SetIndex(_StateIndex);
+			}
+			break;
+			}
+			break;
+		}
+	}	
 }
 
 void ObjectManager::Start()
@@ -87,7 +172,8 @@ void ObjectManager::Update()
 		}
 	}
 	int Itemresult = 0;
-
+	int ItemCounter = 0;
+	Vector3 ItemPosition;
 	for (int i = 0; i < 32; i++)
 	{
 		if (pEnemy[i])
@@ -100,21 +186,8 @@ void ObjectManager::Update()
 				pEnemy[i]->GetTransform()))
 			{
 				CursorManager::GetInstance()->WriteBuffer(0.0f, 3.0f, (char*)"적과 충돌입니다");
-
-				for (int j = 0; j < 128; ++j)
-				{
-					if (pItem[j] == nullptr)
-					{
-						pItem[j] = ObjectFactory::CreateItem(Vector3(pEnemy[i]->GetPosition().x, pEnemy[i]->GetPosition().y));
-
-					}
-					Itemresult = pItem[j]->Update();
-					if (Itemresult == 1)
-					{
-						delete pItem[i];
-						pItem[i] = nullptr;
-					}
-				}
+				ItemCounter = 1;
+				ItemPosition = pEnemy[i]->GetPosition();
 				delete pEnemy[i];
 				pEnemy[i] = nullptr;	
 			}
@@ -125,15 +198,33 @@ void ObjectManager::Update()
 		*/
 	}
 
+	for (int j = 0; j < 128; ++j)
+	{
+		if (ItemCounter == 1)
+		{
+			if (pItem[j] == nullptr)
+			{
+				pItem[j] = ObjectFactory::CreateItem(ItemPosition);
+				ItemCounter = 0;
+			}
+		}
+		if (pItem[j])
+			Itemresult = pItem[j]->Update();
+		if (Itemresult == 1)
+		{
+			delete pItem[j];
+			pItem[j] = nullptr;
+		}
+	}
 	int result = 0;
 	for (int i = 0; i < 128; ++i)
 	{
-		if (pBullet[i])
+		if (pEBullet[i])
 		{
-			result = pBullet[i]->Update();
+			result = pEBullet[i]->Update();
 			if (CollisionManager::RectCollision(
 				pPlayer->GetTransform(),
-				pBullet[i]->GetTransform()))
+				pEBullet[i]->GetTransform()))
 			{
 				CursorManager::GetInstance()->WriteBuffer(0.0f, 0.0f, (char*)"충돌입니다");				
 				result =1;
@@ -142,12 +233,39 @@ void ObjectManager::Update()
 
 		if (result == 1)
 		{
-			delete pBullet[i];
-			pBullet[i] = nullptr;
+			delete pEBullet[i];
+			pEBullet[i] = nullptr;
 		}
 	}
-	
+	int PBresult = 0;
+	for (int i = 0; i < 128; ++i)
+	{
+		if (pPBullet[i])
+		{
+			PBresult = pPBullet[i]->Update();
+					
+			for (int j = 0; j < 32; ++j)
+			{
+				if (pEnemy[j])
+				{
+					if (CollisionManager::RectCollision(
+						pEnemy[j]->GetTransform(),
+						pPBullet[i]->GetTransform()))
+					{
+						PBresult = 1;
+						delete pEnemy[j];
+						pEnemy[j] = nullptr;
+					}
+				}
+			}
+		}
 
+		if (PBresult == 1)
+		{
+			delete pPBullet[i];
+			pPBullet[i] = nullptr;
+		}
+	}
 }
 
 void ObjectManager::Render()
@@ -156,8 +274,14 @@ void ObjectManager::Render()
 
 	for (int i = 0; i < 128; ++i)
 	{
-		if (pBullet[i])
-			pBullet[i]->Render();
+		if (pPBullet[i])
+			pPBullet[i]->Render();
+	}
+
+	for (int i = 0; i < 128; ++i)
+	{
+		if (pEBullet[i])
+			pEBullet[i]->Render();
 	}
 
 	for (int i = 0; i < 32; i++)
@@ -188,10 +312,18 @@ void ObjectManager::Release()
 	}
 	for (int i = 0; i < 128; ++i)
 	{
-		if (pBullet[i])
+		if (pPBullet[i])
 		{
-			delete pBullet[i];
-			pBullet[i] = nullptr;
+			delete pPBullet[i];
+			pPBullet[i] = nullptr;
+		}
+	}
+	for (int i = 0; i < 128; ++i)
+	{
+		if (pEBullet[i])
+		{
+			delete pEBullet[i];
+			pEBullet[i] = nullptr;
 		}
 	}
 	for (int i = 0; i < 128; ++i)

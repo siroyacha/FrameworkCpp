@@ -1,14 +1,13 @@
-// ** Framework v11.0
+// ** Framework v11.1
 // 8/4까지 작업 완료
 // 홀로큐어처럼 만들어보기
+// 총알 반전중
 #include "MainUpdate.h"
 
 int main(void)
-{
-	
+{	
 	MainUpdate Main;
 	Main.Start();
-
 
 	ULONGLONG Time = GetTickCount64();
 

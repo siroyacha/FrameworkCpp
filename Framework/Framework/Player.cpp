@@ -4,7 +4,7 @@
 #include "InputManager.h"
 #include"ObjectManager.h"
 #include"CursorManager.h"
-Player::Player()
+Player::Player():X_Shift(1),Y_Shift(1)
 {
 }
 
@@ -24,7 +24,7 @@ void Player::Start()
 int Player::Update()
 {
 	DWORD dwKey = InputManager::GetInstance()->GetKey();
-
+	
 	if (dwKey & KEY_UP)
 	{
 		--Info.Position.y;
@@ -43,10 +43,18 @@ int Player::Update()
 	}
 	if (dwKey & KEY_SPACE)
 	{
-		// Àû ÅºÈ¯ÀÌ¶ó »õ·Î ¸¸µé¾î¼­ ¹Ù²ãÁà¾ßÇÔ
-		ObjectManager::GetInstance()->CreateObject(0);
+		ObjectManager::GetInstance()->CreatePlayerObject(2, dwKey - KEY_SPACE);
 	}
 	
+	if (dwKey & KEY_SHIFT)
+	{
+		Y_Shift *= -1;
+	}
+
+	if (dwKey & KEY_CONTROL)
+	{
+		X_Shift *= -1;
+	}
 
 	if (dwKey & KEY_ESCAPE)
 	{

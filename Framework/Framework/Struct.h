@@ -29,8 +29,7 @@ struct Vector3
 	Vector3 operator*(float _Value)
 	{
 		return Vector3(x * _Value, y * _Value, z * _Value);
-	}
-	
+	}	
 };
 
 struct Transform
@@ -39,6 +38,10 @@ struct Transform
 	Vector3 Rotation;
 	Vector3 Scale;
 	Vector3 Direction;
+};
 
+struct Inventory
+{
+	int Money;
 
 };

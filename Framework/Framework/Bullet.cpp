@@ -43,6 +43,14 @@ int Bullet::Update()
 			Time = GetTickCount64();
 			return 1;
 		}
+	case 2:
+		Info.Position += Info.Direction * Speed;
+		if (Time + 5000 <= GetTickCount64())
+		{
+			Time = GetTickCount64();
+			return 1;
+		}
+		break;
 	}	
 	break;
 	}
@@ -64,6 +72,9 @@ void Bullet::Render()
 		break;
 	case 1:
 		CursorManager::GetInstance()->WriteBuffer(Info.Position, (char*)"*", 12);
+		break;
+	case 2:
+		CursorManager::GetInstance()->WriteBuffer(Info.Position, (char*)"*", 10);
 		break;
 	}
 }

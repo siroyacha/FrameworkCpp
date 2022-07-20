@@ -16,12 +16,14 @@ public:
 private:
 	Object* pPlayer;
 	Object* pEnemy[32];
-	Object* pBullet[128];
+	Object* pEBullet[128];
+	Object* pPBullet[128];
 	Object* pItem[128];
 	ULONGLONG EnemyTimer = GetTickCount64();
 
 public:
 	void CreateObject(int _StateIndex);
+	void CreatePlayerObject(int _StateIndex, int dwKey);
 	void Start();
 	void Update();
 	void Render();

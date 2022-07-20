@@ -42,7 +42,7 @@ void Enemy::Start()
 
 int Enemy::Update()
 {
-	if (Time + 250 < GetTickCount64())
+	if (Time + 1500 < GetTickCount64())
 	{
 		Count++;
 
@@ -57,8 +57,8 @@ int Enemy::Update()
 		Time = GetTickCount64();
 
 		Info.Direction = Target->GetPosition() - Info.Position;
-		Info.Position += Info.Direction * 0.025f;
 	}
+		Info.Position += Info.Direction * 0.025f;
 	srand(Time);
 	SpownPoint = rand() % 4;
 

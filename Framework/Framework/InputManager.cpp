@@ -33,4 +33,10 @@ void InputManager::CheckKey()
 	if (GetAsyncKeyState(VK_ESCAPE))
 		dwKey |= KEY_ESCAPE;
 
+	if (GetAsyncKeyState(VK_SHIFT))
+		dwKey |= KEY_SHIFT;
+
+	if (GetAsyncKeyState(VK_CONTROL))
+		dwKey |= KEY_CONTROL;
+
 }
