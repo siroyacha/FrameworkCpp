@@ -23,7 +23,7 @@ private:
 
 public:
 	void CreateObject(int _StateIndex);
-	void CreatePlayerObject(int _StateIndex, int dwKey);
+	void CreatePlayerObject(int _StateIndex, int dwKey, float _X_Shift, float _Y_Shift);
 	void Start();
 	void Update();
 	void Render();

@@ -4,6 +4,7 @@
 #include "Menu.h"
 #include"Shop.h"
 #include "Stage.h"
+#include"Pause.h"
 
 SceneManager* SceneManager::Instance = nullptr;
 
@@ -36,6 +37,10 @@ void SceneManager::SetScene(SCENEID _SceneID)
 
 	case SCENEID::SHOP:
 		SceneState = new Shop;
+		break;
+
+	case SCENEID::PAUSE:
+		SceneState = new Pause;
 		break;
 
 	case SCENEID::STAGE:

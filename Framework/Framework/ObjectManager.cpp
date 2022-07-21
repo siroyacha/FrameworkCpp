@@ -64,7 +64,7 @@ void ObjectManager::CreateObject(int _StateIndex)
 	}
 }
 
-void ObjectManager::CreatePlayerObject(int _StateIndex, int dwKey)
+void ObjectManager::CreatePlayerObject(int _StateIndex, int dwKey, float _X_Shift, float _Y_Shift)
 {
 	for (int i = 0; i < 128; ++i)
 	{
@@ -77,7 +77,7 @@ void ObjectManager::CreatePlayerObject(int _StateIndex, int dwKey)
 			case 1:
 			{
 				Vector3 Direction = MathManager::GetDirection(pPBullet[i]->GetPosition(),
-					Vector3(pPBullet[i]->GetPosition().x, pPBullet[i]->GetPosition().y + 10.0f));
+					Vector3(pPBullet[i]->GetPosition().x, pPBullet[i]->GetPosition().y + (10.0f * _Y_Shift)));
 				pPBullet[i]->SetDirection(Direction);
 				((Bullet*)pPBullet[i])->SetIndex(_StateIndex);
 			}
@@ -85,7 +85,7 @@ void ObjectManager::CreatePlayerObject(int _StateIndex, int dwKey)
 			case 2:
 			{
 				Vector3 Direction = MathManager::GetDirection(pPBullet[i]->GetPosition(),
-					Vector3(pPBullet[i]->GetPosition().x, pPBullet[i]->GetPosition().y - 10.0f));
+					Vector3(pPBullet[i]->GetPosition().x, pPBullet[i]->GetPosition().y - (10.0f * _Y_Shift)));
 				pPBullet[i]->SetDirection(Direction);
 				((Bullet*)pPBullet[i])->SetIndex(_StateIndex);
 			}
@@ -93,15 +93,15 @@ void ObjectManager::CreatePlayerObject(int _StateIndex, int dwKey)
 			case 4:
 			{
 				Vector3 Direction = MathManager::GetDirection(pPBullet[i]->GetPosition(),
-					Vector3(pPBullet[i]->GetPosition().x + 10.0f, pPBullet[i]->GetPosition().y));
-				pPBullet[i]->SetDirection(Direction);
+					Vector3(pPBullet[i]->GetPosition().x + (10.0f * _X_Shift), pPBullet[i]->GetPosition().y));
+				pPBullet[i]->SetDirection(Direction); 
 				((Bullet*)pPBullet[i])->SetIndex(_StateIndex);
 			}
 			break;
 			case 8:
 			{
 				Vector3 Direction = MathManager::GetDirection(pPBullet[i]->GetPosition(),
-					Vector3(pPBullet[i]->GetPosition().x - 10.0f, pPBullet[i]->GetPosition().y));
+					Vector3(pPBullet[i]->GetPosition().x - (10.0f * _X_Shift), pPBullet[i]->GetPosition().y));
 				pPBullet[i]->SetDirection(Direction);
 				((Bullet*)pPBullet[i])->SetIndex(_StateIndex);
 			}
@@ -109,7 +109,7 @@ void ObjectManager::CreatePlayerObject(int _StateIndex, int dwKey)
 			case 5:
 			{
 				Vector3 Direction = MathManager::GetDirection(pPBullet[i]->GetPosition(),
-					Vector3(pPBullet[i]->GetPosition().x + 10.0f, pPBullet[i]->GetPosition().y + 5.0f));
+					Vector3(pPBullet[i]->GetPosition().x + (10.0f * _X_Shift), pPBullet[i]->GetPosition().y +( 5.0f * _Y_Shift)));
 				pPBullet[i]->SetDirection(Direction);
 				((Bullet*)pPBullet[i])->SetIndex(_StateIndex);
 			}
@@ -117,7 +117,7 @@ void ObjectManager::CreatePlayerObject(int _StateIndex, int dwKey)
 			case 6:
 			{
 				Vector3 Direction = MathManager::GetDirection(pPBullet[i]->GetPosition(),
-					Vector3(pPBullet[i]->GetPosition().x + 10.0f, pPBullet[i]->GetPosition().y - 5.0f));
+					Vector3(pPBullet[i]->GetPosition().x + (10.0f * _X_Shift), pPBullet[i]->GetPosition().y - (5.0f * _Y_Shift)));
 				pPBullet[i]->SetDirection(Direction);
 				((Bullet*)pPBullet[i])->SetIndex(_StateIndex);
 			}
@@ -125,7 +125,7 @@ void ObjectManager::CreatePlayerObject(int _StateIndex, int dwKey)
 			case 9:
 			{
 				Vector3 Direction = MathManager::GetDirection(pPBullet[i]->GetPosition(),
-					Vector3(pPBullet[i]->GetPosition().x - 10.0f, pPBullet[i]->GetPosition().y + 5.0f));
+					Vector3(pPBullet[i]->GetPosition().x - (10.0f * _X_Shift), pPBullet[i]->GetPosition().y + (5.0f * _Y_Shift)));
 				pPBullet[i]->SetDirection(Direction);
 				((Bullet*)pPBullet[i])->SetIndex(_StateIndex);
 			}
@@ -133,7 +133,7 @@ void ObjectManager::CreatePlayerObject(int _StateIndex, int dwKey)
 			case 10:
 			{
 				Vector3 Direction = MathManager::GetDirection(pPBullet[i]->GetPosition(),
-					Vector3(pPBullet[i]->GetPosition().x - 10.0f, pPBullet[i]->GetPosition().y - 5.0f));
+					Vector3(pPBullet[i]->GetPosition().x - (10.0f * _X_Shift), pPBullet[i]->GetPosition().y - (5.0f * _Y_Shift)));
 				pPBullet[i]->SetDirection(Direction);
 				((Bullet*)pPBullet[i])->SetIndex(_StateIndex);
 			}

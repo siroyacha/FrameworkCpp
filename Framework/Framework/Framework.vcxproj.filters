@@ -70,6 +70,9 @@
     <Filter Include="소스 파일\02.Scene\Shop">
       <UniqueIdentifier>{73633bec-b7a0-423a-b6ac-5df43d421af0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\02.Scene\Pausce">
+      <UniqueIdentifier>{26b78335-9de3-4605-b609-8c31142b1232}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MainUpdate.cpp">
@@ -119,6 +122,9 @@
     </ClCompile>
     <ClCompile Include="Shop.cpp">
       <Filter>소스 파일\02.Scene\Shop</Filter>
+    </ClCompile>
+    <ClCompile Include="Pause.cpp">
+      <Filter>소스 파일\02.Scene\Pausce</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -187,6 +193,9 @@
     </ClInclude>
     <ClInclude Include="Shop.h">
       <Filter>소스 파일\02.Scene\Shop</Filter>
+    </ClInclude>
+    <ClInclude Include="Pause.h">
+      <Filter>소스 파일\02.Scene\Pausce</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

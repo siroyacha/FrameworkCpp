@@ -77,12 +77,12 @@ void Menu::Update()
 void Menu::Render()
 {
 	for (int i = 0; i < MaxSize; ++i)
-		CursorManager::GetInstance()->WriteBuffer((150.0f / 2) - (Length[1] / 2 + 2), 15.0f + (i * 2), (char*)"[             ]", Color);
+		CursorManager::GetInstance()->WriteBuffer((150.0f / 2) - (Length[1] / 2 + 2), 15.0f + (i * 2), (char*)"[             ]", 8);
 
 	for (int i = 0; i < MaxSize; ++i)
 	{
 		if (Cursor == (15.0f + (i * 2)))
-			Color = 15;
+			Color = 11;
 		else
 			Color = 8;
 

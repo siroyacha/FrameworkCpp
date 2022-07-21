@@ -8,5 +8,6 @@ enum class SCENEID
 	MENU,
 	SHOP,
 	STAGE,
+	PAUSE,
 	EXIT
 };

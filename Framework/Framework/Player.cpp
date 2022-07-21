@@ -4,7 +4,7 @@
 #include "InputManager.h"
 #include"ObjectManager.h"
 #include"CursorManager.h"
-Player::Player():X_Shift(1),Y_Shift(1)
+Player::Player():X_Shift(1.0f),Y_Shift(1.0f)
 {
 }
 
@@ -43,22 +43,24 @@ int Player::Update()
 	}
 	if (dwKey & KEY_SPACE)
 	{
-		ObjectManager::GetInstance()->CreatePlayerObject(2, dwKey - KEY_SPACE);
+		ObjectManager::GetInstance()->CreatePlayerObject(2, dwKey - KEY_SPACE, X_Shift, Y_Shift);
 	}
 	
-	if (dwKey & KEY_SHIFT)
+	if (dwKey & KEY_Y_Shift)
 	{
-		Y_Shift *= -1;
+		Y_Shift *= -1.0f;
 	}
 
-	if (dwKey & KEY_CONTROL)
+	if (dwKey & KEY_X_Shift)
 	{
-		X_Shift *= -1;
+		X_Shift *= -1.0f;
 	}
 
 	if (dwKey & KEY_ESCAPE)
 	{
-		SceneManager::GetInstance()->SetScene(SCENEID::MENU);
+		SceneManager::GetInstance()->SetScene(SCENEID::PAUSE);
+		system("Pause");
+
 	}
 	
 	return 0;

@@ -39,9 +39,3 @@ struct Transform
 	Vector3 Scale;
 	Vector3 Direction;
 };
-
-struct Inventory
-{
-	int Money;
-
-};

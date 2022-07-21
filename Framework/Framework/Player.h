@@ -5,8 +5,8 @@ class Bullet;
 class Player : public Object
 {
 private:
-	int X_Shift;
-	int Y_Shift;
+	float X_Shift;
+	float Y_Shift;
 public:
 	virtual void Start()override;
 	virtual int Update()override;
