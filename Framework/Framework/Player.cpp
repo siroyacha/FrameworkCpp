@@ -4,6 +4,7 @@
 #include "InputManager.h"
 #include"ObjectManager.h"
 #include"CursorManager.h"
+
 Player::Player():X_Shift(1.0f),Y_Shift(1.0f)
 {
 }
@@ -59,8 +60,6 @@ int Player::Update()
 	if (dwKey & KEY_ESCAPE)
 	{
 		SceneManager::GetInstance()->SetScene(SCENEID::PAUSE);
-		system("Pause");
-
 	}
 	
 	return 0;

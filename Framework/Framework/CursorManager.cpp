@@ -74,7 +74,7 @@ void CursorManager::ClearBuffer()
 	COORD Coord = { 0,0 };
 	DWORD dw = 0;
 	// ** 버퍼를 ' '라는 빈 공백을 채움
-	FillConsoleOutputCharacter(HBuffer[BufferIndex], ' ', 150 * 40, Coord, &dw);
+	FillConsoleOutputCharacter(HBuffer[BufferIndex], ' ', 150 * 60, Coord, &dw);
 }
 // ** 버퍼 해제
 void CursorManager::DestroyBuffer()

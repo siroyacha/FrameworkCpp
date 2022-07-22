@@ -28,6 +28,7 @@ void Pause::Render()
 {
 	ObjectManager::GetInstance()->Render();
 	CursorManager::GetInstance()->WriteBuffer(0.0f, 0.0f, (char*)"Pause", 10);
+	system("Pause");
 }
 
 void Pause::Release()

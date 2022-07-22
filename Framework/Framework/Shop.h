@@ -5,8 +5,9 @@ class Shop :public Scene
 {
 private:
 	int MaxSize;
-	char* Buffer[4];
-	int Length[4];
+	char* Buffer[9];
+	char* Buffer2[9];
+	char* Buffer3[9];
 	int Cursor;
 
 	int Color;

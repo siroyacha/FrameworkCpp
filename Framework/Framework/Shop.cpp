@@ -14,17 +14,37 @@ Shop::~Shop()
 
 void Shop::Start()
 {
-	Buffer[0] = (char*)"S t a r t";
-	Buffer[1] = (char*)"O p t i o n";
-	Buffer[2] = (char*)"S t o r e";
-	Buffer[3] = (char*)"E x i t";
+	Buffer[0] = (char*)"아이템 1";
+	Buffer[1] = (char*)"아이템 2";
+	Buffer[2] = (char*)"아이템 3";
+	Buffer[3] = (char*)"아이템 4";
+	Buffer[4] = (char*)"아이템 5";
+	Buffer[5] = (char*)"아이템 6";
+	Buffer[6] = (char*)"아이템 7";
+	Buffer[7] = (char*)"아이템 8";
+	Buffer[8] = (char*)"아이템 9";
 
-	Length[0] = strlen(Buffer[0]);
-	Length[1] = strlen(Buffer[1]);
-	Length[2] = strlen(Buffer[2]);
-	Length[3] = strlen(Buffer[3]);
+	Buffer2[0] = (char*)"아이템 텍스쳐1";
+	Buffer2[1] = (char*)"아이템 텍스쳐2";
+	Buffer2[2] = (char*)"아이템 텍스쳐3";
+	Buffer2[3] = (char*)"아이템 텍스쳐4";
+	Buffer2[4] = (char*)"아이템 텍스쳐5";
+	Buffer2[5] = (char*)"아이템 텍스쳐6";
+	Buffer2[6] = (char*)"아이템 텍스쳐7";
+	Buffer2[7] = (char*)"아이템 텍스쳐8";
+	Buffer2[8] = (char*)"아이템 텍스쳐9";
 
-	MaxSize = 4;
+	Buffer3[0] = (char*)"아이템설명1";
+	Buffer3[1] = (char*)"아이템설명2";
+	Buffer3[2] = (char*)"아이템설명3";
+	Buffer3[3] = (char*)"아이템설명4";
+	Buffer3[4] = (char*)"아이템설명5";
+	Buffer3[5] = (char*)"아이템설명6";
+	Buffer3[6] = (char*)"아이템설명7";
+	Buffer3[7] = (char*)"아이템설명8";
+	Buffer3[8] = (char*)"아이템설명9";
+
+	MaxSize = 9;
 
 	Color = 8;
 
@@ -43,13 +63,15 @@ void Shop::Update()
 		Cursor -= 3;
 		if (Cursor <= 10)
 			Cursor = 10;
+		if (Cursor >= 34)
+			Cursor = 34;
 	}
 
 	if (dwKey & KEY_DOWN)
 	{
 		Cursor += 3;
-		if (Cursor >= 34)
-			Cursor = 34;
+		if (Cursor >= 37)
+			Cursor = 52;
 	}
 
 	if (dwKey & KEY_RETURN)
@@ -82,6 +104,10 @@ void Shop::Update()
 
 		case 34:
 			break;
+
+		case 52:
+			SceneManager::GetInstance()->SetScene(SCENEID::MENU);
+			break;
 		}
 	}
 }
@@ -90,52 +116,52 @@ void Shop::Render()
 {
 	for (int i = 0; i < 39; i++)
 	{
-		CursorManager::GetInstance()->WriteBuffer(20.0f, 6.0f + i, (char*)"│", 10);
-		CursorManager::GetInstance()->WriteBuffer(80.0f, 6.0f + i, (char*)"│", 10);
+		CursorManager::GetInstance()->WriteBuffer(20.0f, 6.0f + i, (char*)"│", 15);
+		CursorManager::GetInstance()->WriteBuffer(80.0f, 6.0f + i, (char*)"│", 15);
 		for (int j = 0; j < 30; j++)
 		{
-			CursorManager::GetInstance()->WriteBuffer(20.0f + (2 * j), 5.0f, (char*)"─", 10);
-			CursorManager::GetInstance()->WriteBuffer(20.0f + (2 * j), 45.0f, (char*)"─", 10);
+			CursorManager::GetInstance()->WriteBuffer(20.0f + (2 * j), 5.0f, (char*)"─", 15);
+			CursorManager::GetInstance()->WriteBuffer(20.0f + (2 * j), 45.0f, (char*)"─", 15);
 		}
 	}
-	CursorManager::GetInstance()->WriteBuffer(20.0f, 5.0f, (char*)"┌", 10);
-	CursorManager::GetInstance()->WriteBuffer(80.0f, 5.0f, (char*)"┐", 10);
-	CursorManager::GetInstance()->WriteBuffer(20.0f, 45.0f, (char*)"└", 10);
-	CursorManager::GetInstance()->WriteBuffer(80.0f, 45.0f, (char*)"┘", 10);
+	CursorManager::GetInstance()->WriteBuffer(20.0f, 5.0f, (char*)"┌", 15);
+	CursorManager::GetInstance()->WriteBuffer(80.0f, 5.0f, (char*)"┐", 15);
+	CursorManager::GetInstance()->WriteBuffer(20.0f, 45.0f, (char*)"└", 15);
+	CursorManager::GetInstance()->WriteBuffer(80.0f, 45.0f, (char*)"┘", 15);
 
-	for (int i = 0; i < 20; i++)
+	for (int i = 0; i < 10; i++)
 	{
-		CursorManager::GetInstance()->WriteBuffer(95.0f, 6.0f + i, (char*)"│", 10);
-		CursorManager::GetInstance()->WriteBuffer(125.0f, 6.0f + i, (char*)"│", 10);
-		for (int j = 0; j < 15; j++)
+		CursorManager::GetInstance()->WriteBuffer(100.0f, 6.0f + i, (char*)"│", 15);
+		CursorManager::GetInstance()->WriteBuffer(120.0f, 6.0f + i, (char*)"│", 15);
+		for (int j = 0; j < 10; j++)
 		{
-			CursorManager::GetInstance()->WriteBuffer(95.0f + (2 * j), 5.0f, (char*)"─", 10);
-			CursorManager::GetInstance()->WriteBuffer(95.0f + (2 * j), 25.0f, (char*)"─", 10);
+			CursorManager::GetInstance()->WriteBuffer(100.0f + (2 * j), 5.0f, (char*)"─", 15);
+			CursorManager::GetInstance()->WriteBuffer(100.0f + (2 * j), 15.0f, (char*)"─", 15);
 		}
 	}
-	CursorManager::GetInstance()->WriteBuffer(95.0f, 5.0f, (char*)"┌", 10);
-	CursorManager::GetInstance()->WriteBuffer(125.0f, 5.0f, (char*)"┐", 10);
-	CursorManager::GetInstance()->WriteBuffer(95.0f, 25.0f, (char*)"└", 10);
-	CursorManager::GetInstance()->WriteBuffer(125.0f, 25.0f, (char*)"┘", 10);
+	CursorManager::GetInstance()->WriteBuffer(100.0f, 5.0f, (char*)"┌", 15);
+	CursorManager::GetInstance()->WriteBuffer(120.0f, 5.0f, (char*)"┐", 15);
+	CursorManager::GetInstance()->WriteBuffer(100.0f, 15.0f, (char*)"└", 15);
+	CursorManager::GetInstance()->WriteBuffer(120.0f, 15.0f, (char*)"┘", 15);
 
-	CursorManager::GetInstance()->WriteBuffer(30.0f, 10.0f, (char*)"아이템 1", Color);
-	CursorManager::GetInstance()->WriteBuffer(30.0f, 13.0f, (char*)"아이템 1", Color);
-	CursorManager::GetInstance()->WriteBuffer(30.0f, 16.0f, (char*)"아이템 1", Color);
-	CursorManager::GetInstance()->WriteBuffer(30.0f, 19.0f, (char*)"아이템 1", Color);
-	CursorManager::GetInstance()->WriteBuffer(30.0f, 22.0f, (char*)"아이템 1", Color);
-	CursorManager::GetInstance()->WriteBuffer(30.0f, 25.0f, (char*)"아이템 1", Color);
-	CursorManager::GetInstance()->WriteBuffer(30.0f, 28.0f, (char*)"아이템 1", Color);
-	CursorManager::GetInstance()->WriteBuffer(30.0f, 31.0f, (char*)"아이템 1", Color);
-	CursorManager::GetInstance()->WriteBuffer(30.0f, 34.0f, (char*)"아이템 1", Color);
 	for (int i = 0; i < MaxSize; ++i)
 	{
-		if (Cursor == (15.0f + (i * 2)))
+		CursorManager::GetInstance()->WriteBuffer(130.0f, 52.0f, (char*)"상점 나가기", 8);
+		if (Cursor == 52)
+			CursorManager::GetInstance()->WriteBuffer(130.0f, 52.0f, (char*)"상점 나가기", 11);
+		if (Cursor == (10.0f + (i * 3)))
 			Color = 11;
 		else
 			Color = 8;
 
-		//CursorManager::GetInstance()->WriteBuffer(30.0f, 15.0f + (i * 2), Buffer[i], Color);
+		CursorManager::GetInstance()->WriteBuffer(30.0f, 10.0f + (i * 3), Buffer[i], Color);
+
+		if (Cursor == (10.0f + (i * 3)))
+			CursorManager::GetInstance()->WriteBuffer(105.0f, 10.0f, Buffer2[i], Color);
+		if (Cursor == (10.0f + (i * 3)))
+			CursorManager::GetInstance()->WriteBuffer(100.0f, 20.0f, Buffer3[i], 15);
 	}
+	CursorManager::GetInstance()->WriteBuffer(15.0f, 55.0f, (char*)"현재 금액 : ", 15);
 }
 
 void Shop::Release()
