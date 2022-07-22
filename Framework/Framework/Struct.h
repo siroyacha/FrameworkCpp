@@ -39,3 +39,13 @@ struct Transform
 	Vector3 Scale;
 	Vector3 Direction;
 };
+
+struct Infomation
+{
+	int Money;
+	int Hp;
+	float Exp;
+	int  Lv;
+	int Att;
+	int Def;
+};

@@ -1,7 +1,6 @@
-// ** Framework v11.2
+// ** Framework v11.3
 // 8/4까지 작업 완료
 // 홀로큐어처럼 만들어보기
-// 상점 디자인중
 #include "MainUpdate.h"
 
 int main(void)
