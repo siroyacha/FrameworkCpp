@@ -20,6 +20,11 @@ void Player::Start()
 	Info.Scale = Vector3(2.0f, 1.0f);
 	
 	Target = nullptr;
+
+	Value.Lv = 1;
+	Value.Money = 1000;
+	Value.Exp = 0;
+	Value.Hp = 5;
 }
 
 int Player::Update()
@@ -61,7 +66,12 @@ int Player::Update()
 	{
 		SceneManager::GetInstance()->SetScene(SCENEID::PAUSE);
 	}
-	
+	if (Value.Exp >= 100)
+	{
+		++Value.Lv;
+		Value.Exp -= 100;
+	}
+
 	return 0;
 }
 
@@ -73,4 +83,15 @@ void Player::Render()
 void Player::Release()
 {
 
+}
+
+int Player::DamegeControl(int _Att)
+{
+	Value.Hp = Value.Hp - (_Att - Value.Def);
+	if (Value.Def > _Att)
+		--Value.Hp;
+	if (Value.Hp)
+		return 1;
+	else
+		return 0;
 }

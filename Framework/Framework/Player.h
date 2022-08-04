@@ -12,6 +12,7 @@ public:
 	virtual int Update()override;
 	virtual void Render()override;
 	virtual void Release()override;
+	virtual int DamegeControl(int _Att)override;
 public:
 	Player();
 	virtual ~Player();

@@ -19,6 +19,8 @@ void Bullet::Start()
 	Target = nullptr;
 
 	Speed = 1.0f;
+
+	Value.Att = 10;
 }
 
 int Bullet::Update()
@@ -81,4 +83,9 @@ void Bullet::Render()
 
 void Bullet::Release()
 {
+}
+
+int Bullet::DamegeControl(int _Att)
+{
+	return 0;
 }

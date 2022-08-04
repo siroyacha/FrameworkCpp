@@ -23,6 +23,12 @@ void Enemy::Start()
 
 	SpownPoint = rand() % 4;
 
+	Value.Att = 1;
+	Value.Hp = 10;
+	Value.Lv = 1;
+	Value.Def = 0;
+	Value.Money = 100;
+	Value.Exp = Value.Lv * 10;
 	switch (SpownPoint)
 	{
 	case 0:
@@ -45,7 +51,7 @@ int Enemy::Update()
 	if (Time + 1500 < GetTickCount64())
 	{
 		Count++;
-
+		/*
 		if (Count >= 10)
 		{
 			Count = 0;
@@ -53,6 +59,7 @@ int Enemy::Update()
 		}
 		else
 			ObjectManager::GetInstance()->CreateObject(0);
+		*/
 
 		Time = GetTickCount64();
 
@@ -74,4 +81,15 @@ void Enemy::Render()
 void Enemy::Release()
 {
 
+}
+
+int Enemy::DamegeControl(int _Att)
+{
+	Value.Hp = Value.Hp - (_Att - Value.Def);
+	if (Value.Def > _Att)
+		--Value.Hp;
+	if (Value.Hp)
+		return 1;
+	else
+		return 0;
 }

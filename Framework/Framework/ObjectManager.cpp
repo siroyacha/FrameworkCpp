@@ -185,11 +185,22 @@ void ObjectManager::Update()
 				pPlayer->GetTransform(),
 				pEnemy[i]->GetTransform()))
 			{
-				CursorManager::GetInstance()->WriteBuffer(0.0f, 3.0f, (char*)"적과 충돌입니다");
-				ItemCounter = 1;
-				ItemPosition = pEnemy[i]->GetPosition();
+				CursorManager::GetInstance()->WriteBuffer(60.0f, 20.0f, (char*)"적과 충돌입니다");
+
+				if (pPlayer->DamegeControl(pEnemy[i]->GetDamege()) == 0)
+				{
+					CursorManager::GetInstance()->WriteBuffer(60.0f, 20.0f, (char*)" 게임 오버");
+					for (int j = 0; j < 5; ++j)
+					{
+						CursorManager::GetInstance()->WriteBuffer(60.0f, 20.0f, 10-j);
+						CursorManager::GetInstance()->WriteBuffer(62.0f, 20.0f, (char*)" 초후 게임이 종료됩니다");
+						Sleep(1000);
+					}
+					SceneManager::GetInstance()->SetScene(SCENEID::EXIT);
+				}
 				delete pEnemy[i];
-				pEnemy[i] = nullptr;	
+				pEnemy[i] = nullptr;
+
 			}
 		}
 		/*
@@ -198,24 +209,6 @@ void ObjectManager::Update()
 		*/
 	}
 
-	for (int j = 0; j < 128; ++j)
-	{
-		if (ItemCounter == 1)
-		{
-			if (pItem[j] == nullptr)
-			{
-				pItem[j] = ObjectFactory::CreateItem(ItemPosition);
-				ItemCounter = 0;
-			}
-		}
-		if (pItem[j])
-			Itemresult = pItem[j]->Update();
-		if (Itemresult == 1)
-		{
-			delete pItem[j];
-			pItem[j] = nullptr;
-		}
-	}
 	int result = 0;
 	for (int i = 0; i < 128; ++i)
 	{
@@ -253,8 +246,16 @@ void ObjectManager::Update()
 						pPBullet[i]->GetTransform()))
 					{
 						PBresult = 1;
-						delete pEnemy[j];
-						pEnemy[j] = nullptr;
+						if (pEnemy[j]->DamegeControl(pPBullet[i]->GetDamege()) == 0)
+						{
+							ItemCounter = 1;
+							ItemPosition = pEnemy[j]->GetPosition();
+							pPlayer->SetMoney(pEnemy[j]->GetMoney());
+							pPlayer->SetExp(pEnemy[j]->GetExp());
+
+							delete pEnemy[j];
+							pEnemy[j] = nullptr;
+						}
 					}
 				}
 			}
@@ -264,6 +265,25 @@ void ObjectManager::Update()
 		{
 			delete pPBullet[i];
 			pPBullet[i] = nullptr;
+		}
+	}
+
+	for (int j = 0; j < 128; ++j)
+	{
+		if (ItemCounter == 1)
+		{
+			if (pItem[j] == nullptr)
+			{
+				pItem[j] = ObjectFactory::CreateItem(ItemPosition);
+				ItemCounter = 0;
+			}
+		}
+		if (pItem[j])
+			Itemresult = pItem[j]->Update();
+		if (Itemresult == 1)
+		{
+			delete pItem[j];
+			pItem[j] = nullptr;
 		}
 	}
 }

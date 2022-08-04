@@ -47,3 +47,8 @@ void Item::Render()
 void Item::Release()
 {
 }
+
+int Item::DamegeControl(int _Att)
+{
+	return 0;
+}

@@ -1,6 +1,7 @@
 #pragma once
 #include "Scene.h"
 
+class Object;
 class Shop :public Scene
 {
 private:
@@ -12,6 +13,7 @@ private:
 
 	int Color;
 	ULONGLONG Time;
+	
 public:
 	virtual void Start()override;
 	virtual void Update()override;

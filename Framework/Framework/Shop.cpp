@@ -162,6 +162,7 @@ void Shop::Render()
 			CursorManager::GetInstance()->WriteBuffer(100.0f, 20.0f, Buffer3[i], 15);
 	}
 	CursorManager::GetInstance()->WriteBuffer(15.0f, 55.0f, (char*)"현재 금액 : ", 15);
+	//CursorManager::GetInstance()->WriteBuffer(30.0f, 55.0f,, 15);
 }
 
 void Shop::Release()
