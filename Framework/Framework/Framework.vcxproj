@@ -48,6 +48,7 @@
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="CursorManager.cpp" />
     <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="GameOver.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="Logo.cpp" />
@@ -60,8 +61,11 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneManager.cpp" />
+    <ClCompile Include="Shield.cpp" />
     <ClCompile Include="Shop.cpp" />
+    <ClCompile Include="ShopManager.cpp" />
     <ClCompile Include="Stage.cpp" />
+    <ClCompile Include="Type1.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bullet.h" />
@@ -69,6 +73,7 @@
     <ClInclude Include="CursorManager.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Enum.h" />
+    <ClInclude Include="GameOver.h" />
     <ClInclude Include="Headers.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="Item.h" />
@@ -83,10 +88,13 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneManager.h" />
+    <ClInclude Include="Shield.h" />
     <ClInclude Include="Shop.h" />
+    <ClInclude Include="ShopManager.h" />
     <ClInclude Include="Stage.h" />
     <ClInclude Include="Struct.h" />
     <ClInclude Include="CollisionManager.h" />
+    <ClInclude Include="Type1.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

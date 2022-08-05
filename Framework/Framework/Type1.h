@@ -1,14 +1,12 @@
 #pragma once
-#include "Object.h"
+#include"Bullet.h"
 
-class Bullet;
-class Player : public Object
+class Type1:public Object
 {
 private:
-	float X_Shift;
-	float Y_Shift;
-
-	Object* Bullets[4];
+	int Index;
+	ULONGLONG Time;
+	float Speed;
 public:
 	virtual void Start()override;
 	virtual int Update()override;
@@ -16,6 +14,9 @@ public:
 	virtual void Release()override;
 	virtual int DamegeControl(int _Att)override;
 public:
-	Player();
-	virtual ~Player();
+	void SetIndex(int _Index) { Index = _Index; }
+public:
+	Type1();
+	virtual ~Type1();
 };
+

@@ -188,19 +188,10 @@ void ObjectManager::Update()
 				CursorManager::GetInstance()->WriteBuffer(60.0f, 20.0f, (char*)"적과 충돌입니다");
 
 				if (pPlayer->DamegeControl(pEnemy[i]->GetDamege()) == 0)
-				{
-					CursorManager::GetInstance()->WriteBuffer(60.0f, 20.0f, (char*)" 게임 오버");
-					for (int j = 0; j < 5; ++j)
-					{
-						CursorManager::GetInstance()->WriteBuffer(60.0f, 20.0f, 10-j);
-						CursorManager::GetInstance()->WriteBuffer(62.0f, 20.0f, (char*)" 초후 게임이 종료됩니다");
-						Sleep(1000);
-					}
-					SceneManager::GetInstance()->SetScene(SCENEID::EXIT);
-				}
+					SceneManager::GetInstance()->SetScene(SCENEID::GAMEOVER);
+
 				delete pEnemy[i];
 				pEnemy[i] = nullptr;
-
 			}
 		}
 		/*

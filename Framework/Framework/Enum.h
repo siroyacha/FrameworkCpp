@@ -9,5 +9,6 @@ enum class SCENEID
 	SHOP,
 	STAGE,
 	PAUSE,
+	GAMEOVER,
 	EXIT
 };

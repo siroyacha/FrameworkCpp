@@ -48,4 +48,5 @@ struct Infomation
 	int  Lv;
 	int Att;
 	int Def;
+	int Score;
 };

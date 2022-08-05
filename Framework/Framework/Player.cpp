@@ -1,5 +1,6 @@
 #include "Player.h"
 #include"Bullet.h"
+#include"Shield.h"
 #include"SceneManager.h"
 #include "InputManager.h"
 #include"ObjectManager.h"
@@ -24,7 +25,16 @@ void Player::Start()
 	Value.Lv = 1;
 	Value.Money = 1000;
 	Value.Exp = 0;
-	Value.Hp = 5;
+	Value.Hp = 100;
+	Value.Score = 0;
+
+	for (int i = 0; i < 4; ++i)
+	{
+		Bullets[i] = new Shield;
+		Bullets[i]->Start();
+		Bullets[i]->SetPosition(Info.Position);
+		((Shield*)Bullets[i])->SetAngle(90.0f * i);
+	}
 }
 
 int Player::Update()
@@ -64,7 +74,7 @@ int Player::Update()
 
 	if (dwKey & KEY_ESCAPE)
 	{
-		SceneManager::GetInstance()->SetScene(SCENEID::PAUSE);
+		SceneManager::GetInstance()->SetScene(SCENEID::MENU);
 	}
 	if (Value.Exp >= 100)
 	{
@@ -72,17 +82,29 @@ int Player::Update()
 		Value.Exp -= 100;
 	}
 
+	for (int i = 0; i < 4; ++i)
+	{
+		Bullets[i]->SetPosition(Info.Position);
+		Bullets[i]->Update();
+	}
 	return 0;
 }
 
 void Player::Render()
 {
 	CursorManager::GetInstance()->WriteBuffer(Info.Position, (char*)"¡Ù");
+
+	for (int i = 0; i < 4; ++i)
+		Bullets[i]->Render();
 }
 
 void Player::Release()
 {
-
+	for (int i = 0; i < 4; ++i)
+	{
+		delete Bullets[i];
+		Bullets[i] = nullptr;
+	}
 }
 
 int Player::DamegeControl(int _Att)

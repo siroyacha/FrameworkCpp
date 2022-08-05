@@ -73,6 +73,18 @@
     <Filter Include="소스 파일\02.Scene\Pausce">
       <UniqueIdentifier>{26b78335-9de3-4605-b609-8c31142b1232}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\99.Manager\ShopManager">
+      <UniqueIdentifier>{aa3f14c9-3b42-40f3-a520-5b06e648e426}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\01.Object\Bullet\Type1">
+      <UniqueIdentifier>{c0a4f7b3-f9e2-4a0b-a398-e22404c0c123}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\01.Object\Bullet\Shield">
+      <UniqueIdentifier>{31281eae-f3ef-4a2b-abec-d2c2d788b9ca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\02.Scene\GameOver">
+      <UniqueIdentifier>{f9d134ba-bbcd-493c-a1bf-8ceefed5276c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MainUpdate.cpp">
@@ -125,6 +137,18 @@
     </ClCompile>
     <ClCompile Include="Pause.cpp">
       <Filter>소스 파일\02.Scene\Pausce</Filter>
+    </ClCompile>
+    <ClCompile Include="ShopManager.cpp">
+      <Filter>소스 파일\99.Manager\ShopManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Type1.cpp">
+      <Filter>소스 파일\01.Object\Bullet\Type1</Filter>
+    </ClCompile>
+    <ClCompile Include="Shield.cpp">
+      <Filter>소스 파일\01.Object\Bullet\Shield</Filter>
+    </ClCompile>
+    <ClCompile Include="GameOver.cpp">
+      <Filter>소스 파일\02.Scene\GameOver</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -196,6 +220,18 @@
     </ClInclude>
     <ClInclude Include="Pause.h">
       <Filter>소스 파일\02.Scene\Pausce</Filter>
+    </ClInclude>
+    <ClInclude Include="ShopManager.h">
+      <Filter>소스 파일\99.Manager\ShopManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Type1.h">
+      <Filter>소스 파일\01.Object\Bullet\Type1</Filter>
+    </ClInclude>
+    <ClInclude Include="Shield.h">
+      <Filter>소스 파일\01.Object\Bullet\Shield</Filter>
+    </ClInclude>
+    <ClInclude Include="GameOver.h">
+      <Filter>소스 파일\02.Scene\GameOver</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
