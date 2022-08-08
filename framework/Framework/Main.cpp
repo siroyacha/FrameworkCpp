@@ -22,7 +22,6 @@ int main(void)
 			Main.Render();
 		}
 	}
-
-	
+		
 	return 0;
 }
