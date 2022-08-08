@@ -5,7 +5,6 @@
 #include "InputManager.h"
 #include"CursorManager.h"
 #include"ObjectManager.h"
-#include"CursorManager.h"
 
 ShopManager* ShopManager::Instance = nullptr;
 
@@ -19,6 +18,7 @@ ShopManager::~ShopManager()
 
 void ShopManager::Start()
 {
+	pPlayer = ObjectManager::GetInstance()->LoadPlayer();
 	Buffer[0] = (char*)"아이템 1";
 	Buffer[1] = (char*)"아이템 2";
 	Buffer[2] = (char*)"아이템 3";
@@ -167,7 +167,7 @@ void ShopManager::Render()
 			CursorManager::GetInstance()->WriteBuffer(100.0f, 20.0f, Buffer3[i], 15);
 	}
 	CursorManager::GetInstance()->WriteBuffer(15.0f, 55.0f, (char*)"현재 금액 : ", 15);
-	//CursorManager::GetInstance()->WriteBuffer(30.0f, 55.0f,pPlayer->GetMoney(), 15);
+	CursorManager::GetInstance()->WriteBuffer(30.0f, 55.0f,pPlayer->GetMoney(), 15);
 }
 
 void ShopManager::Release()

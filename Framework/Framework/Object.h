@@ -30,6 +30,7 @@ public:
 
 	int GetExp() const { return Value.Exp; }
 	void SetExp(int _Exp) { Value.Exp += _Exp; }
+	int GetHP() { return Value.Hp; }
 
 public:
 	Object();

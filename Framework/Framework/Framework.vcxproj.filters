@@ -85,6 +85,12 @@
     <Filter Include="소스 파일\02.Scene\GameOver">
       <UniqueIdentifier>{f9d134ba-bbcd-493c-a1bf-8ceefed5276c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\02.Scene\Open">
+      <UniqueIdentifier>{93e48f05-49c4-4c00-baa6-4f69eba392c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\99.Manager\UIManager">
+      <UniqueIdentifier>{95cddefa-bdf0-4eee-ab00-f177c1c42286}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MainUpdate.cpp">
@@ -149,6 +155,12 @@
     </ClCompile>
     <ClCompile Include="GameOver.cpp">
       <Filter>소스 파일\02.Scene\GameOver</Filter>
+    </ClCompile>
+    <ClCompile Include="Open.cpp">
+      <Filter>소스 파일\02.Scene\Open</Filter>
+    </ClCompile>
+    <ClCompile Include="UIManager.cpp">
+      <Filter>소스 파일\99.Manager\UIManager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -232,6 +244,12 @@
     </ClInclude>
     <ClInclude Include="GameOver.h">
       <Filter>소스 파일\02.Scene\GameOver</Filter>
+    </ClInclude>
+    <ClInclude Include="Open.h">
+      <Filter>소스 파일\02.Scene\Open</Filter>
+    </ClInclude>
+    <ClInclude Include="UIManager.h">
+      <Filter>소스 파일\99.Manager\UIManager</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

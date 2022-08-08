@@ -7,8 +7,7 @@ class Player : public Object
 private:
 	float X_Shift;
 	float Y_Shift;
-
-	Object* Bullets[4];
+	int Lv_Check;
 public:
 	virtual void Start()override;
 	virtual int Update()override;

@@ -28,6 +28,7 @@ public:
 	void Update();
 	void Render();
 	void Release();
+	Object* LoadPlayer() { return pPlayer; }
 private:
 	ObjectManager();
 public:

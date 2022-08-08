@@ -1,14 +1,17 @@
 #pragma once
 #include "Scene.h"
 
-class Pause :public Scene
+class Open :public Scene
 {
+private:
+	ULONGLONG Time;
+	int Counter;
 public:
 	virtual void Start()override;
 	virtual void Update()override;
 	virtual void Render()override;
 	virtual void Release()override;
 public:
-	Pause();
-	virtual	~Pause();
+	Open();
+	virtual	~Open();
 };

@@ -8,6 +8,7 @@
 #include"SceneManager.h"
 #include"MathManager.h"
 #include"ObjectFactory.h"
+#include"UIManager.h"
 
 ObjectManager* ObjectManager::Instance = nullptr;
 
@@ -153,6 +154,7 @@ void ObjectManager::Start()
 		pEnemy[0] = ObjectFactory::CreateEnemy();
 		pEnemy[0]->SetTarget(pPlayer);
 	}
+	UIManager::GetInstance()->Start();
 }
 
 void ObjectManager::Update()
@@ -194,10 +196,6 @@ void ObjectManager::Update()
 				pEnemy[i] = nullptr;
 			}
 		}
-		/*
-		if (pEnemy[i] == nullptr)
-			SceneManager::GetInstance()->SetScene(SCENEID::EXIT);
-		*/
 	}
 
 	int result = 0;
@@ -270,13 +268,24 @@ void ObjectManager::Update()
 			}
 		}
 		if (pItem[j])
+		{
 			Itemresult = pItem[j]->Update();
+			if (CollisionManager::RectCollision(
+				pPlayer->GetTransform(),
+				pItem[j]->GetTransform()))
+			{
+				Itemresult = 1;
+
+				SceneManager::GetInstance()->SetScene(SCENEID::OPEN);
+			}
+		}
 		if (Itemresult == 1)
 		{
 			delete pItem[j];
 			pItem[j] = nullptr;
 		}
 	}
+	UIManager::GetInstance()->Update();
 }
 
 void ObjectManager::Render()
@@ -306,6 +315,7 @@ void ObjectManager::Render()
 		if (pItem[i])
 			pItem[i]->Render();
 	}
+	UIManager::GetInstance()->Render();
 }
 
 void ObjectManager::Release()
