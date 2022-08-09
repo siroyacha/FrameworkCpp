@@ -66,6 +66,7 @@
     <ClCompile Include="Shop.cpp" />
     <ClCompile Include="ShopManager.cpp" />
     <ClCompile Include="Stage.cpp" />
+    <ClCompile Include="StagetClear.cpp" />
     <ClCompile Include="Type1.cpp" />
     <ClCompile Include="UIManager.cpp" />
   </ItemGroup>
@@ -95,6 +96,7 @@
     <ClInclude Include="Shop.h" />
     <ClInclude Include="ShopManager.h" />
     <ClInclude Include="Stage.h" />
+    <ClInclude Include="StagetClear.h" />
     <ClInclude Include="Struct.h" />
     <ClInclude Include="CollisionManager.h" />
     <ClInclude Include="Type1.h" />

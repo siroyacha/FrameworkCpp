@@ -64,7 +64,7 @@ void Menu::Update()
 			break;
 
 		case 19:
-			SceneManager::GetInstance()->SetScene(SCENEID::SHOP);
+			SceneManager::GetInstance()->SetScene(SCENEID::STAGECLEAR);
 			break;
 
 		case 21:

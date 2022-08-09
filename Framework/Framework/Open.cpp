@@ -102,12 +102,7 @@ void Open::Render()
 		CursorManager::GetInstance()->WriteBuffer(65.0f, 35.0f, (char*)"└", 15);
 		CursorManager::GetInstance()->WriteBuffer(85.0f, 35.0f, (char*)"┘", 15);
 
-		for (int i = 0; i < 3; i++)
-		{
-			CursorManager::GetInstance()->WriteBuffer(65.0f, (22.0f + i), (char*)"│", 15);
-			CursorManager::GetInstance()->WriteBuffer(85.0f, (22.0f + i), (char*)"│", 15);
-		}
-		CursorManager::GetInstance()->WriteBuffer(75.0f, 22.0f, (char*)"test", 15);
+		CursorManager::GetInstance()->WriteBuffer(75.0f, 30.0f, (char*)"test", 15);
 		CursorManager::GetInstance()->WriteBuffer(65.0f, 50.0f, (char*)"Q를 눌러 돌아가기", 15);
 	}
 }

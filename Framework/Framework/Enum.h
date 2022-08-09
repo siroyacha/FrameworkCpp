@@ -10,6 +10,7 @@ enum class SCENEID
 	STAGE,
 	PAUSE,
 	OPEN,
+	STAGECLEAR,
 	GAMEOVER,
 	EXIT
 };

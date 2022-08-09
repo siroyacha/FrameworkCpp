@@ -7,7 +7,6 @@ class Item : public Object
 private:
 	int Index;
 	ULONGLONG Time;
-	float Speed;
 public:
 	virtual void Start()override;
 	virtual int Update()override;

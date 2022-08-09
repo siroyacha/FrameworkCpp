@@ -159,6 +159,13 @@ void ObjectManager::Start()
 
 void ObjectManager::Update()
 {
+	int PBresult = 0;
+	int result = 0;
+
+	int Itemresult = 1;
+	int ItemCounter = 0;
+
+	Vector3 ItemPosition;
 	pPlayer->Update();
 	for (int i = 1; i < 32; i++)
 	{
@@ -173,9 +180,7 @@ void ObjectManager::Update()
 			}
 		}
 	}
-	int Itemresult = 0;
-	int ItemCounter = 0;
-	Vector3 ItemPosition;
+
 	for (int i = 0; i < 32; i++)
 	{
 		if (pEnemy[i])
@@ -188,8 +193,8 @@ void ObjectManager::Update()
 				pEnemy[i]->GetTransform()))
 			{
 				CursorManager::GetInstance()->WriteBuffer(60.0f, 20.0f, (char*)"적과 충돌입니다");
-
-				if (pPlayer->DamegeControl(pEnemy[i]->GetDamege()) == 0)
+				pPlayer->DamegeControl(pEnemy[i]->GetDamege());
+				if ( pPlayer->GetHP() <= 0)
 					SceneManager::GetInstance()->SetScene(SCENEID::GAMEOVER);
 
 				delete pEnemy[i];
@@ -198,7 +203,6 @@ void ObjectManager::Update()
 		}
 	}
 
-	int result = 0;
 	for (int i = 0; i < 128; ++i)
 	{
 		if (pEBullet[i])
@@ -219,7 +223,6 @@ void ObjectManager::Update()
 			pEBullet[i] = nullptr;
 		}
 	}
-	int PBresult = 0;
 	for (int i = 0; i < 128; ++i)
 	{
 		if (pPBullet[i])
@@ -235,7 +238,8 @@ void ObjectManager::Update()
 						pPBullet[i]->GetTransform()))
 					{
 						PBresult = 1;
-						if (pEnemy[j]->DamegeControl(pPBullet[i]->GetDamege()) == 0)
+						pEnemy[j]->DamegeControl(pPBullet[i]->GetDamege());
+						if (pEnemy[j]->GetHP() <= 0)
 						{
 							ItemCounter = 1;
 							ItemPosition = pEnemy[j]->GetPosition();
@@ -274,12 +278,23 @@ void ObjectManager::Update()
 				pPlayer->GetTransform(),
 				pItem[j]->GetTransform()))
 			{
-				Itemresult = 1;
+				switch (Itemresult)
+				{
+				case 1:
+					SceneManager::GetInstance()->SetScene(SCENEID::OPEN);
+					break;
+				case 2:
+					pPlayer->SetExp(pItem[j]->GetExp());
+					break;
+				case 3:
+					pPlayer->SetMoney(pItem[j]->GetMoney());
+					break;
+				}
+				Itemresult = 0;
 
-				SceneManager::GetInstance()->SetScene(SCENEID::OPEN);
 			}
 		}
-		if (Itemresult == 1)
+		if (Itemresult == 0)
 		{
 			delete pItem[j];
 			pItem[j] = nullptr;

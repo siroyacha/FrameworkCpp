@@ -23,7 +23,7 @@ void Enemy::Start()
 
 	SpownPoint = rand() % 4;
 
-	Value.Att = 1;
+	Value.Att = 15;
 	Value.Hp = 10;
 	Value.Lv = 1;
 	Value.Def = 0;

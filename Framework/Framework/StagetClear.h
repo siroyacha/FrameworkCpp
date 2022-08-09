@@ -1,22 +1,27 @@
 #pragma once
 #include "Scene.h"
 
-class GameOver :public Scene
+class Object;
+class StagetClear :public Scene
 {
 private:
-	int CountDown;
-	
-	char* Buffer[32];
-	int MaxSize;
-	int Length;
+	char* Buffer[2];
+	int Length[2];
+	int Cursor;
 
+	char* WordBuffer[32];
+	int WordMaxSize;
+	int WordLength;
+
+	int Color;
 	ULONGLONG Time;
+
 public:
 	virtual void Start()override;
 	virtual void Update()override;
 	virtual void Render()override;
 	virtual void Release()override;
 public:
-	GameOver();
-	virtual	~GameOver();
+	StagetClear();
+	virtual	~StagetClear();
 };

@@ -7,6 +7,7 @@
 #include"Pause.h"
 #include"GameOver.h"
 #include"Open.h"
+#include"StagetClear.h"
 
 SceneManager* SceneManager::Instance = nullptr;
 
@@ -55,6 +56,10 @@ void SceneManager::SetScene(SCENEID _SceneID)
 
 	case SCENEID::OPEN:
 		SceneState = new Open;
+		break;
+
+	case SCENEID::STAGECLEAR:
+		SceneState = new StagetClear;
 		break;
 
 	case SCENEID::EXIT:

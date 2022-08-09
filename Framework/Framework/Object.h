@@ -31,6 +31,7 @@ public:
 	int GetExp() const { return Value.Exp; }
 	void SetExp(int _Exp) { Value.Exp += _Exp; }
 	int GetHP() { return Value.Hp; }
+	int GetLV() { return Value.Lv; }
 
 public:
 	Object();

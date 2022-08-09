@@ -91,6 +91,9 @@
     <Filter Include="소스 파일\99.Manager\UIManager">
       <UniqueIdentifier>{95cddefa-bdf0-4eee-ab00-f177c1c42286}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\02.Scene\StagetClear">
+      <UniqueIdentifier>{0af92a57-e43a-485b-96bd-82159f1409db}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MainUpdate.cpp">
@@ -161,6 +164,9 @@
     </ClCompile>
     <ClCompile Include="UIManager.cpp">
       <Filter>소스 파일\99.Manager\UIManager</Filter>
+    </ClCompile>
+    <ClCompile Include="StagetClear.cpp">
+      <Filter>소스 파일\02.Scene\StagetClear</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -250,6 +256,9 @@
     </ClInclude>
     <ClInclude Include="UIManager.h">
       <Filter>소스 파일\99.Manager\UIManager</Filter>
+    </ClInclude>
+    <ClInclude Include="StagetClear.h">
+      <Filter>소스 파일\02.Scene\StagetClear</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -111,7 +111,7 @@ void ShopManager::Update()
 			break;
 
 		case 52:
-			SceneManager::GetInstance()->SetScene(SCENEID::MENU);
+			SceneManager::GetInstance()->SetScene(SCENEID::STAGECLEAR);
 			break;
 		}
 	}
