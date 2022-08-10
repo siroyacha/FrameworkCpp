@@ -25,9 +25,10 @@ void Player::Start()
 	Value.Lv = 1;
 	Value.Money = 1000;
 	Value.Exp = 0;
+	Value.MaxHP = 100;
 	Value.Hp = 100;
 	Value.Score = 0;
-
+	Value.Stage_Lv = 1;
 }
 
 int Player::Update()
@@ -74,6 +75,7 @@ int Player::Update()
 		++Value.Lv;
 		Value.Exp -= 100;
 		++Lv_Check;
+		Value.MaxHP += 10 * Value.Lv;
 	}
 
 	return 0;

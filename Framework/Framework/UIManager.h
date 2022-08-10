@@ -17,6 +17,7 @@ private:
 	Object* pPlayer;
 private:
 	int MaxSize;
+	int NowSize;
 	/*
 	char* Buffer[9];
 	char* Buffer2[9];

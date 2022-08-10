@@ -41,14 +41,13 @@ void Open::Render()
 	CursorManager::GetInstance()->WriteBuffer(105.0f, 5.0f, (char*)"¦¤", 15);
 	CursorManager::GetInstance()->WriteBuffer(45.0f, 45.0f, (char*)"¦¦", 15);
 	CursorManager::GetInstance()->WriteBuffer(105.0f, 45.0f, (char*)"¦¥", 15);
+	int k = 1;
 	if (Time + 250 < GetTickCount64())
 	{
 		Time = GetTickCount64();
 		if (Counter < 20)
 		{
-			int k = 0;
-			k = 10 / Counter;
-			if (k / 2 == 1)
+			if (k == 1)
 			{
 				for (int i = 0; i < 10; i++)
 				{
@@ -65,23 +64,24 @@ void Open::Render()
 				CursorManager::GetInstance()->WriteBuffer(65.0f - 2, 35.0f, (char*)"¦¦", 15);
 				CursorManager::GetInstance()->WriteBuffer(85.0f - 2, 35.0f, (char*)"¦¥", 15);
 			}
-			if (k / 2 != 1)
+			if (k == -1)
 			{
 				for (int i = 0; i < 10; i++)
 				{
-					CursorManager::GetInstance()->WriteBuffer(65.0f + 2, (26.0f + i), (char*)"¦¢", 15);
-					CursorManager::GetInstance()->WriteBuffer(85.0f + 2, (26.0f + i), (char*)"¦¢", 15);
+					CursorManager::GetInstance()->WriteBuffer(65.0f + 4, (26.0f + i), (char*)"¦¢", 15);
+					CursorManager::GetInstance()->WriteBuffer(85.0f + 4, (26.0f + i), (char*)"¦¢", 15);
 					for (int j = 0; j < 10; j++)
 					{
-						CursorManager::GetInstance()->WriteBuffer(65.0f + (2 * j) + 2, 25.0f, (char*)"¦¡", 15);
-						CursorManager::GetInstance()->WriteBuffer(65.0f + (2 * j) + 2, 35.0f, (char*)"¦¡", 15);
+						CursorManager::GetInstance()->WriteBuffer(65.0f + (2 * j) + 4, 25.0f, (char*)"¦¡", 15);
+						CursorManager::GetInstance()->WriteBuffer(65.0f + (2 * j) + 4, 35.0f, (char*)"¦¡", 15);
 					}
 				}
-				CursorManager::GetInstance()->WriteBuffer(65.0f + 2, 25.0f, (char*)"¦£", 15);
-				CursorManager::GetInstance()->WriteBuffer(85.0f + 2, 25.0f, (char*)"¦¤", 15);
-				CursorManager::GetInstance()->WriteBuffer(65.0f + 2, 35.0f, (char*)"¦¦", 15);
-				CursorManager::GetInstance()->WriteBuffer(85.0f + 2, 35.0f, (char*)"¦¥", 15);
+				CursorManager::GetInstance()->WriteBuffer(65.0f + 4, 25.0f, (char*)"¦£", 15);
+				CursorManager::GetInstance()->WriteBuffer(85.0f + 4, 25.0f, (char*)"¦¤", 15);
+				CursorManager::GetInstance()->WriteBuffer(65.0f + 4, 35.0f, (char*)"¦¦", 15);
+				CursorManager::GetInstance()->WriteBuffer(85.0f + 4, 35.0f, (char*)"¦¥", 15);
 			}
+			k = k * -1;
 		}
 		++Counter;
 	}

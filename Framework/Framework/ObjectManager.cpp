@@ -7,6 +7,7 @@
 #include"CursorManager.h"
 #include"SceneManager.h"
 #include"MathManager.h"
+#include"StartManager.h"
 #include"ObjectFactory.h"
 #include"UIManager.h"
 
@@ -147,13 +148,14 @@ void ObjectManager::CreatePlayerObject(int _StateIndex, int dwKey, float _X_Shif
 
 void ObjectManager::Start()
 {
-	pPlayer = ObjectFactory::CreatePlayer();
-
+	pPlayer = StartManager::GetInstance()->LoadPlayer();
+	/*
 	if (pEnemy[0] == nullptr)
 	{
 		pEnemy[0] = ObjectFactory::CreateEnemy();
 		pEnemy[0]->SetTarget(pPlayer);
 	}
+	*/
 	UIManager::GetInstance()->Start();
 }
 
@@ -245,6 +247,7 @@ void ObjectManager::Update()
 							ItemPosition = pEnemy[j]->GetPosition();
 							pPlayer->SetMoney(pEnemy[j]->GetMoney());
 							pPlayer->SetExp(pEnemy[j]->GetExp());
+							pPlayer->AddScore(pEnemy[j]->GetExp());
 
 							delete pEnemy[j];
 							pEnemy[j] = nullptr;
@@ -278,6 +281,7 @@ void ObjectManager::Update()
 				pPlayer->GetTransform(),
 				pItem[j]->GetTransform()))
 			{
+				pPlayer->AddScore(30);
 				switch (Itemresult)
 				{
 				case 1:
@@ -301,6 +305,36 @@ void ObjectManager::Update()
 		}
 	}
 	UIManager::GetInstance()->Update();
+	if (pPlayer->GetScore() > (100 * pPlayer->GetStageLv()))
+	{
+		pPlayer->StageLvUp();
+
+		for (int i = 0; i < 32; i++)
+		{
+			if (pEnemy[i])
+			{
+				delete pEnemy[i];
+				pEnemy[i] = nullptr;
+			}
+		}
+		for (int i = 0; i < 128; ++i)
+		{
+			if (pPBullet[i])
+			{
+				delete pPBullet[i];
+				pPBullet[i] = nullptr;
+			}
+		}
+		for (int i = 0; i < 128; ++i)
+		{
+			if (pEBullet[i])
+			{
+				delete pEBullet[i];
+				pEBullet[i] = nullptr;
+			}
+		}
+		SceneManager::GetInstance()->SetScene(SCENEID::STAGECLEAR);
+	}
 }
 
 void ObjectManager::Render()

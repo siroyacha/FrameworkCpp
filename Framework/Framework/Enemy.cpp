@@ -1,7 +1,7 @@
 #include "Enemy.h"
 #include"ObjectManager.h"
 #include"CursorManager.h"
-
+#include"StartManager.h"
 Enemy::Enemy()
 {
 }
@@ -23,11 +23,11 @@ void Enemy::Start()
 
 	SpownPoint = rand() % 4;
 
-	Value.Att = 15;
-	Value.Hp = 10;
-	Value.Lv = 1;
-	Value.Def = 0;
-	Value.Money = 100;
+	Value.Lv = StartManager::GetInstance()->GetStageLv();
+	Value.Att = Value.Lv * 15;
+	Value.Hp = Value.Lv * 10;
+	Value.Def = Value.Lv / 3;
+	Value.Money = Value.Lv * 50 + 50;
 	Value.Exp = Value.Lv * 10;
 	switch (SpownPoint)
 	{

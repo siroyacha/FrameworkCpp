@@ -4,7 +4,7 @@
 #include "SceneManager.h"
 #include "InputManager.h"
 #include"CursorManager.h"
-#include"ObjectManager.h"
+#include"StartManager.h"
 
 ShopManager* ShopManager::Instance = nullptr;
 
@@ -18,7 +18,7 @@ ShopManager::~ShopManager()
 
 void ShopManager::Start()
 {
-	pPlayer = ObjectManager::GetInstance()->LoadPlayer();
+	pPlayer = StartManager::GetInstance()->LoadPlayer();
 	Buffer[0] = (char*)"아이템 1";
 	Buffer[1] = (char*)"아이템 2";
 	Buffer[2] = (char*)"아이템 3";

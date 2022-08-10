@@ -1,6 +1,7 @@
 #pragma once
 #include "Scene.h"
 
+class Object;
 class GameOver :public Scene
 {
 private:
@@ -9,6 +10,8 @@ private:
 	char* Buffer[32];
 	int MaxSize;
 	int Length;
+
+	Object* pPlayer;
 
 	ULONGLONG Time;
 public:

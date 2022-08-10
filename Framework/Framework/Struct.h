@@ -44,9 +44,11 @@ struct Infomation
 {
 	int Money;
 	int Hp;
+	int MaxHP;
 	float Exp;
 	int  Lv;
 	int Att;
 	int Def;
 	int Score;
+	int Stage_Lv;
 };

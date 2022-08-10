@@ -2,6 +2,7 @@
 #include "SceneManager.h"
 #include "InputManager.h"
 #include"CursorManager.h"
+#include"StartManager.h"
 Logo::Logo()
 {
 }
@@ -12,7 +13,7 @@ Logo::~Logo()
 
 void Logo::Start()
 {
-
+	StartManager::GetInstance()->Start();
 }
 
 void Logo::Update()

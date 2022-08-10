@@ -31,7 +31,14 @@ public:
 	int GetExp() const { return Value.Exp; }
 	void SetExp(int _Exp) { Value.Exp += _Exp; }
 	int GetHP() { return Value.Hp; }
+	int GetMaxHP() { return Value.MaxHP; }
 	int GetLV() { return Value.Lv; }
+
+	int GetScore() { return Value.Score; }
+	void AddScore(int _Score) { Value.Score += _Score; }
+
+	int GetStageLv() { return Value.Stage_Lv; }
+	void StageLvUp() { ++Value.Stage_Lv; }
 
 public:
 	Object();

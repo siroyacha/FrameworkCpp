@@ -52,6 +52,7 @@
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="Logo.cpp" />
+    <ClCompile Include="LVManager.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MainUpdate.cpp" />
     <ClCompile Include="Menu.cpp" />
@@ -67,6 +68,7 @@
     <ClCompile Include="ShopManager.cpp" />
     <ClCompile Include="Stage.cpp" />
     <ClCompile Include="StagetClear.cpp" />
+    <ClCompile Include="StartManager.cpp" />
     <ClCompile Include="Type1.cpp" />
     <ClCompile Include="UIManager.cpp" />
   </ItemGroup>
@@ -81,6 +83,7 @@
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="Logo.h" />
+    <ClInclude Include="LVManager.h" />
     <ClInclude Include="MainUpdate.h" />
     <ClInclude Include="MathManager.h" />
     <ClInclude Include="Menu.h" />
@@ -97,6 +100,7 @@
     <ClInclude Include="ShopManager.h" />
     <ClInclude Include="Stage.h" />
     <ClInclude Include="StagetClear.h" />
+    <ClInclude Include="StartManager.h" />
     <ClInclude Include="Struct.h" />
     <ClInclude Include="CollisionManager.h" />
     <ClInclude Include="Type1.h" />
