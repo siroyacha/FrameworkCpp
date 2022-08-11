@@ -39,4 +39,6 @@ void InputManager::CheckKey()
 	if (GetAsyncKeyState('E'))
 		dwKey |= KEY_X_Shift;
 
+	if (GetAsyncKeyState('F'))
+		dwKey |= KEY_W_Change;
 }

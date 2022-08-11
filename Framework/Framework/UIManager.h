@@ -18,6 +18,7 @@ private:
 private:
 	int MaxSize;
 	int NowSize;
+	float Percent;
 	/*
 	char* Buffer[9];
 	char* Buffer2[9];

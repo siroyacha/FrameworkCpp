@@ -173,7 +173,7 @@ void ObjectManager::Update()
 	{
 		if (pEnemy[i] == nullptr)
 		{
-			if (EnemyTimer + 2000 < GetTickCount64())
+			if (EnemyTimer + 500 < GetTickCount64())
 			{
 				EnemyTimer = GetTickCount64();
 

@@ -21,34 +21,22 @@ void Enemy::Start()
 	Count = 0;
 	Time = GetTickCount64();
 
-	SpownPoint = rand() % 4;
+	SpownPoint_X = (rand() % 120) + 20;
+	SpownPoint_Y = (rand() % 60);
 
-	Value.Lv = StartManager::GetInstance()->GetStageLv();
+	Value.Lv = (StartManager::GetInstance()->GetStageLv() / 3) + 1;
 	Value.Att = Value.Lv * 15;
 	Value.Hp = Value.Lv * 10;
 	Value.Def = Value.Lv / 3;
 	Value.Money = Value.Lv * 50 + 50;
-	Value.Exp = Value.Lv * 10;
-	switch (SpownPoint)
-	{
-	case 0:
-		Info.Position = Vector3(20.0f, 10.0f);
-		break;
-	case 1:
-		Info.Position = Vector3(130.0f, 10.0f);
-		break;
-	case 2:
-		Info.Position = Vector3(20.0f, 30.0f);
-		break;
-	case 3:
-		Info.Position = Vector3(130.0f, 30.0f);
-		break;
-	}
+	Value.Exp = Value.Lv * 10;	
+	Info.Position = Vector3(SpownPoint_X, SpownPoint_Y);
+
 }
 
 int Enemy::Update()
 {
-	if (Time + 1500 < GetTickCount64())
+	if (Time + 500 < GetTickCount64())
 	{
 		Count++;
 		/*
@@ -67,7 +55,8 @@ int Enemy::Update()
 	}
 		Info.Position += Info.Direction * 0.025f;
 	srand(Time);
-	SpownPoint = rand() % 4;
+	SpownPoint_X = (rand() % 120) + 20;
+	SpownPoint_Y = (rand() % 40) + 10;
 
 	return 0;
 }

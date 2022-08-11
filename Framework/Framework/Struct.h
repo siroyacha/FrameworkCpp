@@ -51,4 +51,5 @@ struct Infomation
 	int Def;
 	int Score;
 	int Stage_Lv;
+	
 };

@@ -6,7 +6,7 @@
 #include"ObjectManager.h"
 #include"CursorManager.h"
 
-Player::Player():X_Shift(1.0f), Y_Shift(1.0f), Lv_Check(0)
+Player::Player():X_Shift(1.0f), Y_Shift(1.0f), Lv_Check(0), RenderRoll(0)
 {
 }
 
@@ -29,6 +29,7 @@ void Player::Start()
 	Value.Hp = 100;
 	Value.Score = 0;
 	Value.Stage_Lv = 1;
+	RenderRoll = 1;
 }
 
 int Player::Update()
@@ -46,10 +47,12 @@ int Player::Update()
 	if (dwKey & KEY_LEFT)
 	{
 		--Info.Position.x;
+		RenderRoll = -1;
 	}	
 	if (dwKey & KEY_RIGHT)
 	{
 		++Info.Position.x;
+		RenderRoll = 1;
 	}
 	if (dwKey & KEY_SPACE)
 	{
@@ -70,12 +73,21 @@ int Player::Update()
 	{
 		SceneManager::GetInstance()->SetScene(SCENEID::MENU);
 	}
+
+	if (dwKey & KEY_W_Change)
+	{
+		/*
+		무기 변환
+		*/
+	}
+
 	if (Value.Exp >= 100)
 	{
 		++Value.Lv;
 		Value.Exp -= 100;
 		++Lv_Check;
 		Value.MaxHP += 10 * Value.Lv;
+		Value.Hp = Value.MaxHP;
 	}
 
 	return 0;
@@ -83,7 +95,19 @@ int Player::Update()
 
 void Player::Render()
 {
-	CursorManager::GetInstance()->WriteBuffer(Info.Position, (char*)"☆");
+	if (RenderRoll == 1)
+	{
+		CursorManager::GetInstance()->WriteBuffer(Info.Position, (char*)"☆→");
+	}
+	if (RenderRoll == -1)
+	{
+		CursorManager::GetInstance()->WriteBuffer(Info.Position + Vector3(0.0f, -2.0f), (char*)"■■■■■■", 15);
+		CursorManager::GetInstance()->WriteBuffer(Info.Position + Vector3(0.0f, -1.0f), (char*)"■▣▣▣■■", 15);
+		CursorManager::GetInstance()->WriteBuffer(Info.Position, (char*)"■▣▣▣◇◇◇◇◇◇", 15);
+		CursorManager::GetInstance()->WriteBuffer(Info.Position + Vector3(0.0f, 1.0f), (char*)"■▣▣▣■■", 15);
+		CursorManager::GetInstance()->WriteBuffer(Info.Position + Vector3(0.0f, 2.0f), (char*)"■■■■■■", 15);
+		CursorManager::GetInstance()->WriteBuffer(Info.Position, (char*)"←☆");
+	}
 	if (Lv_Check)
 	{
 		Vector3 Lv_Position = Vector3(0.0f, -2.0f);

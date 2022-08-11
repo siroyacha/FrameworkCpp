@@ -8,6 +8,7 @@ private:
 	float X_Shift;
 	float Y_Shift;
 	int Lv_Check;
+	int RenderRoll;
 public:
 	virtual void Start()override;
 	virtual int Update()override;

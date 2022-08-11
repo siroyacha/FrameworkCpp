@@ -22,7 +22,7 @@ void Item::Start()
 
 int Item::Update()
 {
-	if (Time + 5000 <= GetTickCount64())
+	if (Time + 10000 <= GetTickCount64())
 	{
 		Time = GetTickCount64();
 		return 0;
@@ -33,7 +33,7 @@ int Item::Update()
 		return 1;
 		break;
 	case 1:
-		Value.Exp = 10;
+		Value.Exp = 30;
 		return 2;
 		break;
 	case 2:
