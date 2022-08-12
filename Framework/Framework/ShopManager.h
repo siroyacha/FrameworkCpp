@@ -15,6 +15,7 @@ public:
 	}
 private:
 	Object* pPlayer;
+	Object* pBullet;
 private:
 	int MaxSize;
 	char* Buffer[9];

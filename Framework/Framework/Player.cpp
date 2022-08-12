@@ -1,6 +1,7 @@
 #include "Player.h"
 #include"Bullet.h"
 #include"Shield.h"
+#include"Type1.h"
 #include"SceneManager.h"
 #include "InputManager.h"
 #include"ObjectManager.h"
@@ -29,7 +30,9 @@ void Player::Start()
 	Value.Hp = 100;
 	Value.Score = 0;
 	Value.Stage_Lv = 1;
-	RenderRoll = 1;
+	RenderRoll = 2;
+	W_Type = 2;
+	KeyCheck = 1;
 }
 
 int Player::Update()
@@ -56,7 +59,8 @@ int Player::Update()
 	}
 	if (dwKey & KEY_SPACE)
 	{
-		ObjectManager::GetInstance()->CreatePlayerObject(2, dwKey - KEY_SPACE, X_Shift, Y_Shift);
+		ObjectManager::GetInstance()->CreatePlayerObject(
+			W_Type, dwKey - KEY_SPACE, X_Shift, Y_Shift);
 	}
 	
 	if (dwKey & KEY_Y_Shift)
@@ -73,12 +77,22 @@ int Player::Update()
 	{
 		SceneManager::GetInstance()->SetScene(SCENEID::MENU);
 	}
-
 	if (dwKey & KEY_W_Change)
 	{
-		/*
-		무기 변환
-		*/
+		if (KeyCheck == 1)
+		{
+			++W_Type;
+			if (W_Type == 4)
+				KeyCheck = -1;
+		}
+
+		if (KeyCheck == -1)
+		{
+			--W_Type;
+			if (W_Type == 0)
+				KeyCheck = 1;
+		}
+
 	}
 
 	if (Value.Exp >= 100)
@@ -101,11 +115,6 @@ void Player::Render()
 	}
 	if (RenderRoll == -1)
 	{
-		CursorManager::GetInstance()->WriteBuffer(Info.Position + Vector3(0.0f, -2.0f), (char*)"■■■■■■", 15);
-		CursorManager::GetInstance()->WriteBuffer(Info.Position + Vector3(0.0f, -1.0f), (char*)"■▣▣▣■■", 15);
-		CursorManager::GetInstance()->WriteBuffer(Info.Position, (char*)"■▣▣▣◇◇◇◇◇◇", 15);
-		CursorManager::GetInstance()->WriteBuffer(Info.Position + Vector3(0.0f, 1.0f), (char*)"■▣▣▣■■", 15);
-		CursorManager::GetInstance()->WriteBuffer(Info.Position + Vector3(0.0f, 2.0f), (char*)"■■■■■■", 15);
 		CursorManager::GetInstance()->WriteBuffer(Info.Position, (char*)"←☆");
 	}
 	if (Lv_Check)

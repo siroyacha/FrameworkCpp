@@ -15,11 +15,13 @@ public:
 	}
 private:
 	Object* pPlayer;
+	Object* pBullet;
 
 public:
 	void Start();
 	void Release();
 	Object* LoadPlayer() { return pPlayer; }
+	Object* LoadBullet() { return pBullet; }
 	int GetStageLv();
 private:
 	StartManager();

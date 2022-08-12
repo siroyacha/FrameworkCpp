@@ -3,6 +3,11 @@
 
 class Logo:public Scene
 {
+private:
+	char* Buffer[32];
+	int MaxSize;
+	int Length;
+
 public:
 	virtual void Start()override;
 	virtual void Update()override;

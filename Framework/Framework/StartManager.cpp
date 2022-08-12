@@ -20,7 +20,7 @@ StartManager::~StartManager()
 void StartManager::Start()
 {
 	pPlayer = ObjectFactory::CreatePlayer();
-
+	pBullet = new Bullet;
 }
 
 int StartManager::GetStageLv()

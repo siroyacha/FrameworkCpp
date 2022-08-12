@@ -1,5 +1,6 @@
 #include "ShopManager.h"
 #include"Player.h"
+#include"Bullet.h"
 
 #include "SceneManager.h"
 #include "InputManager.h"
@@ -8,7 +9,7 @@
 
 ShopManager* ShopManager::Instance = nullptr;
 
-ShopManager::ShopManager():pPlayer(nullptr)
+ShopManager::ShopManager():pPlayer(nullptr), pBullet(nullptr)
 {
 }
 
@@ -54,6 +55,7 @@ void ShopManager::Start()
 	Color = 8;
 
 	Time = GetTickCount64();
+	pBullet = StartManager::GetInstance()->LoadBullet();
 
 
 	Cursor = 10;
@@ -84,6 +86,8 @@ void ShopManager::Update()
 		switch (Cursor)
 		{
 		case 10:
+			//((Bullet*)pBullet)->();
+
 			break;
 
 		case 13:
@@ -158,8 +162,10 @@ void ShopManager::Render()
 			Color = 11;
 		else
 			Color = 8;
+		
 
 		CursorManager::GetInstance()->WriteBuffer(30.0f, 10.0f + (i * 3), Buffer[i], Color);
+		CursorManager::GetInstance()->WriteBuffer(40.0f, 10.0f + (i * 3), ((Bullet*)pBullet)->GetBulletLV(i), Color);
 
 		if (Cursor == (10.0f + (i * 3)))
 			CursorManager::GetInstance()->WriteBuffer(105.0f, 10.0f, Buffer2[i], Color);

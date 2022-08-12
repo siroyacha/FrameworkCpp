@@ -9,6 +9,9 @@ private:
 	float Y_Shift;
 	int Lv_Check;
 	int RenderRoll;
+	int W_Type;
+	int KeyCheck;
+
 public:
 	virtual void Start()override;
 	virtual int Update()override;

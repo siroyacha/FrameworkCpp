@@ -1,5 +1,6 @@
 #include "UIManager.h"
 #include"Player.h"
+#include"Bullet.h"
 
 #include "SceneManager.h"
 #include "InputManager.h"
@@ -20,6 +21,7 @@ UIManager::~UIManager()
 void UIManager::Start()
 {
 	pPlayer = StartManager::GetInstance()->LoadPlayer();
+	pBullet = StartManager::GetInstance()->LoadBullet();
 }
 
 void UIManager::Update()

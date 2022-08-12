@@ -50,6 +50,14 @@ struct Infomation
 	int Att;
 	int Def;
 	int Score;
-	int Stage_Lv;
-	
+	int Stage_Lv;	
+};
+
+struct BulletType
+{
+	int LV;
+	int Att;
+	int Type;
+	char* Info;
+	float Speed;
 };

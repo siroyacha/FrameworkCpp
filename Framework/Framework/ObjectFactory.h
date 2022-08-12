@@ -14,7 +14,7 @@ public:
 
 	static Object* CreateBullet()
 	{
-		Object* pObject = new Bullet;
+		Object* pObject = StartManager::GetInstance()->LoadBullet();
 		pObject->Start();
 
 		return pObject;

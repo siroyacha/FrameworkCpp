@@ -1,4 +1,5 @@
-// ** Framework v11.9
+// ** Framework v12.0
+// 플레이어만 쓰는거 정리하기
 // 홀로큐어처럼 만들어보기
 #include "MainUpdate.h"
 

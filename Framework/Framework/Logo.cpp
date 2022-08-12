@@ -13,6 +13,17 @@ Logo::~Logo()
 
 void Logo::Start()
 {
+	Buffer[0] = (char*)".##..##..##..##..######...####...##..##..######...####............####...##..##..#####...##..##..######..##..##...####...#####....####..";
+	Buffer[1] = (char*)".##.##...###.##....##....##......##..##....##....##..............##......##..##..##..##..##..##....##....##..##..##..##..##..##..##.....";
+	Buffer[2] = (char*)".####....##.###....##....##.###..######....##.....####............####...##..##..#####...##..##....##....##..##..##..##..#####....####..";
+	Buffer[3] = (char*)".##.##...##..##....##....##..##..##..##....##........##..............##..##..##..##..##...####.....##.....####...##..##..##..##......##.";
+	Buffer[4] = (char*)".##..##..##..##..######...####...##..##....##.....####............####....####...##..##....##....######....##.....####...##..##...####..";
+	Buffer[5] = (char*)"........................................................................................................................................";
+	
+	Length = strlen(".##..##..##..##..######...####...##..##..######...####............####...##..##..#####...##..##..######..##..##...####...#####....####..");
+
+	MaxSize = 6;
+
 	StartManager::GetInstance()->Start();
 }
 
@@ -26,17 +37,10 @@ void Logo::Update()
 
 void Logo::Render()
 {
-	CursorManager::GetInstance()->WriteBuffer(0.0f, 0.0f, (char*)"Crusader Subaver", 10);
+	for (int i = 0; i < MaxSize; ++i)
+		CursorManager::GetInstance()->WriteBuffer((150.0f / 2) - (Length / 2), 15.0f + i, Buffer[i], 10);
+	CursorManager::GetInstance()->WriteBuffer(64.0f, 40.0f, (char*)"Enter 키를 눌러 시작",11);
 
-	CursorManager::GetInstance()->WriteBuffer(100.0f, 6.0f, (char*)"▣▣▣", 15);
-	CursorManager::GetInstance()->WriteBuffer(100.0f, 7.0f, (char*)"▣▣◇◇◇", 15);
-	CursorManager::GetInstance()->WriteBuffer(100.0f, 8.0f, (char*)"▣▣▣", 15);
-	CursorManager::GetInstance()->WriteBuffer(100.0f, 16.0f, (char*)"    ▣▣▣", 15);
-	CursorManager::GetInstance()->WriteBuffer(100.0f, 17.0f, (char*)"◇◇◇▣▣", 15);
-	CursorManager::GetInstance()->WriteBuffer(100.0f, 18.0f, (char*)"    ▣▣▣", 15);
-	CursorManager::GetInstance()->WriteBuffer(50.0f, 16.0f, (char*)"    ▣▣▣", 15);
-	CursorManager::GetInstance()->WriteBuffer(50.0f, 17.0f, (char*)"◇◇◇▣▣", 15);
-	CursorManager::GetInstance()->WriteBuffer(50.0f, 18.0f, (char*)"    ▣▣▣", 15);
 }
 
 void Logo::Release()
