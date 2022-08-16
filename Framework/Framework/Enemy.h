@@ -8,6 +8,7 @@ private:
 	int Count;
 	int SpownPoint_X;
 	int SpownPoint_Y;
+	EnemyType Type[5];
 public:
 	virtual void Start()override;
 	virtual int Update()override;

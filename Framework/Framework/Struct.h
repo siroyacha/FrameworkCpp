@@ -61,3 +61,12 @@ struct BulletType
 	char* Info;
 	float Speed;
 };
+
+struct EnemyType
+{
+	int LV;
+	int Att;
+	int Type;
+	char* Info;
+	float Speed;
+};

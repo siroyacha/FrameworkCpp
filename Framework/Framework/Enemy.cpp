@@ -34,6 +34,14 @@ void Enemy::Start()
 	Value.Exp = Value.Lv * 10;	
 	Info.Position = Vector3(SpownPoint_X, SpownPoint_Y);
 
+	for (int i = 0; i < 5; i++)
+	{
+		Type[i].Type = i;
+		Type[i].Att = 10;
+		Type[i].LV = 1;
+		Type[i].Speed = 1.0f;
+	}
+
 }
 
 int Enemy::Update()
@@ -67,6 +75,29 @@ int Enemy::Update()
 void Enemy::Render()
 {
 	CursorManager::GetInstance()->WriteBuffer(Info.Position, (char*)"£À");
+	/*
+	for (int i = 0; i < 5; i++)
+	{
+		switch (Type[i].Type)
+		{
+		case 0:
+			CursorManager::GetInstance()->WriteBuffer(Info.Position, (char*)"£À");
+			break;															
+		case 1:																
+			CursorManager::GetInstance()->WriteBuffer(Info.Position, (char*)"£À", 4);
+			break;															
+		case 2:																
+			CursorManager::GetInstance()->WriteBuffer(Info.Position, (char*)"£À", 8);
+			break;															
+		case 3:																
+			CursorManager::GetInstance()->WriteBuffer(Info.Position, (char*)"£À", 13);
+			break;															
+		case 4:																
+			CursorManager::GetInstance()->WriteBuffer(Info.Position, (char*)"£À", 11);
+			break;
+		}
+	}
+	*/
 }
 
 void Enemy::Release()
