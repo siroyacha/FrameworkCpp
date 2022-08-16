@@ -9,7 +9,7 @@
 
 ShopManager* ShopManager::Instance = nullptr;
 
-ShopManager::ShopManager():pPlayer(nullptr), pBullet(nullptr)
+ShopManager::ShopManager():pPlayer(nullptr), pBullet(nullptr),Money(0)
 {
 }
 
@@ -50,13 +50,13 @@ void ShopManager::Start()
 	Buffer3[7] = (char*)"아이템설명8";
 	Buffer3[8] = (char*)"아이템설명9";
 
-	MaxSize = 9;
+	MaxSize = 5;
 
 	Color = 8;
 
 	Time = GetTickCount64();
 	pBullet = StartManager::GetInstance()->LoadBullet();
-
+	Money = pPlayer->GetMoney();
 
 	Cursor = 10;
 }
@@ -80,26 +80,33 @@ void ShopManager::Update()
 		if (Cursor >= 37)
 			Cursor = 52;
 	}
-
 	if (dwKey & KEY_RETURN)
 	{
 		switch (Cursor)
 		{
 		case 10:
-			//((Bullet*)pBullet)->();
-
+			((Bullet*)pBullet)->BulletLVUP(0);
+			((Player*)pPlayer)->Buy(500);
 			break;
 
 		case 13:
+			((Bullet*)pBullet)->BulletLVUP(1);
+			((Player*)pPlayer)->Buy(500);
 			break;
 
 		case 15:
+			((Bullet*)pBullet)->BulletLVUP(2);
+			((Player*)pPlayer)->Buy(500);
 			break;
 
 		case 18:
+			((Bullet*)pBullet)->BulletLVUP(3);
+			((Player*)pPlayer)->Buy(500);
 			break;
 
 		case 21:
+			((Bullet*)pBullet)->BulletLVUP(4);
+			((Player*)pPlayer)->Buy(500);
 			break;
 
 		case 24:
@@ -163,14 +170,19 @@ void ShopManager::Render()
 		else
 			Color = 8;
 		
-
 		CursorManager::GetInstance()->WriteBuffer(30.0f, 10.0f + (i * 3), Buffer[i], Color);
 		CursorManager::GetInstance()->WriteBuffer(40.0f, 10.0f + (i * 3), ((Bullet*)pBullet)->GetBulletLV(i), Color);
-
+		
 		if (Cursor == (10.0f + (i * 3)))
-			CursorManager::GetInstance()->WriteBuffer(105.0f, 10.0f, Buffer2[i], Color);
+		{
+			((Bullet*)pBullet)->SetIndex(i);
+			pBullet->SetPosition(110.0f, 10.0f);
+			pBullet->Render();
+
+		};
 		if (Cursor == (10.0f + (i * 3)))
 			CursorManager::GetInstance()->WriteBuffer(100.0f, 20.0f, Buffer3[i], 15);
+
 	}
 	CursorManager::GetInstance()->WriteBuffer(15.0f, 55.0f, (char*)"현재 금액 : ", 15);
 	CursorManager::GetInstance()->WriteBuffer(30.0f, 55.0f,pPlayer->GetMoney(), 15);

@@ -19,6 +19,9 @@ public:
 	virtual void Release()override;
 	virtual int DamegeControl(int _Att)override;
 public:
+	void Buy(int _Money);
+	int GetW_Type() { return W_Type; }
+public:
 	Player();
 	virtual ~Player();
 };

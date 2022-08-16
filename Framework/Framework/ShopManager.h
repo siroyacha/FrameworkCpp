@@ -22,7 +22,7 @@ private:
 	char* Buffer2[9];
 	char* Buffer3[9];
 	int Cursor;
-
+	int Money;
 	int Color;
 	ULONGLONG Time;
 

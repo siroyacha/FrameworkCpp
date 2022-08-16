@@ -1,7 +1,9 @@
 #include "Enemy.h"
+#include"EType1.h"
 #include"ObjectManager.h"
 #include"CursorManager.h"
 #include"StartManager.h"
+
 Enemy::Enemy()
 {
 }

@@ -48,6 +48,7 @@
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="CursorManager.cpp" />
     <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="EType1.cpp" />
     <ClCompile Include="GameOver.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="Item.cpp" />
@@ -78,6 +79,7 @@
     <ClInclude Include="CursorManager.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Enum.h" />
+    <ClInclude Include="EType1.h" />
     <ClInclude Include="GameOver.h" />
     <ClInclude Include="Headers.h" />
     <ClInclude Include="InputManager.h" />

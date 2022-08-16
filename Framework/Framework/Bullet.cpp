@@ -140,8 +140,8 @@ int Bullet::GetBulletDamage()
 	return Value.Att;
 }
 
-void Bullet::BulletLVUP(int _LV, int _Index)
+void Bullet::BulletLVUP(int _Index)
 {
-	Type[_Index].LV = _LV;
+	++Type[_Index].LV;
 
 }

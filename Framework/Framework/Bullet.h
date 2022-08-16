@@ -18,8 +18,8 @@ public:
 	int GetIndex() { return Index; }
 	void BulletSeting(int _Att);
 	int GetBulletDamage();
-	void BulletLVUP(int _LV, int _Index);
-	int GetBulletLV(int _Index) { return Type[Index].LV; }
+	void BulletLVUP(int _Index);
+	int GetBulletLV(int _Index) { return Type[_Index].LV; }
 public:
 	Bullet();
 	virtual ~Bullet();

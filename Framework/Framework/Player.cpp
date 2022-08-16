@@ -139,3 +139,9 @@ int Player::DamegeControl(int _Att)
 	else
 		return 0;
 }
+
+void Player::Buy(int _Money)
+{
+	if(Value.Money>=_Money)
+		Value.Money = Value.Money - _Money;
+}

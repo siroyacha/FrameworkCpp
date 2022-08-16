@@ -8,7 +8,7 @@
 
 StartManager* StartManager::Instance = nullptr;
 
-StartManager::StartManager():pPlayer(nullptr)
+StartManager::StartManager():pPlayer(nullptr),pBullet(nullptr)
 {
 }
 
@@ -21,6 +21,7 @@ void StartManager::Start()
 {
 	pPlayer = ObjectFactory::CreatePlayer();
 	pBullet = new Bullet;
+	pBullet->Start();
 }
 
 int StartManager::GetStageLv()
