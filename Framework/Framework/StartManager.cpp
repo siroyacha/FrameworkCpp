@@ -19,7 +19,7 @@ StartManager::~StartManager()
 
 void StartManager::Start()
 {
-	pPlayer = ObjectFactory::CreatePlayer();
+	pPlayer = ObjectFactory<Player>::CreateObject();
 	pBullet = new Bullet;
 	pBullet->Start();
 }

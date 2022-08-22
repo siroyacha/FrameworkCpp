@@ -13,6 +13,8 @@ Bullet::~Bullet()
 
 void Bullet::Start()
 {
+	Key = "Bullet";
+
 	Info.Position = Vector3(0.0f, 0.0f);
 	Info.Rotation = Vector3(0.0f, 0.0f);
 	Info.Scale = Vector3(1.0f, 1.0f);
