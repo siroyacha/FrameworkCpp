@@ -36,7 +36,7 @@ void Stage::Update()
 			Time = GetTickCount64();
 		}
 	}
-	*/
+
 	if (GetAsyncKeyState(VK_TAB))
 	{
 		if (Time + 250 < GetTickCount64())
@@ -47,6 +47,7 @@ void Stage::Update()
 			Time = GetTickCount64();
 		}
 	}
+	*/
 	ObjectManager::GetInstance()->Update();
 }
 
