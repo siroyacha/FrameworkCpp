@@ -14,6 +14,7 @@ public:
 		return Instance;
 	}
 private:
+	map<string, list<Object*>>ObjectList;
 	Object* pPlayer;
 	Object* pEnemy[32];
 	Object* pEBullet[128];
@@ -28,6 +29,8 @@ public:
 	void Update();
 	void Render();
 	void Release();
+	void AddObject(Object* _Object);
+	void SetPlayer(Object* _Object) { pPlayer = _Object; }
 private:
 	ObjectManager();
 public:

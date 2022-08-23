@@ -1,5 +1,4 @@
-// ** Framework v13.0
-// 홀로큐어처럼 만들어보기
+// ** Framework v14.0
 #include "MainUpdate.h"
 
 int main(void)

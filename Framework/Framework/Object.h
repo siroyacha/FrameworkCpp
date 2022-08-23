@@ -7,6 +7,7 @@ protected:
 	Transform Info;
 	Object* Target;
 	Infomation Value;
+	string Key;
 public:
 	virtual void Start()PURE;
 	virtual int Update()PURE;
@@ -17,6 +18,8 @@ public:
 public:
 	Transform GetTransform() const { return Info; }
 	Vector3 GetPosition() const { return Info.Position; }
+	string GetKey()const { return Key; }
+	void SetKey(string _Key) { Key = _Key; }
 	void SetPosition(Vector3 _Position) { Info.Position = _Position; }
 	void SetPosition(float _x, float _y) { Info.Position = Vector3(_x, _y); }
 

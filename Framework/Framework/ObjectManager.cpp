@@ -15,6 +15,7 @@ ObjectManager* ObjectManager::Instance = nullptr;
 
 ObjectManager::ObjectManager() : pPlayer(nullptr)
 {
+	// ** 삭제 예정
 	for (int i = 0; i < 32; ++i)
 		pEnemy[i] = nullptr;
 	for (int i = 0; i < 128; ++i)
@@ -40,7 +41,7 @@ void ObjectManager::CreateObject(int _StateIndex)
 			{
 				if (pEBullet[i] == nullptr)
 				{
-					pEBullet[i] = ObjectFactory::CreateBullet(pEnemy[j]->GetPosition());
+					pEBullet[i] = ObjectFactory<Bullet>::CreateObject(pEnemy[j]->GetPosition());
 
 					if (pEBullet[i])
 					{
@@ -72,7 +73,7 @@ void ObjectManager::CreatePlayerObject(int _StateIndex, int dwKey, float _X_Shif
 	{
 		if (pPBullet[i] == nullptr)
 		{
-			pPBullet[i] = ObjectFactory::CreateBullet(pPlayer->GetPosition());
+			pPBullet[i] = ObjectFactory<Bullet>::CreateObject(pPlayer->GetPosition());
 
 			switch (dwKey)
 			{
@@ -161,6 +162,11 @@ void ObjectManager::Start()
 
 void ObjectManager::Update()
 {
+	/*
+	for (auto iter = ObjectList.begin(); iter != ObjectList.end(); ++iter)
+		for (auto iter2 = iter->second.begin(); iter2 != iter->second.end(); iter2++)
+			(*iter2)->Render();
+	*/
 	int PBresult = 0;
 	int result = 0;
 
@@ -177,7 +183,7 @@ void ObjectManager::Update()
 			{
 				EnemyTimer = GetTickCount64();
 
-				pEnemy[i] = ObjectFactory::CreateEnemy();
+				pEnemy[i] = ObjectFactory<Enemy>::CreateObject();
 				pEnemy[i]->SetTarget(pPlayer);
 			}
 		}
@@ -270,7 +276,7 @@ void ObjectManager::Update()
 		{
 			if (pItem[j] == nullptr)
 			{
-				pItem[j] = ObjectFactory::CreateItem(ItemPosition);
+				pItem[j] = ObjectFactory<Item>::CreateObject(ItemPosition);
 				ItemCounter = 0;
 			}
 		}
@@ -369,6 +375,11 @@ void ObjectManager::Render()
 
 void ObjectManager::Release()
 {
+	/*
+	for (auto iter = ObjectList.begin(); iter != ObjectList.end(); ++iter)
+		for (auto iter2 = iter->second.begin(); iter2 != iter->second.end(); iter2++)
+			(*iter2)->Render();
+	*/
 	delete pPlayer;
 	pPlayer = nullptr;
 
@@ -404,4 +415,17 @@ void ObjectManager::Release()
 			pItem[i] = nullptr;
 		}
 	}
+}
+void ObjectManager::AddObject(Object* _Object)
+{
+	map<string, list<Object*>>::iterator iter = ObjectList.find(_Object->GetKey());
+	if (iter == ObjectList.end())
+	{
+		list<Object*>Temp;
+		Temp.push_back(_Object);
+
+		ObjectList.insert(make_pair(_Object->GetKey(), Temp));
+	}
+	else
+		iter->second.push_back(_Object);
 }
