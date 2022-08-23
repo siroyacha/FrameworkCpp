@@ -1,16 +1,18 @@
 #include "Shield.h"
-
 #include "CursorManager.h"
 #include "MathManager.h"
 
-Shield::Shield()
+
+Shield::Shield():Time(0),Angle(0)
 {
+
 }
 
 Shield::~Shield()
 {
 	Release();
 }
+
 
 void Shield::Start()
 {
@@ -47,9 +49,4 @@ void Shield::Render()
 void Shield::Release()
 {
 
-}
-
-int Shield::DamegeControl(int _Att)
-{
-	return 0;
 }

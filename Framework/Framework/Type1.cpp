@@ -15,12 +15,12 @@ Type1::~Type1()
 void Type1::Start()
 {
 	pPlayer = StartManager::GetInstance()->LoadPlayer();
-	Value.Att = 5 * pPlayer->GetLV();
+	//Value.Att = 5 * pPlayer->GetLV();
 }
 
 int Type1::Update()
 {
-	Value.Att = 5 * pPlayer->GetLV();
+	//Value.Att = 5 * pPlayer->GetLV();
 	return 0;
 }
 
@@ -32,9 +32,4 @@ void Type1::Release()
 {
 	delete pPlayer;
 	pPlayer = nullptr;
-}
-
-int Type1::DamegeControl(int _Att)
-{
-	return 0;
 }

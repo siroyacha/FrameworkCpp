@@ -11,7 +11,7 @@ EType1::~EType1()
 
 void EType1::Start()
 {
-	Value.Att = 10;
+	//Value.Att = 10;
 }
 
 int EType1::Update()
@@ -26,9 +26,4 @@ void EType1::Render()
 
 void EType1::Release()
 {
-}
-
-int EType1::DamegeControl(int _Att)
-{
-	return 0;
 }

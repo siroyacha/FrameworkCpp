@@ -9,7 +9,7 @@
 
 ShopManager* ShopManager::Instance = nullptr;
 
-ShopManager::ShopManager():pPlayer(nullptr), pBullet(nullptr),Money(0)
+ShopManager::ShopManager():pPlayer(nullptr), pBullet(nullptr),Money(0),Time(0),MaxSize(0),Color(0)
 {
 }
 
@@ -56,13 +56,14 @@ void ShopManager::Start()
 
 	Time = GetTickCount64();
 	pBullet = StartManager::GetInstance()->LoadBullet();
-	Money = pPlayer->GetMoney();
+	//Money = pPlayer->GetMoney();
 
 	Cursor = 10;
 }
 
 void ShopManager::Update()
 {
+	/*
 	DWORD dwKey = InputManager::GetInstance()->GetKey();
 
 	if (dwKey & KEY_UP)
@@ -126,10 +127,12 @@ void ShopManager::Update()
 			break;
 		}
 	}
+	*/
 }
 
 void ShopManager::Render()
 {
+	/*
 	for (int i = 0; i < 39; i++)
 	{
 		CursorManager::GetInstance()->WriteBuffer(20.0f, 6.0f + i, (char*)"│", 15);
@@ -186,6 +189,7 @@ void ShopManager::Render()
 	}
 	CursorManager::GetInstance()->WriteBuffer(15.0f, 55.0f, (char*)"현재 금액 : ", 15);
 	CursorManager::GetInstance()->WriteBuffer(30.0f, 55.0f,pPlayer->GetMoney(), 15);
+	*/
 }
 
 void ShopManager::Release()

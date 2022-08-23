@@ -14,26 +14,21 @@ public:
 		return Instance;
 	}
 private:
-	map<string, list<Object*>>ObjectList;
+	map<string, list<Object*>> ObjectList;
+
+
 	Object* pPlayer;
-	Object* pEnemy[32];
-	Object* pEBullet[128];
-	Object* pPBullet[128];
-	Object* pItem[128];
-	ULONGLONG EnemyTimer = GetTickCount64();
+public:
+	Object* GetPlayer() const { return pPlayer; }
+	void SetPlayer(Object* _Object) { pPlayer = _Object; }
 
 public:
-	void CreateObject(int _StateIndex);
-	void CreatePlayerObject(int _StateIndex, int dwKey, float _X_Shift, float _Y_Shift);
-	void Start();
+	void AddObject(Object* _Object);
 	void Update();
 	void Render();
 	void Release();
-	void AddObject(Object* _Object);
-	void SetPlayer(Object* _Object) { pPlayer = _Object; }
 private:
 	ObjectManager();
 public:
 	~ObjectManager();
 };
-

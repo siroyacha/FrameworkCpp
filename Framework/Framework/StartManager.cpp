@@ -26,7 +26,8 @@ void StartManager::Start()
 
 int StartManager::GetStageLv()
 {
-	return pPlayer->GetStageLv();
+	//return pPlayer->GetStageLv();
+	return 0;
 }
 
 void StartManager::Release()

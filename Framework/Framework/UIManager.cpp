@@ -26,13 +26,16 @@ void UIManager::Start()
 
 void UIManager::Update()
 {
+	/*
 	MaxSize = pPlayer->GetMaxHP();
 	NowSize = pPlayer->GetHP();
 	Percent = ((float)NowSize / (float)MaxSize) * 25.0f;
+	*/
 }
 
 void UIManager::Render()
 {
+	/*
 	for (int i = 0; i < 5; i++)
 	{
 		CursorManager::GetInstance()->WriteBuffer(10.0f, 4.0f + i, (char*)"¦¢", 15);
@@ -77,6 +80,7 @@ void UIManager::Render()
 
 	CursorManager::GetInstance()->WriteBuffer(72.0f, 2.0f, (char*)"Score:", 15);
 	CursorManager::GetInstance()->WriteBuffer(78.0f, 2.0f, pPlayer->GetScore(), 15);
+	*/
 }
 
 void UIManager::Release()

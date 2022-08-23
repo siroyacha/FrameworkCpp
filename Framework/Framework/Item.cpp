@@ -33,11 +33,11 @@ int Item::Update()
 		return 1;
 		break;
 	case 1:
-		Value.Exp = 30;
+		//Value.Exp = 30;
 		return 2;
 		break;
 	case 2:
-		Value.Money = 1000;
+		//Value.Money = 1000;
 		return 3;
 		break;
 	}
@@ -61,9 +61,4 @@ void Item::Render()
 
 void Item::Release()
 {
-}
-
-int Item::DamegeControl(int _Att)
-{
-	return 0;
 }
