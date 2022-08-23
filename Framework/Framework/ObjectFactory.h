@@ -1,5 +1,5 @@
 #pragma once
-#include"Headers.h"
+#include "Headers.h"
 
 template <typename T>
 class ObjectFactory
@@ -13,13 +13,6 @@ public:
 		return pObject;
 	}
 
-	static Object* CreateBullet()
-	{
-		Object* pObject = StartManager::GetInstance()->LoadBullet();
-		pObject->Start();
-
-		return pObject;
-	}
 	static Object* CreateObject(float _x, float _y)
 	{
 		Object* pObject = new T;
