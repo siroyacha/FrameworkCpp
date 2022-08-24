@@ -1,13 +1,18 @@
 ﻿#include "Bullet.h"
 #include "CursorManager.h"
 #include "MathManager.h"
+#include"Bridge.h"
+#include"Type1.h"
+#include"Type2.h"
+#include"Type3.h"
 
-Bullet::Bullet() : Speed(0), Time(0)
+Bullet::Bullet() : Speed(0), Time(0),pBBridge(nullptr)
 {
 }
 
 Bullet::~Bullet()
 {
+	Release();
 }
 
 
@@ -50,24 +55,57 @@ void Bullet::Start()
 
 int  Bullet::Update()
 {
+	if (pBBridge)
+	{
+		pBBridge->Update(Info);
+		Time = GetTickCount64();
+	}
+	else
+	{
+		Time = GetTickCount64();
+
+		srand(int(Time * GetTickCount64()));
+
+		switch (rand() % 3)
+		{
+		case 0:
+			pBBridge = new Type1;
+			break;
+		case 1:
+			pBBridge = new Type2;
+			break;
+		case 2:
+			pBBridge = new Type3;
+			break;
+		}
+		pBBridge->Start();
+		pBBridge->SetObject(this);
+
+	}
 	Info.Position += Info.Direction * (Speed * 0.5f);
 
-	//if (Time + 5000 < GetTickCount64())
-		//return 2;
+	if (Time + 5000 < GetTickCount64())
+		return 2;
 
 	if (Info.Position.x <= 0 || Info.Position.x >= 150 ||
 		Info.Position.y <= 0 || Info.Position.y >= 40)
 		return 1;
-
+	
 	return 0;
 }
 
 void Bullet::Render()
 {
-	CursorManager::GetInstance()->WriteBuffer(Info.Position, (char*)"*", 12);
+	if (pBBridge)
+		pBBridge->Render();
+	//CursorManager::GetInstance()->WriteBuffer(Info.Position, (char*)"*", 12);
 }
 
 void Bullet::Release()
 {
-
+	if (pBBridge)
+	{
+		delete pBBridge;
+		pBBridge = nullptr;
+	}
 }

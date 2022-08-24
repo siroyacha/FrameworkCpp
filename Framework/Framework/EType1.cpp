@@ -1,5 +1,6 @@
 #include "EType1.h"
 #include"CursorManager.h"
+#include"Enemy.h"
 
 EType1::EType1()
 {
@@ -11,17 +12,17 @@ EType1::~EType1()
 
 void EType1::Start()
 {
-	//Value.Att = 10;
 }
 
-int EType1::Update()
+int EType1::Update(Transform& _Transfom)
 {
 	return 0;
 }
 
 void EType1::Render()
 {
-	CursorManager::GetInstance()->WriteBuffer(Info.Position, (char*)"£À",12);
+	CursorManager::GetInstance()->WriteBuffer(
+		pObject->GetPosition(), (char*)"EType1", 10);
 }
 
 void EType1::Release()
