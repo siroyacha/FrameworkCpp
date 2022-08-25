@@ -6,6 +6,7 @@
 #include "Player.h"
 #include "Enemy.h"
 #include "ObjectFactory.h"
+#include"PrototypeManager.h"
 
 Stage::Stage() : EnemyTime(0),MaxSize(0)
 {
@@ -19,8 +20,9 @@ Stage::~Stage()
 
 void Stage::Start()
 {
-	ObjectManager::GetInstance()->SetPlayer(
-		ObjectFactory<Player>::CreateObject(10.f, 40.f / 2));
+	Object* pObj = PrototypeManager::GetInstance()->FindObject("Player")->Clone();
+	if (pObj != nullptr)
+		ObjectManager::GetInstance()->SetPlayer(pObj);
 	/*
 	aaa[0] = (char*)"      ¦¢";
 	aaa[1] = (char*)"¦£¦¡¦¡¦©¦¥";
@@ -48,10 +50,20 @@ void Stage::Update()
 	{
 		srand(int(GetTickCount64() * EnemyTime));
 
+		/*
 		Object* pEnemy = ObjectFactory<Enemy>::CreateObject(
 			float(rand() % 20 + 120), float(rand() % 39 + 1));
+		*/
 
-		ObjectManager::GetInstance()->AddObject(pEnemy);
+		Object* pEnemy = PrototypeManager::GetInstance()->FindObject("Enemy")->Clone();
+		if (pEnemy != nullptr)
+		{
+			pEnemy->SetPosition(
+				float(rand() % 20 + 120), float(rand() % 39 + 1));
+
+			ObjectManager::GetInstance()->AddObject(pEnemy);
+		}
+
 
 		EnemyTime = GetTickCount64();
 	}

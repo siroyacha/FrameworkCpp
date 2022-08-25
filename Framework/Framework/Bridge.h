@@ -9,10 +9,11 @@ protected:
 public:
 	void SetObject(Object* _Object) { pObject = _Object; }
 public:
-	virtual void Start()PURE;
+	virtual Bridge* Start(string _Key)PURE;
 	virtual int Update(Transform& _Transfom)PURE;
 	virtual void Render()PURE;
 	virtual void Release()PURE;
+	virtual Bridge* Clone()PURE;
 public:
 	Bridge() : pObject(nullptr) {}
 	virtual ~Bridge() {}

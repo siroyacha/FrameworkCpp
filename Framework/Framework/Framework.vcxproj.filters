@@ -124,6 +124,18 @@
     <Filter Include="소스 파일\01.Object\Bullet\BulletBridge\Shield">
       <UniqueIdentifier>{31281eae-f3ef-4a2b-abec-d2c2d788b9ca}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\99.Manager\Patten">
+      <UniqueIdentifier>{bab0d54f-c638-40b7-9939-2c7203aee15f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\99.Manager\Patten\Prototype">
+      <UniqueIdentifier>{1c97b8d4-b6d7-4bff-bd65-d8a9e6f962dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\99.Manager\Bridge">
+      <UniqueIdentifier>{ff42e807-92cb-46e9-8609-a4a2c310c464}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\99.Manager\Patten\BPattenManager">
+      <UniqueIdentifier>{f020991d-5699-4d9b-bab6-bc6b17e2b61f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MainUpdate.cpp">
@@ -221,6 +233,12 @@
     </ClCompile>
     <ClCompile Include="Type3.cpp">
       <Filter>소스 파일\01.Object\Bullet\BulletBridge\Type3</Filter>
+    </ClCompile>
+    <ClCompile Include="PrototypeManager.cpp">
+      <Filter>소스 파일\99.Manager\Patten\Prototype</Filter>
+    </ClCompile>
+    <ClCompile Include="BPattenManager.cpp">
+      <Filter>소스 파일\99.Manager\Patten\BPattenManager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -323,9 +341,6 @@
     <ClInclude Include="EType1.h">
       <Filter>소스 파일\01.Object\Enemy\EnemyBridge\EType1</Filter>
     </ClInclude>
-    <ClInclude Include="Bridge.h">
-      <Filter>소스 파일\99.Manager</Filter>
-    </ClInclude>
     <ClInclude Include="EnemyBridge.h">
       <Filter>소스 파일\01.Object\Enemy\EnemyBridge</Filter>
     </ClInclude>
@@ -343,6 +358,15 @@
     </ClInclude>
     <ClInclude Include="Type3.h">
       <Filter>소스 파일\01.Object\Bullet\BulletBridge\Type3</Filter>
+    </ClInclude>
+    <ClInclude Include="PrototypeManager.h">
+      <Filter>소스 파일\99.Manager\Patten\Prototype</Filter>
+    </ClInclude>
+    <ClInclude Include="Bridge.h">
+      <Filter>소스 파일\99.Manager\Bridge</Filter>
+    </ClInclude>
+    <ClInclude Include="BPattenManager.h">
+      <Filter>소스 파일\99.Manager\Patten\BPattenManager</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -16,9 +16,9 @@ Bullet::~Bullet()
 }
 
 
-void Bullet::Start()
+Object* Bullet::Start(string _Key)
 {
-	Key = "Bullet";
+	Key = _Key;
 
 	Info.Position = Vector3(0.0f, 0.0f);
 	Info.Rotation = Vector3(0.0f, 0.0f);
@@ -51,6 +51,8 @@ void Bullet::Start()
 	//Info.Direction = MathManager::GetDirection(Info.Position, Target->GetPosition());
 
 	Time = GetTickCount64();
+
+	return this;
 }
 
 int  Bullet::Update()

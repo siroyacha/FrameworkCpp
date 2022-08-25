@@ -14,12 +14,14 @@ Mutant::~Mutant()
 {
 }
 
-void Mutant::Start()
+Bridge* Mutant::Start(string _Key)
 {
+	return nullptr;
 }
 
 int Mutant::Update(Transform& _Transfom)
 {
+	/*
 	Vector3 PlayerPosition = ObjectManager::GetInstance()->GetPlayer()->GetPosition();
 	if (_Transfom.Position.x > PlayerPosition.x)
 	{
@@ -31,6 +33,7 @@ int Mutant::Update(Transform& _Transfom)
 
 		ObjectManager::GetInstance()->AddObject(pBullet);
 	}
+	*/
 	return 0;
 }
 
@@ -42,4 +45,9 @@ void Mutant::Render()
 
 void Mutant::Release()
 {
+}
+
+Bridge* Mutant::Clone()
+{
+	return nullptr;
 }

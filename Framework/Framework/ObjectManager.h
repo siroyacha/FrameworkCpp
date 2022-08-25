@@ -16,7 +16,6 @@ public:
 private:
 	map<string, list<Object*>> ObjectList;
 
-
 	Object* pPlayer;
 public:
 	Object* GetPlayer() const { return pPlayer; }

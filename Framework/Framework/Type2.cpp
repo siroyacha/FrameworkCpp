@@ -10,8 +10,9 @@ Type2::~Type2()
 {
 }
 
-void Type2::Start()
+Bridge* Type2::Start(string _Key)
 {
+	return nullptr;
 }
 
 int Type2::Update(Transform& _Transfom)
@@ -27,4 +28,9 @@ void Type2::Render()
 
 void Type2::Release()
 {
+}
+
+Bridge* Type2::Clone()
+{
+	return nullptr;
 }

@@ -3,6 +3,7 @@
 
 class Shield : public Object
 {
+	/*
 private:
 	float Angle;
 	ULONGLONG Time;
@@ -17,4 +18,5 @@ public:
 public:
 	Shield();
 	virtual ~Shield();
+	*/
 };

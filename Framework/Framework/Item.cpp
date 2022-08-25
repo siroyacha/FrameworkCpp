@@ -9,7 +9,7 @@ Item::Item():Index(0)
 Item::~Item()
 {
 }
-
+/*
 void Item::Start()
 {
 	Info.Position = Vector3(0.0f, 0.0f);
@@ -18,6 +18,12 @@ void Item::Start()
 	Time = GetTickCount64();
 	srand(Time);
 	Index = rand() % 3;
+}
+*/
+
+Object* Item::Start(string _Key)
+{
+	return nullptr;
 }
 
 int Item::Update()
