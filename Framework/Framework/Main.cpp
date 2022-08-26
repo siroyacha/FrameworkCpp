@@ -1,4 +1,5 @@
 // ** Framework v18.0
+// ** 디스에이블 리스트 확인하기
 #include "MainUpdate.h"
 
 int main(void)
