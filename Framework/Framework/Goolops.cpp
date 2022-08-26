@@ -10,9 +10,9 @@ Goolops::~Goolops()
 {
 }
 
-Bridge* Goolops::Start(string _Key)
+void Goolops::Start()
 {
-	return nullptr;
+
 }
 
 int Goolops::Update(Transform& _Transfom)
@@ -28,9 +28,4 @@ void Goolops::Render()
 
 void Goolops::Release()
 {
-}
-
-Bridge* Goolops::Clone()
-{
-	return nullptr;
 }

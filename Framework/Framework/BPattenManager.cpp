@@ -22,15 +22,16 @@ void BPattenManager::Initialize()
 	Info.Direction = Vector3(0.0f, 0.0f);
 
 	string Key = "";
-
-	Key = "Enemy";
+	/*
+	Key = "Mutant";
 	BridgeList[Key] = (new Mutant)->Start(Key);
 
-	Key = "Player";
+	Key = "Goolops";
 	BridgeList[Key] = (new Goolops)->Start(Key);
 
-	Key = "Bullet";
+	Key = "Doomboo";
 	BridgeList[Key] = (new Doomboo)->Start(Key);
+	*/
 }
 
 Bridge* BPattenManager::FindBridge(string _Key)

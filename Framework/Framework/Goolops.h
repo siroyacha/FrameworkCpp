@@ -4,11 +4,14 @@
 class Goolops: public EnemyBridge
 {
 public:
-	virtual Bridge* Start(string _Key)override;
+	virtual void Start()override;
 	virtual int Update(Transform& _Transfom)override;
 	virtual void Render()override;
 	virtual void Release()override;
-	virtual Bridge* Clone()override;
+	virtual Bridge* Clone()override
+	{
+		return new Goolops(*this);
+	}
 public:
 	Goolops();
 	virtual ~Goolops();

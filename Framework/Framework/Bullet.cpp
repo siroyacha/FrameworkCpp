@@ -67,7 +67,7 @@ int  Bullet::Update()
 		Time = GetTickCount64();
 
 		srand(int(Time * GetTickCount64()));
-
+		/*
 		switch (rand() % 3)
 		{
 		case 0:
@@ -80,6 +80,7 @@ int  Bullet::Update()
 			pBBridge = new Type3;
 			break;
 		}
+		*/
 		pBBridge->Start();
 		pBBridge->SetObject(this);
 

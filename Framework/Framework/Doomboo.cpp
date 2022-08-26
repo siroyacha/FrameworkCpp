@@ -10,9 +10,8 @@ Doomboo::~Doomboo()
 {
 }
 
-Bridge* Doomboo::Start(string _Key)
+void Doomboo::Start()
 {
-	return nullptr;
 }
 
 int Doomboo::Update(Transform& _Transfom)
@@ -28,9 +27,4 @@ void Doomboo::Render()
 
 void Doomboo::Release()
 {
-}
-
-Bridge* Doomboo::Clone()
-{
-	return nullptr;
 }

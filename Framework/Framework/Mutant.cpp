@@ -14,9 +14,9 @@ Mutant::~Mutant()
 {
 }
 
-Bridge* Mutant::Start(string _Key)
+void Mutant::Start()
 {
-	return nullptr;
+
 }
 
 int Mutant::Update(Transform& _Transfom)
@@ -45,9 +45,4 @@ void Mutant::Render()
 
 void Mutant::Release()
 {
-}
-
-Bridge* Mutant::Clone()
-{
-	return nullptr;
 }

@@ -136,6 +136,9 @@
     <Filter Include="소스 파일\99.Manager\Patten\BPattenManager">
       <UniqueIdentifier>{f020991d-5699-4d9b-bab6-bc6b17e2b61f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\99.Manager\Patten\Objectpool">
+      <UniqueIdentifier>{7f257603-f2fe-4663-82fb-f9bdc295ca45}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MainUpdate.cpp">
@@ -239,6 +242,9 @@
     </ClCompile>
     <ClCompile Include="BPattenManager.cpp">
       <Filter>소스 파일\99.Manager\Patten\BPattenManager</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectpoolManager.cpp">
+      <Filter>소스 파일\99.Manager\Patten\Objectpool</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -367,6 +373,9 @@
     </ClInclude>
     <ClInclude Include="BPattenManager.h">
       <Filter>소스 파일\99.Manager\Patten\BPattenManager</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectpoolManager.h">
+      <Filter>소스 파일\99.Manager\Patten\Objectpool</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -39,7 +39,7 @@ void Logo::Render()
 {
 	for (int i = 0; i < MaxSize; ++i)
 		CursorManager::GetInstance()->WriteBuffer((150.0f / 2) - (Length / 2), 15.0f + i, Buffer[i], 10);
-	CursorManager::GetInstance()->WriteBuffer(64.0f, 40.0f, (char*)"Enter 키를 눌러 시작",11);
+	CursorManager::GetInstance()->WriteBuffer(64.0f, 30.0f, (char*)"Enter 키를 눌러 시작",11);
 
 }
 

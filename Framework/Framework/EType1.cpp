@@ -11,9 +11,9 @@ EType1::~EType1()
 }
 
 
-Bridge* EType1::Start(string _Key)
+void EType1::Start()
 {
-	return nullptr;
+
 }
 
 int EType1::Update(Transform& _Transfom)
@@ -29,9 +29,4 @@ void EType1::Render()
 
 void EType1::Release()
 {
-}
-
-Bridge* EType1::Clone()
-{
-	return nullptr;
 }

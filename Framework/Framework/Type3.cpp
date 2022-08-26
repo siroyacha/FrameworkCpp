@@ -10,9 +10,9 @@ Type3::~Type3()
 {
 }
 
-Bridge* Type3::Start(string _Key)
+void Type3::Start()
 {
-	return nullptr;
+
 }
 
 int Type3::Update(Transform& _Transfom)

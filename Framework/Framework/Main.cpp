@@ -1,9 +1,9 @@
-// ** Framework v17.0
+// ** Framework v18.0
 #include "MainUpdate.h"
 
 int main(void)
 {
-	system("mode con:cols=150 lines=60");
+	system("mode con:cols=150 lines=40");
 
 	MainUpdate Main;
 	Main.Start();

@@ -10,8 +10,11 @@
 #include"Doomboo.h"
 #include"PrototypeManager.h"
 
+Bridge* Enemy::BridgeList[3];
 Enemy::Enemy() : Time(0), pBridge(nullptr)
 {
+	for (int i = 0; i < 3; ++i)
+		BridgeList[i] = nullptr;
 }
 
 Enemy::~Enemy()
@@ -21,53 +24,53 @@ Enemy::~Enemy()
 Object* Enemy::Start(string _Key)
 {
 	Key = _Key;
-
+	/*
 	Info.Position = Vector3(0.0f, 0.0f);
 	Info.Rotation = Vector3(0.0f, 0.0f);
 	Info.Scale = Vector3(0.0f, 0.0f);
 	Info.Direction = Vector3(-1.0f, 0.0f);
+	*/
 
 	//Speed = 0.2f;
 	
+	BridgeList[ENEMYID::ENEMYID_GOOLOPS] = new Goolops;
+	BridgeList[ENEMYID::ENEMYID_MUTANT] = new Mutant;
+	BridgeList[ENEMYID::ENEMYID_DOOMBOO] = new Doomboo;
 	Time = GetTickCount64() - 7000;
-
+	pBridge = nullptr;
 	return this;
 }
 
 int Enemy::Update()
 {
 	if (pBridge)
-	{
-		if (Time + 500 < GetTickCount64())
-		{
-			pBridge->Update(Info);
-			Time = GetTickCount64();
-		}
-	}
+		pBridge->Update(Info);
 	else
 	{
 		if (Time + 7000 < GetTickCount64())
 		{
-			Time = GetTickCount64();
+			//Time = GetTickCount64();
 
 			srand(int(Time * GetTickCount64()));
 
 			switch (rand()%3)
 			{
-			case 0:
-				pBridge = new Goolops;
+			case ENEMYID::ENEMYID_GOOLOPS:
+				pBridge = BridgeList[ENEMYID::ENEMYID_GOOLOPS]->Clone();
 					break;
-			case 1:
-				pBridge = new Mutant;
+			case ENEMYID::ENEMYID_MUTANT:
+				pBridge = BridgeList[ENEMYID::ENEMYID_MUTANT]->Clone();
 					break;
-			case 2:
-				pBridge = new Doomboo;
+			case ENEMYID::ENEMYID_DOOMBOO:
+				pBridge = BridgeList[ENEMYID::ENEMYID_DOOMBOO]->Clone();
 					break;
 			}
 			pBridge->Start();
 			pBridge->SetObject(this);
 		}
 	}
+
+	/*
 	if (Time + 200 < GetTickCount64())
 	{
 		Vector3 PlayerPosition = PrototypeManager::GetInstance()->FindObject("Player")->Clone()->GetPosition();
@@ -92,7 +95,6 @@ int Enemy::Update()
 	if (Info.Position.x <= 0 || Info.Position.x >= 150 ||
 		Info.Position.y <= 0 || Info.Position.y >= 40)
 		return 1;
-	/*
 	*/
 
 	return 0;

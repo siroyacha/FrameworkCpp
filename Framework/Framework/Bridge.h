@@ -9,7 +9,7 @@ protected:
 public:
 	void SetObject(Object* _Object) { pObject = _Object; }
 public:
-	virtual Bridge* Start(string _Key)PURE;
+	virtual void Start()PURE;
 	virtual int Update(Transform& _Transfom)PURE;
 	virtual void Render()PURE;
 	virtual void Release()PURE;

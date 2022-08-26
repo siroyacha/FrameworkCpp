@@ -10,9 +10,9 @@ Type2::~Type2()
 {
 }
 
-Bridge* Type2::Start(string _Key)
+void Type2::Start()
 {
-	return nullptr;
+
 }
 
 int Type2::Update(Transform& _Transfom)
