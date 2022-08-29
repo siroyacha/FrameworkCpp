@@ -76,12 +76,6 @@
     <Filter Include="소스 파일\99.Manager\ShopManager">
       <UniqueIdentifier>{aa3f14c9-3b42-40f3-a520-5b06e648e426}</UniqueIdentifier>
     </Filter>
-    <Filter Include="소스 파일\01.Object\Bullet\Type1">
-      <UniqueIdentifier>{c0a4f7b3-f9e2-4a0b-a398-e22404c0c123}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\01.Object\Bullet\Shield">
-      <UniqueIdentifier>{31281eae-f3ef-4a2b-abec-d2c2d788b9ca}</UniqueIdentifier>
-    </Filter>
     <Filter Include="소스 파일\02.Scene\GameOver">
       <UniqueIdentifier>{f9d134ba-bbcd-493c-a1bf-8ceefed5276c}</UniqueIdentifier>
     </Filter>
@@ -100,8 +94,50 @@
     <Filter Include="소스 파일\99.Manager\StartManager">
       <UniqueIdentifier>{34b87dc3-7de3-4e73-b047-310d829cfeca}</UniqueIdentifier>
     </Filter>
-    <Filter Include="소스 파일\01.Object\Enemy\EType1">
+    <Filter Include="소스 파일\01.Object\Enemy\EnemyBridge">
+      <UniqueIdentifier>{ba5847f6-60df-4279-a74a-09935b03bcef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\01.Object\Enemy\EnemyBridge\Goolops">
+      <UniqueIdentifier>{a11b6afb-4c2f-4cbd-9502-e1b5bc153116}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\01.Object\Enemy\EnemyBridge\Mutant">
+      <UniqueIdentifier>{44cc8be8-9a2b-49c0-a07c-71931fe0157f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\01.Object\Enemy\EnemyBridge\Doomboo">
+      <UniqueIdentifier>{95db9387-5b9f-48fa-846c-aed91ec7cf5e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\01.Object\Bullet\BulletBridge">
+      <UniqueIdentifier>{15557f58-aeab-4023-83bd-710db446b6a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\01.Object\Bullet\BulletBridge\Type1">
+      <UniqueIdentifier>{c0a4f7b3-f9e2-4a0b-a398-e22404c0c123}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\01.Object\Bullet\BulletBridge\Type2">
+      <UniqueIdentifier>{0643856b-6098-4c06-a7a9-e8b37ae1ca9b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\01.Object\Bullet\BulletBridge\Type3">
+      <UniqueIdentifier>{7ec00235-f57f-4706-95a1-2584c855c67e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\01.Object\Enemy\EnemyBridge\EType1">
       <UniqueIdentifier>{c46d8dda-4ebc-4963-ac4f-b7be1c232ce1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\01.Object\Bullet\BulletBridge\Shield">
+      <UniqueIdentifier>{31281eae-f3ef-4a2b-abec-d2c2d788b9ca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\99.Manager\Patten">
+      <UniqueIdentifier>{bab0d54f-c638-40b7-9939-2c7203aee15f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\99.Manager\Patten\Prototype">
+      <UniqueIdentifier>{1c97b8d4-b6d7-4bff-bd65-d8a9e6f962dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\99.Manager\Bridge">
+      <UniqueIdentifier>{ff42e807-92cb-46e9-8609-a4a2c310c464}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\99.Manager\Patten\BPattenManager">
+      <UniqueIdentifier>{f020991d-5699-4d9b-bab6-bc6b17e2b61f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\99.Manager\Patten\Objectpool">
+      <UniqueIdentifier>{7f257603-f2fe-4663-82fb-f9bdc295ca45}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -160,10 +196,10 @@
       <Filter>소스 파일\99.Manager\ShopManager</Filter>
     </ClCompile>
     <ClCompile Include="Type1.cpp">
-      <Filter>소스 파일\01.Object\Bullet\Type1</Filter>
+      <Filter>소스 파일\01.Object\Bullet\BulletBridge\Type1</Filter>
     </ClCompile>
     <ClCompile Include="Shield.cpp">
-      <Filter>소스 파일\01.Object\Bullet\Shield</Filter>
+      <Filter>소스 파일\01.Object\Bullet\BulletBridge\Shield</Filter>
     </ClCompile>
     <ClCompile Include="GameOver.cpp">
       <Filter>소스 파일\02.Scene\GameOver</Filter>
@@ -184,7 +220,31 @@
       <Filter>소스 파일\99.Manager\StartManager</Filter>
     </ClCompile>
     <ClCompile Include="EType1.cpp">
-      <Filter>소스 파일\01.Object\Enemy\EType1</Filter>
+      <Filter>소스 파일\01.Object\Enemy\EnemyBridge\EType1</Filter>
+    </ClCompile>
+    <ClCompile Include="Goolops.cpp">
+      <Filter>소스 파일\01.Object\Enemy\EnemyBridge\Goolops</Filter>
+    </ClCompile>
+    <ClCompile Include="Mutant.cpp">
+      <Filter>소스 파일\01.Object\Enemy\EnemyBridge\Mutant</Filter>
+    </ClCompile>
+    <ClCompile Include="Doomboo.cpp">
+      <Filter>소스 파일\01.Object\Enemy\EnemyBridge\Doomboo</Filter>
+    </ClCompile>
+    <ClCompile Include="Type2.cpp">
+      <Filter>소스 파일\01.Object\Bullet\BulletBridge\Type2</Filter>
+    </ClCompile>
+    <ClCompile Include="Type3.cpp">
+      <Filter>소스 파일\01.Object\Bullet\BulletBridge\Type3</Filter>
+    </ClCompile>
+    <ClCompile Include="PrototypeManager.cpp">
+      <Filter>소스 파일\99.Manager\Patten\Prototype</Filter>
+    </ClCompile>
+    <ClCompile Include="BPattenManager.cpp">
+      <Filter>소스 파일\99.Manager\Patten\BPattenManager</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectpoolManager.cpp">
+      <Filter>소스 파일\99.Manager\Patten\Objectpool</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -261,10 +321,10 @@
       <Filter>소스 파일\99.Manager\ShopManager</Filter>
     </ClInclude>
     <ClInclude Include="Type1.h">
-      <Filter>소스 파일\01.Object\Bullet\Type1</Filter>
+      <Filter>소스 파일\01.Object\Bullet\BulletBridge\Type1</Filter>
     </ClInclude>
     <ClInclude Include="Shield.h">
-      <Filter>소스 파일\01.Object\Bullet\Shield</Filter>
+      <Filter>소스 파일\01.Object\Bullet\BulletBridge\Shield</Filter>
     </ClInclude>
     <ClInclude Include="GameOver.h">
       <Filter>소스 파일\02.Scene\GameOver</Filter>
@@ -285,7 +345,37 @@
       <Filter>소스 파일\99.Manager\StartManager</Filter>
     </ClInclude>
     <ClInclude Include="EType1.h">
-      <Filter>소스 파일\01.Object\Enemy\EType1</Filter>
+      <Filter>소스 파일\01.Object\Enemy\EnemyBridge\EType1</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyBridge.h">
+      <Filter>소스 파일\01.Object\Enemy\EnemyBridge</Filter>
+    </ClInclude>
+    <ClInclude Include="Goolops.h">
+      <Filter>소스 파일\01.Object\Enemy\EnemyBridge\Goolops</Filter>
+    </ClInclude>
+    <ClInclude Include="Mutant.h">
+      <Filter>소스 파일\01.Object\Enemy\EnemyBridge\Mutant</Filter>
+    </ClInclude>
+    <ClInclude Include="Doomboo.h">
+      <Filter>소스 파일\01.Object\Enemy\EnemyBridge\Doomboo</Filter>
+    </ClInclude>
+    <ClInclude Include="Type2.h">
+      <Filter>소스 파일\01.Object\Bullet\BulletBridge\Type2</Filter>
+    </ClInclude>
+    <ClInclude Include="Type3.h">
+      <Filter>소스 파일\01.Object\Bullet\BulletBridge\Type3</Filter>
+    </ClInclude>
+    <ClInclude Include="PrototypeManager.h">
+      <Filter>소스 파일\99.Manager\Patten\Prototype</Filter>
+    </ClInclude>
+    <ClInclude Include="Bridge.h">
+      <Filter>소스 파일\99.Manager\Bridge</Filter>
+    </ClInclude>
+    <ClInclude Include="BPattenManager.h">
+      <Filter>소스 파일\99.Manager\Patten\BPattenManager</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectpoolManager.h">
+      <Filter>소스 파일\99.Manager\Patten\Objectpool</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

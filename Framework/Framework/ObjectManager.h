@@ -16,12 +16,10 @@ public:
 private:
 	map<string, list<Object*>> ObjectList;
 
-
 	Object* pPlayer;
 public:
 	Object* GetPlayer() const { return pPlayer; }
 	void SetPlayer(Object* _Object) { pPlayer = _Object; }
-
 public:
 	void AddObject(Object* _Object);
 	void Update();

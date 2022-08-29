@@ -3,7 +3,8 @@
 #include "MathManager.h"
 
 
-Shield::Shield()
+/*
+Shield::Shield():Time(0),Angle(0)
 {
 
 }
@@ -50,3 +51,4 @@ void Shield::Release()
 {
 
 }
+*/

@@ -45,11 +45,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BPattenManager.cpp" />
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="CursorManager.cpp" />
+    <ClCompile Include="Doomboo.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="EType1.cpp" />
     <ClCompile Include="GameOver.cpp" />
+    <ClCompile Include="Goolops.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="Logo.cpp" />
@@ -57,11 +60,14 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MainUpdate.cpp" />
     <ClCompile Include="Menu.cpp" />
+    <ClCompile Include="Mutant.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="ObjectManager.cpp" />
+    <ClCompile Include="ObjectpoolManager.cpp" />
     <ClCompile Include="Open.cpp" />
     <ClCompile Include="Pause.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PrototypeManager.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="Shield.cpp" />
@@ -71,16 +77,23 @@
     <ClCompile Include="StagetClear.cpp" />
     <ClCompile Include="StartManager.cpp" />
     <ClCompile Include="Type1.cpp" />
+    <ClCompile Include="Type2.cpp" />
+    <ClCompile Include="Type3.cpp" />
     <ClCompile Include="UIManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BPattenManager.h" />
+    <ClInclude Include="Bridge.h" />
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="Constant.h" />
     <ClInclude Include="CursorManager.h" />
+    <ClInclude Include="Doomboo.h" />
     <ClInclude Include="Enemy.h" />
+    <ClInclude Include="EnemyBridge.h" />
     <ClInclude Include="Enum.h" />
     <ClInclude Include="EType1.h" />
     <ClInclude Include="GameOver.h" />
+    <ClInclude Include="Goolops.h" />
     <ClInclude Include="Headers.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="Item.h" />
@@ -89,12 +102,15 @@
     <ClInclude Include="MainUpdate.h" />
     <ClInclude Include="MathManager.h" />
     <ClInclude Include="Menu.h" />
+    <ClInclude Include="Mutant.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="ObjectFactory.h" />
     <ClInclude Include="ObjectManager.h" />
+    <ClInclude Include="ObjectpoolManager.h" />
     <ClInclude Include="Open.h" />
     <ClInclude Include="Pause.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="PrototypeManager.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="Shield.h" />
@@ -106,6 +122,8 @@
     <ClInclude Include="Struct.h" />
     <ClInclude Include="CollisionManager.h" />
     <ClInclude Include="Type1.h" />
+    <ClInclude Include="Type2.h" />
+    <ClInclude Include="Type3.h" />
     <ClInclude Include="UIManager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -48,6 +48,7 @@ void GameOver::Update()
 
 void GameOver::Render()
 {
+	/*
 	for (int i = 0; i < MaxSize; ++i)
 		CursorManager::GetInstance()->WriteBuffer((150.0f / 2) - (Length / 2), 15.0f + i, Buffer[i], 10);
 
@@ -56,6 +57,7 @@ void GameOver::Render()
 
 	CursorManager::GetInstance()->WriteBuffer(62.0f, 40.0f, CountDown);
 	CursorManager::GetInstance()->WriteBuffer(64.0f, 40.0f, (char*)" 초후 게임이 종료됩니다");
+	*/
 }
 
 void GameOver::Release()

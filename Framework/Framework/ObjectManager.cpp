@@ -6,6 +6,7 @@
 #include "CursorManager.h"
 #include "MathManager.h"
 #include "ObjectFactory.h"
+#include"ObjectpoolManager.h"
 
 ObjectManager* ObjectManager::Instance = nullptr;
 
@@ -45,19 +46,13 @@ void ObjectManager::AddObject(Object* _Object)
 void ObjectManager::Update()
 {
 	pPlayer->Update();
-
-	for (auto iter = ObjectList.begin(); iter != ObjectList.end(); ++iter)
-		for (auto iter2 = iter->second.begin(); iter2 != iter->second.end(); ++iter2)
-			(*iter2)->Update();
+	ObjectpoolManager::GetInstance()->Update();
 }
 
 void ObjectManager::Render()
 {
 	pPlayer->Render();
-
-	for (auto iter = ObjectList.begin(); iter != ObjectList.end(); ++iter)
-		for (auto iter2 = iter->second.begin(); iter2 != iter->second.end(); ++iter2)
-			(*iter2)->Render();
+	ObjectpoolManager::GetInstance()->Render();
 }
 
 void ObjectManager::Release()

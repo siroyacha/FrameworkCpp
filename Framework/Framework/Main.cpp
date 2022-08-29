@@ -1,9 +1,10 @@
-// ** Framework v14.0
+// ** Framework v18.0
+// ** 디스에이블 리스트 확인하기
 #include "MainUpdate.h"
 
 int main(void)
 {
-	system("mode con:cols=150 lines=60");
+	system("mode con:cols=150 lines=40");
 
 	MainUpdate Main;
 	Main.Start();

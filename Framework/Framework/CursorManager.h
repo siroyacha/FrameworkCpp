@@ -14,6 +14,7 @@ public:
 private:
 	int BufferIndex;
 	HANDLE HBuffer[2];
+
 public:
 	void CreateBuffer(const int& _Width, const int& _Height);
 	void WriteBuffer(float _x, float _y, char* _str, int _Color = 15);

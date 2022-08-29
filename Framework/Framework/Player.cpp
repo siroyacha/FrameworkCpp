@@ -13,15 +13,17 @@ Player::~Player()
 	Release();
 }
 
-void Player::Start()
+Object* Player::Start(string _Key)
 {
-	Key = "Player";
+	Key = _Key;
 
 	Info.Position = Vector3(74.0f, 20.0f);
 	Info.Rotation = Vector3(0.0f, 0.0f);
 	Info.Scale = Vector3(2.0f, 1.0f);
 
 	Target = nullptr;
+
+	return this;
 }
 
 int Player::Update()
@@ -71,7 +73,7 @@ int Player::Update()
 
 void Player::Render()
 {
-	CursorManager::GetInstance()->WriteBuffer(Info.Position, (char*)"¡â");
+	CursorManager::GetInstance()->WriteBuffer(Info.Position, (char*)"#");
 }
 
 void Player::Release()

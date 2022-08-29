@@ -1,22 +1,25 @@
 #pragma once
 #include "Object.h"
 
+class Bridge;
 class Enemy : public Object
 {
 private:
+	static Bridge* BridgeList[ENEMYID::ENEMYID_MAX];
+private:
+	Bridge* pBridge;
 	ULONGLONG Time;
-	int Count;
-	int SpownPoint_X;
-	int SpownPoint_Y;
-	EnemyType Type[5];
 public:
-	virtual void Start()override;
+	void SetBridge(Bridge* _Bridge) { pBridge = _Bridge; }
+public:
+	virtual Object* Start(string _Key)override;
 	virtual int Update()override;
 	virtual void Render()override;
 	virtual void Release()override;
-	virtual int DamegeControl(int _Att)override;
+	virtual Object* Clone()override { return new Enemy(*this); }
 public:
 	Enemy();
+	Enemy(Transform _Info) :Object(_Info) {};
 	virtual ~Enemy();
 };
 

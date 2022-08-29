@@ -4,9 +4,11 @@
 #include "CursorManager.h"
 #include "Bullet.h"
 #include "Player.h"
+#include "Enemy.h"
 #include "ObjectFactory.h"
+#include"PrototypeManager.h"
 
-Stage::Stage() : Time(0)
+Stage::Stage() : EnemyTime(0),MaxSize(0)
 {
 
 }
@@ -18,46 +20,65 @@ Stage::~Stage()
 
 void Stage::Start()
 {
-	ObjectManager::GetInstance()->SetPlayer(
-		ObjectFactory<Player>::CreateObject(150.f / 2, 40.f / 2));
+	Object* pObj = PrototypeManager::GetInstance()->FindObject("Player")->Clone();
+	if (pObj != nullptr)
+		ObjectManager::GetInstance()->SetPlayer(pObj);
+	/*
+	aaa[0] = (char*)"      ¦¢";
+	aaa[1] = (char*)"¦£¦¡¦¡¦©¦¥";
+	aaa[2] = (char*)"¦¦¦¡¦¡¦©¦¤";
+	aaa[3] = (char*)"      ¦¢";
+	aaa[4] = (char*)" ";
+	aaa[5] = (char*)" ";
+	aaa[6] = (char*)" ";
+	aaa[7] = (char*)" ";
+	aaa[8] = (char*)" ";
 
-	Time = GetTickCount64();
+	MaxSize = 4;
+	*/
+	EnemyTime = GetTickCount64();
 }
 
 void Stage::Update()
 {
-	if (GetAsyncKeyState(VK_TAB))
+	Vector3 PlayerPosition = ObjectManager::GetInstance()->GetPlayer()->GetPosition();
+	float Result = ((PlayerPosition.x * 100) / 100);
+	Result = (100 - Result);
+	Result = Result / 100;
+
+	if (EnemyTime + (2500 * Result) < GetTickCount64())
 	{
-		if (Time + 250 < GetTickCount64())
+		srand(int(GetTickCount64() * EnemyTime));
+
+		/*
+		Object* pEnemy = ObjectFactory<Enemy>::CreateObject(
+			float(rand() % 20 + 120), float(rand() % 39 + 1));
+		*/
+
+		Object* pEnemy = PrototypeManager::GetInstance()->FindObject("Enemy")->Clone();
+		if (pEnemy != nullptr)
 		{
-			Object* pBullet = ObjectFactory<Bullet>::CreateObject();
+			pEnemy->SetPosition(
+				float(rand() % 20 + 120), float(rand() % 39 + 1));
 
-			((Bullet*)pBullet)->SetIndex(1);
-			pBullet->SetTarget(
-				ObjectManager::GetInstance()->GetPlayer());
-
-			ObjectManager::GetInstance()->AddObject(pBullet);
-
-			Time = GetTickCount64();
-		}
-	}
-	/*	
-	if (GetAsyncKeyState(VK_TAB))
-	{
-		if (Time + 250 < GetTickCount64())
-		{
-			Object* pEnemy = ObjectFactory<Enemy>::CreateObject();
-			((Bullet*)pEnemy)->SetIndex(0);
 			ObjectManager::GetInstance()->AddObject(pEnemy);
-			Time = GetTickCount64();
 		}
+
+
+		EnemyTime = GetTickCount64();
 	}
-	*/
+
 	ObjectManager::GetInstance()->Update();
 }
 
 void Stage::Render()
 {
+	/*
+	for (int i = 0; i < MaxSize; ++i)
+	{
+		CursorManager::GetInstance()->WriteBuffer(10.0f, 10.0f + i, aaa[i]);
+	}
+	*/
 	ObjectManager::GetInstance()->Render();
 }
 

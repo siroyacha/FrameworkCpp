@@ -4,7 +4,9 @@
 class Stage :public Scene
 {
 private:
-	ULONGLONG Time;
+	char* aaa[10];
+	int MaxSize;
+	ULONGLONG EnemyTime;
 public:
 	virtual void Start()override;
 	virtual void Update()override;
@@ -14,4 +16,3 @@ public:
 	Stage();
 	virtual	~Stage();
 };
-

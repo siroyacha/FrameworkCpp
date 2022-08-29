@@ -19,14 +19,17 @@ StartManager::~StartManager()
 
 void StartManager::Start()
 {
+	/*
 	pPlayer = ObjectFactory<Player>::CreateObject();
 	pBullet = new Bullet;
 	pBullet->Start();
+	*/
 }
 
 int StartManager::GetStageLv()
 {
-	return pPlayer->GetStageLv();
+	//return pPlayer->GetStageLv();
+	return 0;
 }
 
 void StartManager::Release()

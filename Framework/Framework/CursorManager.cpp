@@ -90,6 +90,7 @@ void CursorManager::WriteBuffer(Vector3 _Position, int _Value, int _Color)
 
 	WriteFile(HBuffer[BufferIndex], Buffer, (DWORD)strlen(Buffer), &dw, NULL);
 }
+
 // ** 버퍼 전환
 void CursorManager::FlippingBuffer()
 {

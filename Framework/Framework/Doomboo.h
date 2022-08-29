@@ -1,7 +1,8 @@
 #pragma once
+
 #include"EnemyBridge.h"
 
-class EType1 : public EnemyBridge
+class Doomboo : public EnemyBridge
 {
 public:
 	virtual void Start()override;
@@ -10,9 +11,9 @@ public:
 	virtual void Release()override;
 	virtual Bridge* Clone()override
 	{
-		return new EType1(*this);
+		return new Doomboo(*this);
 	}
 public:
-	EType1();
-	virtual ~EType1();
+	Doomboo();
+	virtual ~Doomboo();
 };

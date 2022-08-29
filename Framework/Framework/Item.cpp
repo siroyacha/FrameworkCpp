@@ -9,7 +9,7 @@ Item::Item():Index(0)
 Item::~Item()
 {
 }
-
+/*
 void Item::Start()
 {
 	Info.Position = Vector3(0.0f, 0.0f);
@@ -18,6 +18,12 @@ void Item::Start()
 	Time = GetTickCount64();
 	srand(Time);
 	Index = rand() % 3;
+}
+*/
+
+Object* Item::Start(string _Key)
+{
+	return nullptr;
 }
 
 int Item::Update()
@@ -33,11 +39,11 @@ int Item::Update()
 		return 1;
 		break;
 	case 1:
-		Value.Exp = 30;
+		//Value.Exp = 30;
 		return 2;
 		break;
 	case 2:
-		Value.Money = 1000;
+		//Value.Money = 1000;
 		return 3;
 		break;
 	}
@@ -61,9 +67,4 @@ void Item::Render()
 
 void Item::Release()
 {
-}
-
-int Item::DamegeControl(int _Att)
-{
-	return 0;
 }
