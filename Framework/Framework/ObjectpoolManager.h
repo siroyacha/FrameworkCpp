@@ -17,8 +17,10 @@ private:
 	map<string, list<Object*>> EnableList;
 	map<string, list<Object*>> DisableList;
 public:
-	Object* GetObject(string _Key);
-	void SwitchingObject(Object* _Object);
+	bool FindObject(string _Key);
+	void AddObject(string _Key);
+	void SwitchingDObject(string _Key);
+	void SwitchingEObject(string _Key);
 	void Update();
 	void Render();
 private:

@@ -23,6 +23,7 @@ void Stage::Start()
 	Object* pObj = PrototypeManager::GetInstance()->FindObject("Player")->Clone();
 	if (pObj != nullptr)
 		ObjectManager::GetInstance()->SetPlayer(pObj);
+	EnemyTime = GetTickCount64();
 	/*
 	aaa[0] = (char*)"      ¦¢";
 	aaa[1] = (char*)"¦£¦¡¦¡¦©¦¥";
@@ -36,12 +37,16 @@ void Stage::Start()
 
 	MaxSize = 4;
 	*/
-	EnemyTime = GetTickCount64();
 }
 
 void Stage::Update()
 {
+
+	ObjectManager::GetInstance()->AddObject("Enemy");
+
+	/*
 	Vector3 PlayerPosition = ObjectManager::GetInstance()->GetPlayer()->GetPosition();
+	
 	float Result = ((PlayerPosition.x * 100) / 100);
 	Result = (100 - Result);
 	Result = Result / 100;
@@ -50,10 +55,8 @@ void Stage::Update()
 	{
 		srand(int(GetTickCount64() * EnemyTime));
 
-		/*
 		Object* pEnemy = ObjectFactory<Enemy>::CreateObject(
 			float(rand() % 20 + 120), float(rand() % 39 + 1));
-		*/
 
 		Object* pEnemy = PrototypeManager::GetInstance()->FindObject("Enemy")->Clone();
 		if (pEnemy != nullptr)
@@ -67,6 +70,7 @@ void Stage::Update()
 
 		EnemyTime = GetTickCount64();
 	}
+	*/
 
 	ObjectManager::GetInstance()->Update();
 }
