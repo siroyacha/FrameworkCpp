@@ -3,6 +3,7 @@
 #include "Shield.h"
 #include "InputManager.h"
 #include "CursorManager.h"
+#include"ObjectManager.h"
 
 Player::Player()
 {
@@ -62,8 +63,9 @@ int Player::Update()
 			Info.Position.x = 0;
 	}
 
-	//if (dwKey & KEY_SPACE)
-		//ObjectManager::GetInstance()->CreateObject();
+	if (dwKey & KEY_SPACE)	
+		ObjectManager::GetInstance()->AddObject(Vector3(rand() % 150, rand() % 40), "Bullet");
+
 
 	//if (dwKey & KEY_ESCAPE)
 		//Info.Position = Vector3(0.0f, 0.0f);

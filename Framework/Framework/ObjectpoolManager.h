@@ -19,8 +19,7 @@ private:
 public:
 	bool FindObject(string _Key);
 	void AddObject(string _Key);
-	void SwitchingDObject(string _Key);
-	void SwitchingEObject(string _Key);
+	void SwitchingObject(string _Key, Vector3 _Position = Vector3());
 	void Update();
 	void Render();
 private:

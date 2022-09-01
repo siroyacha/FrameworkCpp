@@ -1,6 +1,7 @@
 #include "ObjectpoolManager.h"
 #include"PrototypeManager.h"
 #include"Object.h"
+#include"CursorManager.h"
 
 ObjectpoolManager* ObjectpoolManager::Instance = nullptr;
 
@@ -30,103 +31,52 @@ void ObjectpoolManager::AddObject(string _Key)
 
 	if (iter == DisableList.end())
 	{
-		list<Object*> Temp;
-		Object* pProtoObj = PrototypeManager::GetInstance()->FindObject(_Key);
-		for (int i = 0; i < 5; ++i)
-		{
-			if (pProtoObj)
-			{
-				Object* pObject = pProtoObj->Clone();
-				Temp.push_back(pObject);
-				DisableList.insert(make_pair(_Key, Temp));
-			}
-			else
-			{
-				// Err : pProtoObj 에서 객체 원본을 찾을 수 없음
-				return;
-			}
-		}
+		list<Object*> Temp;		
+		DisableList.insert(make_pair(_Key, Temp));
+		iter = DisableList.find(_Key);
 	}
-	else
+
+	Object* pProtoObj = PrototypeManager::GetInstance()->FindObject(_Key);
+	for (int i = 0; i < 5; ++i)
 	{
-		// ** 리스트는 존재하지만 객체가 없는 상태 확인
-		if (iter->second.empty())
+		if (pProtoObj)
 		{
-			// 크리에이트 오브젝트 써서 만들어보기
-			Object* pProtoObj = PrototypeManager::GetInstance()->FindObject(_Key);
-			for (int i = 0; i < 5; ++i)
-			{
-				if (pProtoObj)
-				{
-					Object* pObject = pProtoObj->Clone(); 
-					iter->second.push_back(pObject);
-				}
-				else
-				{
-					// Err : pProtoObj 에서 객체 원본을 찾을 수 없음
-					return;
-				}
-			}
+			Object* pObject = pProtoObj->Clone();
+			iter->second.push_back(pObject);
+		}
+		else
+		{
+			// Err : pProtoObj 에서 객체 원본을 찾을 수 없음
+			return;
 		}
 	}
-	// ** 여기까지 도달했다면 여분의 객체가 생성된 것이므로 
-	// ** DisableList -> EnableList 이동.
-	SwitchingDObject(_Key);
 }
 
-void ObjectpoolManager::SwitchingDObject(string _Key)
+void ObjectpoolManager::SwitchingObject(string _Key, Vector3 _Position)
 {
-	// 디스에이블에서 인에이블로
 	map<string, list<Object*>>::iterator iter = DisableList.find(_Key);
-
-	if (iter == DisableList.end())
+	if (iter->second.empty())
 	{
 		AddObject(_Key);
 	}
-	else
-	{
-		for (int i = 0; i < iter->second.size(); ++i)
-		{
-			list<Object*> Temp;
-			Temp.push_back(iter->second.front());
-			EnableList.insert(make_pair(_Key, Temp));
-			iter->second.pop_front();
-		}
-	}
-}
+	Object* pObj = iter->second.back();
+	pObj->SetPosition(_Position);
 
-void ObjectpoolManager::SwitchingEObject(string _Key)
-{
-	// 인에이블에서 디스에이블로
-	map<string, list<Object*>>::iterator iter = EnableList.find(_Key);
-
-	if (iter == EnableList.end())
-	{
-		Update();
-	}
-	else
-	{
-		for (int i = 0; i < iter->second.size(); ++i)
-		{
-			list<Object*> Temp;
-			Temp.push_back(iter->second.front());
-			DisableList.insert(make_pair(_Key, Temp));
-			iter->second.pop_front();
-		}
-	}
+	EnableList[_Key].push_back(pObj);
+	iter->second.pop_back();
 }
 
 void ObjectpoolManager::Update()
 {
 	for (auto iter = EnableList.begin(); iter != EnableList.end(); ++iter)
 	{
-		for (auto iter2 = iter->second.begin(); iter2 != iter->second.end(); ++iter2)
+		for (auto iter2 = iter->second.begin(); iter2 != iter->second.end();)
 		{
 			int Result = (*iter2)->Update();
 
 			if (Result)
 			{
-				//SwitchingObject((*iter2));
+				DisableList[(*iter2)->GetKey()].push_back((*iter2));
 				iter2 = iter->second.erase(iter2);
 			}
 			else
@@ -144,4 +94,9 @@ void ObjectpoolManager::Render()
 			(*iter2)->Render();
 		}
 	}
+
+	CursorManager::GetInstance()->WriteBuffer(125, 0, (int)EnableList["Enemy"].size());
+	CursorManager::GetInstance()->WriteBuffer(125, 1, (int)DisableList["Enemy"].size());
+	CursorManager::GetInstance()->WriteBuffer(125, 3, (int)EnableList["Bullet"].size());
+	CursorManager::GetInstance()->WriteBuffer(125, 4, (int)DisableList["Bullet"].size());
 }

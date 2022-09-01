@@ -7,6 +7,8 @@
 #include "Enemy.h"
 #include "ObjectFactory.h"
 #include"PrototypeManager.h"
+#include"UserInterface.h"
+#include"ScrollBox.h"
 
 Stage::Stage() : EnemyTime(0),MaxSize(0)
 {
@@ -37,13 +39,17 @@ void Stage::Start()
 
 	MaxSize = 4;
 	*/
+	for (int i = 0; i < 20; ++i)
+	{
+		ObjectManager::GetInstance()->AddObject(Vector3(rand() % 150, rand() % 40), "Enemy");
+	}
+
+	Box = new ScrollBox;
+	Box->Start();
 }
 
 void Stage::Update()
 {
-
-	ObjectManager::GetInstance()->AddObject("Enemy");
-
 	/*
 	Vector3 PlayerPosition = ObjectManager::GetInstance()->GetPlayer()->GetPosition();
 	
@@ -83,6 +89,8 @@ void Stage::Render()
 		CursorManager::GetInstance()->WriteBuffer(10.0f, 10.0f + i, aaa[i]);
 	}
 	*/
+
+	Box->Render();
 	ObjectManager::GetInstance()->Render();
 }
 
