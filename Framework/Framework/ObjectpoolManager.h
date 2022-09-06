@@ -17,8 +17,9 @@ private:
 	map<string, list<Object*>> EnableList;
 	map<string, list<Object*>> DisableList;
 public:
-	Object* GetObject(string _Key);
-	void SwitchingObject(Object* _Object);
+	bool FindObject(string _Key);
+	void AddObject(string _Key);
+	void SwitchingObject(string _Key, Vector3 _Position = Vector3());
 	void Update();
 	void Render();
 private:

@@ -6,7 +6,9 @@
 #include"Type2.h"
 #include"Type3.h"
 
-Bullet::Bullet() : Speed(0), Time(0),pBBridge(nullptr)
+Bridge* Bullet::BridgeList[4];
+
+Bullet::Bullet() : Speed(0), Time(0),pBridge(nullptr)
 {
 }
 
@@ -19,36 +21,41 @@ Bullet::~Bullet()
 Object* Bullet::Start(string _Key)
 {
 	Key = _Key;
-
+	/*
 	Info.Position = Vector3(0.0f, 0.0f);
 	Info.Rotation = Vector3(0.0f, 0.0f);
 	Info.Scale = Vector3(1.0f, 1.0f);
 	Info.Direction = Vector3(0.0f, 0.0f);
 
 	Speed = 1.0f;
+	*/
 
 	Target = nullptr;
 
 	/*
 	switch (rand() % 4)
 	{
-	case 0: // 
+	case 0: //
 		Info.Position = Vector3(float(rand() % 148), 0.0f);
 		break;
-	case 1: // 
+	case 1: //
 		Info.Position = Vector3(float(rand() % 148), 39.0f);
 		break;
 
-	case 2: // 
+	case 2: //
 		Info.Position = Vector3(0.0f, float(rand() % 40));
 		break;
-	case 3: // 
+	case 3: //
 		Info.Position = Vector3(148.0f, float(rand() % 40));
 		break;
 	}
 	*/
 
 	//Info.Direction = MathManager::GetDirection(Info.Position, Target->GetPosition());
+
+	BridgeList[BULLETID::BULLETID_TYPE_1] = new Type1;
+	BridgeList[BULLETID::BULLETID_TYPE_2] = new Type2;
+	BridgeList[BULLETID::BULLETID_TYPE_3] = new Type3;
 
 	Time = GetTickCount64();
 
@@ -57,9 +64,9 @@ Object* Bullet::Start(string _Key)
 
 int  Bullet::Update()
 {
-	if (pBBridge)
+	if (pBridge)
 	{
-		pBBridge->Update(Info);
+		pBridge->Update(Info);
 		Time = GetTickCount64();
 	}
 	else
@@ -67,22 +74,20 @@ int  Bullet::Update()
 		Time = GetTickCount64();
 
 		srand(int(Time * GetTickCount64()));
-		/*
 		switch (rand() % 3)
 		{
-		case 0:
-			pBBridge = new Type1;
+		case ENEMYID::ENEMYID_GOOLOPS:
+			pBridge = BridgeList[ENEMYID::ENEMYID_GOOLOPS]->Clone();
 			break;
-		case 1:
-			pBBridge = new Type2;
+		case ENEMYID::ENEMYID_MUTANT:
+			pBridge = BridgeList[ENEMYID::ENEMYID_MUTANT]->Clone();
 			break;
-		case 2:
-			pBBridge = new Type3;
+		case ENEMYID::ENEMYID_DOOMBOO:
+			pBridge = BridgeList[ENEMYID::ENEMYID_DOOMBOO]->Clone();
 			break;
 		}
-		*/
-		pBBridge->Start();
-		pBBridge->SetObject(this);
+		pBridge->Start();
+		pBridge->SetObject(this);
 
 	}
 	Info.Position += Info.Direction * (Speed * 0.5f);
@@ -99,16 +104,16 @@ int  Bullet::Update()
 
 void Bullet::Render()
 {
-	if (pBBridge)
-		pBBridge->Render();
+	if (pBridge)
+		pBridge->Render();
 	//CursorManager::GetInstance()->WriteBuffer(Info.Position, (char*)"*", 12);
 }
 
 void Bullet::Release()
 {
-	if (pBBridge)
+	if (pBridge)
 	{
-		delete pBBridge;
-		pBBridge = nullptr;
+		delete pBridge;
+		pBridge = nullptr;
 	}
 }
