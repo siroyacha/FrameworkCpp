@@ -145,6 +145,9 @@
     <Filter Include="소스 파일\03.UserInterface\ScrollBox">
       <UniqueIdentifier>{7e1ee075-5cc7-48be-b8b5-edb50886385c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\01.Object\Skill">
+      <UniqueIdentifier>{a190f168-7bc3-4e33-8f37-318088426c83}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MainUpdate.cpp">
@@ -257,6 +260,9 @@
     </ClCompile>
     <ClCompile Include="ScrollBox.cpp">
       <Filter>소스 파일\03.UserInterface\ScrollBox</Filter>
+    </ClCompile>
+    <ClCompile Include="Skill.cpp">
+      <Filter>소스 파일\01.Object\Skill</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -394,6 +400,9 @@
     </ClInclude>
     <ClInclude Include="ScrollBox.h">
       <Filter>소스 파일\03.UserInterface\ScrollBox</Filter>
+    </ClInclude>
+    <ClInclude Include="Skill.h">
+      <Filter>소스 파일\01.Object\Skill</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

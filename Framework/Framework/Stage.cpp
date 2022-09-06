@@ -9,6 +9,7 @@
 #include"PrototypeManager.h"
 #include"UserInterface.h"
 #include"ScrollBox.h"
+#include "Skill.h"
 
 Stage::Stage() : EnemyTime(0),MaxSize(0)
 {
@@ -39,13 +40,19 @@ void Stage::Start()
 
 	MaxSize = 4;
 	*/
+	pSkill[0] = new Skill;
+	pSkill[0]->SetPosition(50, 5);
+	pSkill[0]->Start("Skill");
+
+	pSkill[1] = new Skill;
+	pSkill[1]->SetPosition(100, 5);
+	pSkill[1]->Start("Skill");
+
 	for (int i = 0; i < 20; ++i)
 	{
 		ObjectManager::GetInstance()->AddObject(Vector3(rand() % 150, rand() % 40), "Enemy");
 	}
 
-	Box = new ScrollBox;
-	Box->Start();
 }
 
 void Stage::Update()
@@ -90,8 +97,9 @@ void Stage::Render()
 	}
 	*/
 
-	Box->Render();
 	ObjectManager::GetInstance()->Render();
+	for (int i = 0; i < 2; ++i)
+		pSkill[i]->Render();
 }
 
 void Stage::Release()

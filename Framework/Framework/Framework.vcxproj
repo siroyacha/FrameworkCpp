@@ -74,6 +74,7 @@
     <ClCompile Include="Shield.cpp" />
     <ClCompile Include="Shop.cpp" />
     <ClCompile Include="ShopManager.cpp" />
+    <ClCompile Include="Skill.cpp" />
     <ClCompile Include="Stage.cpp" />
     <ClCompile Include="StagetClear.cpp" />
     <ClCompile Include="StartManager.cpp" />
@@ -119,6 +120,7 @@
     <ClInclude Include="Shield.h" />
     <ClInclude Include="Shop.h" />
     <ClInclude Include="ShopManager.h" />
+    <ClInclude Include="Skill.h" />
     <ClInclude Include="Stage.h" />
     <ClInclude Include="StagetClear.h" />
     <ClInclude Include="StartManager.h" />

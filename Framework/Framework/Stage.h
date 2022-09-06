@@ -1,11 +1,11 @@
 #pragma once
 #include "Scene.h"
 
-class UserInterface;
+class Object;
 class Stage :public Scene
 {
 private:
-	UserInterface* Box;
+	Object* pSkill[2];
 	char* aaa[10];
 	int MaxSize;
 	ULONGLONG EnemyTime;
