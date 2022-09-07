@@ -7,8 +7,7 @@ private:
 	int Width, Height;
 	string WidthTexture;
 	char* HeightTexture;
-
-	int End;
+	int ScrollBoxIndex;
 public:	 
 	virtual void Start()override;
 	virtual void Update()override;

@@ -20,9 +20,10 @@ void Open::Start()
 void Open::Update()
 {
 	DWORD dwKey = InputManager::GetInstance()->GetKey();
-
+	/*
 	if (dwKey & KEY_Y_Shift)
 		SceneManager::GetInstance()->SetScene(SCENEID::STAGE);
+	*/
 }
 
 void Open::Render()

@@ -10,6 +10,8 @@ protected:
 	Vector3	EndPos;
 	int End;
 public:
+	static int Index;
+public:
 	virtual void Start()PURE;
 	virtual void Update()PURE;
 	virtual void Render()PURE;
@@ -20,7 +22,7 @@ public:
 	void SetBoxSize(int _x, int _y)
 	{
 		if (_x % 2 == 1)
-			_x + 1;
+			_x += 1;
 
 		EndPos = Vector3(StartPos.x + _x, StartPos.y + _y);
 
@@ -44,7 +46,7 @@ public:
 
 			Widthiter[End].pop_back();
 			Widthiter[End].pop_back();
-			Widthiter[End] += "　│";
+			Widthiter[End] += "	─┘";
 			++End;
 		}
 	}

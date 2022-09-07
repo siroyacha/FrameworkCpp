@@ -10,8 +10,9 @@
 #include"UserInterface.h"
 #include"ScrollBox.h"
 #include "Skill.h"
+#include"InputManager.h"
 
-Stage::Stage() : EnemyTime(0),MaxSize(0)
+Stage::Stage() : EnemyTime(0)
 {
 
 }
@@ -22,31 +23,51 @@ Stage::~Stage()
 }
 
 void Stage::Start()
-{
+{	
+
 	Object* pObj = PrototypeManager::GetInstance()->FindObject("Player")->Clone();
 	if (pObj != nullptr)
 		ObjectManager::GetInstance()->SetPlayer(pObj);
 	EnemyTime = GetTickCount64();
-	/*
-	aaa[0] = (char*)"      ¦¢";
-	aaa[1] = (char*)"¦£¦¡¦¡¦©¦¥";
-	aaa[2] = (char*)"¦¦¦¡¦¡¦©¦¤";
-	aaa[3] = (char*)"      ¦¢";
-	aaa[4] = (char*)" ";
-	aaa[5] = (char*)" ";
-	aaa[6] = (char*)" ";
-	aaa[7] = (char*)" ";
-	aaa[8] = (char*)" ";
+	char* Texture[Max][5] = {
+		{
+			(char*)"¥Â¡¡¥Â¡¡¥Â",
+			(char*)"¥Â¡¡¥Â¡¡¥Â",
+			(char*)"¥Â¡¡¥Â¡¡¥Â",
+			(char*)"¥Â¡¡¥Â¡¡¥Â",
+			(char*)"¥Æ¥Á¥Ê¥Á¥Å"
+		},
 
-	MaxSize = 4;
-	*/
-	pSkill[0] = new Skill;
-	pSkill[0]->SetPosition(50, 5);
-	pSkill[0]->Start("Skill");
+		{
+			(char*)"£ª¡¡£ª¡¡£ª",
+			(char*)" £ª £ª £ª",
+			(char*)"  * £ª *",
+			(char*)"  £ª£ª£ª",
+			(char*)"   *£ª*"
+		},
 
-	pSkill[1] = new Skill;
-	pSkill[1]->SetPosition(100, 5);
-	pSkill[1]->Start("Skill");
+		{
+			(char*)"¡¡¡Î¡Î¡Î¡¡",
+			(char*)"¡¡¡Î¡Î¡Î¡¡",
+			(char*)"¡¡¡Î¡Î¡Î¡¡",
+			(char*)"¡¡¡Î¡Î¡Î¡¡",
+			(char*)"¡¡¡Î¡Î¡Î¡¡"
+		}
+	};
+
+	for (int i = 0; i < Max; ++i)
+	{
+		Object* pSkill = new Skill;
+		pSkill->SetPosition(
+			int(14 * i + (150 - (14 * Max))),
+			int(39 - (7 * 0.5f)));
+		pSkill->Start("Skill");
+
+		((Skill*)pSkill)->SetTexture(Texture[i]);
+		pSkillList.push_back(pSkill);
+	}
+
+	UserInterface::Index = 0;
 
 	for (int i = 0; i < 20; ++i)
 	{
@@ -84,7 +105,23 @@ void Stage::Update()
 		EnemyTime = GetTickCount64();
 	}
 	*/
+	DWORD dwKey = InputManager::GetInstance()->GetKey();
 
+	int SkillIndex = UserInterface::Index;
+
+	if (KEY_Q & dwKey)
+	{
+		if (SkillIndex != 0)
+			--SkillIndex;
+	}
+
+	if (KEY_E & dwKey)
+	{
+		if (SkillIndex != (Max - 1))
+			++SkillIndex;
+	}
+
+	UserInterface::Index = SkillIndex;
 	ObjectManager::GetInstance()->Update();
 }
 
@@ -98,8 +135,12 @@ void Stage::Render()
 	*/
 
 	ObjectManager::GetInstance()->Render();
-	for (int i = 0; i < 2; ++i)
-		pSkill[i]->Render();
+
+	for (vector<Object*>::iterator iter = pSkillList.begin();
+		iter != pSkillList.end(); ++iter)
+	{
+		(*iter)->Render();
+	}
 }
 
 void Stage::Release()

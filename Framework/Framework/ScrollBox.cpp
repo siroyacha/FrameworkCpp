@@ -19,13 +19,16 @@ void ScrollBox::Start()
 	//StartPos = Vector3(50, 10);
 	EndPos = Vector3(StartPos.x + Width, StartPos.y + Height);
 
-	WidthTexture = "¡¡";
+	WidthTexture = "";
 	HeightTexture = (char*)"¦¢";
+
+	ScrollBoxIndex = Index++;
 
 	Texture.push_back("¦£¦¡¦¤");
 	Texture.push_back("¦¢¡¡¦¢");
 	Texture.push_back("¦¦¦¡¦¥");
 	End = 3;
+
 }
 
 void ScrollBox::Update()
@@ -34,9 +37,11 @@ void ScrollBox::Update()
 
 void ScrollBox::Render()
 {
-	int n = 0;
-	for (vector<string>::iterator iter = Texture.begin(); iter != Texture.end(); ++iter, ++n)
-		CursorManager::GetInstance()->WriteBuffer(StartPos.x, StartPos.y + n, (*iter));
+	for (int i = 0; i < Texture.size(); ++i)
+	{
+		CursorManager::GetInstance()->WriteBuffer(
+			StartPos.x, StartPos.y + i, Texture[i], ScrollBoxIndex == Index ? 12 : 15);
+	}	
 }
 
 void ScrollBox::Release()

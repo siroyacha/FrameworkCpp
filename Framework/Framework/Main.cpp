@@ -1,5 +1,5 @@
-// ** Framework v21.0
-// ** 디스에이블 리스트 확인하기
+// ** Framework v22.0
+// ** 23일 끝내기
 #include "MainUpdate.h"
 
 int main(void)
