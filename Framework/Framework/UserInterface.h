@@ -46,7 +46,7 @@ public:
 
 			Widthiter[End].pop_back();
 			Widthiter[End].pop_back();
-			Widthiter[End] += "	─┘";
+			Widthiter[End] += "─┘";
 			++End;
 		}
 	}

@@ -29,8 +29,3 @@ void Type1::Render()
 void Type1::Release()
 {
 }
-
-Bridge* Type1::Clone()
-{
-	return nullptr;
-}

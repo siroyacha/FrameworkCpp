@@ -19,7 +19,7 @@ public:
 	virtual Object* Clone()override { return new Enemy(*this); }
 public:
 	Enemy();
-	Enemy(Transform _Info) :Object(_Info) {};
+	Enemy(Transform _Info) :Object(_Info), Time(0) {};
 	virtual ~Enemy();
 };
 

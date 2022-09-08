@@ -76,14 +76,14 @@ int  Bullet::Update()
 		srand(int(Time * GetTickCount64()));
 		switch (rand() % 3)
 		{
-		case ENEMYID::ENEMYID_GOOLOPS:
-			pBridge = BridgeList[ENEMYID::ENEMYID_GOOLOPS]->Clone();
+		case BULLETID::BULLETID_TYPE_1:
+			pBridge = BridgeList[BULLETID::BULLETID_TYPE_1]->Clone();
 			break;
-		case ENEMYID::ENEMYID_MUTANT:
-			pBridge = BridgeList[ENEMYID::ENEMYID_MUTANT]->Clone();
+		case BULLETID::BULLETID_TYPE_2:
+			pBridge = BridgeList[BULLETID::BULLETID_TYPE_2]->Clone();
 			break;
-		case ENEMYID::ENEMYID_DOOMBOO:
-			pBridge = BridgeList[ENEMYID::ENEMYID_DOOMBOO]->Clone();
+			case BULLETID::BULLETID_TYPE_3:
+			pBridge = BridgeList[BULLETID::BULLETID_TYPE_3]->Clone();
 			break;
 		}
 		pBridge->Start();
