@@ -67,7 +67,6 @@ int  Bullet::Update()
 	if (pBridge)
 	{
 		pBridge->Update(Info);
-		Time = GetTickCount64();
 	}
 	else
 	{

@@ -64,7 +64,7 @@ int Player::Update()
 	}
 
 	if (dwKey & KEY_SPACE)	
-		ObjectManager::GetInstance()->AddObject(Vector3(rand() % 150, rand() % 40), "Bullet");
+		ObjectManager::GetInstance()->AddObject(Info.Position, "Bullet");
 
 
 	//if (dwKey & KEY_ESCAPE)

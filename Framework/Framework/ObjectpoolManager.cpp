@@ -52,6 +52,34 @@ void ObjectpoolManager::AddObject(string _Key)
 	}
 }
 
+void ObjectpoolManager::LoadObject(string _Key)
+{
+	map<string, list<Object*>>::iterator iter = EnableList.find(_Key);
+
+	if (iter == EnableList.end())
+	{
+		list<Object*> Temp;
+		EnableList.insert(make_pair(_Key, Temp));
+		iter = EnableList.find(_Key);
+	}
+	Object* pProtoObj = PrototypeManager::GetInstance()->FindObject(_Key);
+	for (int i = 0; i < 5; ++i)
+	{
+		if (pProtoObj)
+		{
+			Object* pObject = pProtoObj->Clone();
+			iter->second.push_back(pObject);
+		}
+		else
+		{
+			// Err : pProtoObj 에서 객체 원본을 찾을 수 없음
+			return;
+		}
+	}
+	/*
+	*/
+}
+
 void ObjectpoolManager::SwitchingObject(string _Key, Vector3 _Position)
 {
 	map<string, list<Object*>>::iterator iter = DisableList.find(_Key);
@@ -63,6 +91,20 @@ void ObjectpoolManager::SwitchingObject(string _Key, Vector3 _Position)
 	pObj->SetPosition(_Position);
 
 	EnableList[_Key].push_back(pObj);
+	iter->second.pop_back();
+}
+
+void ObjectpoolManager::Switching2Object(string _Key, Vector3 _Position)
+{
+	map<string, list<Object*>>::iterator iter = EnableList.find(_Key);
+	if (iter->second.empty())
+	{
+		AddObject(_Key);
+	}
+	Object* pObj = iter->second.back();
+	pObj->SetPosition(_Position);
+
+	DisableList[_Key].push_back(pObj);
 	iter->second.pop_back();
 }
 
