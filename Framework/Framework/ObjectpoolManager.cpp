@@ -17,11 +17,23 @@ bool ObjectpoolManager::FindObject(string _Key)
 {
 	auto iter = DisableList.find(_Key);
 	if (iter == DisableList.end())
+		return false;
+	else
+		return true;
+}
+
+bool ObjectpoolManager::CheckObject(string _Key)
+{
+	ULONGLONG Time = 0;
+	Time = GetTickCount64();
+	int temp_size = DisableList.size();
+	if (Time + 5000 < GetTickCount64())
 	{
-		if (iter == DisableList.end())
-			return false;		
-		else
+		Time = GetTickCount64();
+		if (DisableList.size() != temp_size)
 			return true;
+		else
+			return false;
 	}
 }
 
@@ -76,8 +88,6 @@ void ObjectpoolManager::LoadObject(string _Key)
 			return;
 		}
 	}
-	/*
-	*/
 }
 
 void ObjectpoolManager::SwitchingObject(string _Key, Vector3 _Position)
@@ -94,12 +104,12 @@ void ObjectpoolManager::SwitchingObject(string _Key, Vector3 _Position)
 	iter->second.pop_back();
 }
 
-void ObjectpoolManager::Switching2Object(string _Key, Vector3 _Position)
+void ObjectpoolManager::SwitchingObject2(string _Key, Vector3 _Position)
 {
 	map<string, list<Object*>>::iterator iter = EnableList.find(_Key);
 	if (iter->second.empty())
 	{
-		AddObject(_Key);
+		LoadObject(_Key);
 	}
 	Object* pObj = iter->second.back();
 	pObj->SetPosition(_Position);
