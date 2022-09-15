@@ -26,15 +26,25 @@ bool ObjectpoolManager::CheckObject(string _Key)
 {
 	ULONGLONG Time = 0;
 	Time = GetTickCount64();
-	int temp_size = DisableList.size();
+	auto iter = DisableList.find(_Key);
+	int temp_size = iter->second.size();
 	if (Time + 5000 < GetTickCount64())
 	{
-		Time = GetTickCount64();
-		if (DisableList.size() != temp_size)
+		if (iter->second.size() != temp_size)
 			return true;
 		else
 			return false;
 	}
+}
+
+bool ObjectpoolManager::CheckingObject(string _Key)
+{
+	auto iter = DisableList.find(_Key);
+	auto iter2 = EnableList.find(_Key);
+	if (iter->second.size() > iter2->second.size())
+		return true;
+	else
+		return false;
 }
 
 void ObjectpoolManager::AddObject(string _Key)

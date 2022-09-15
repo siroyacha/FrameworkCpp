@@ -19,6 +19,7 @@ private:
 public:
 	bool FindObject(string _Key);
 	bool CheckObject(string _Key);
+	bool CheckingObject(string _Key);
 	void AddObject(string _Key);
 	void LoadObject(string _Key);
 	void SwitchingObject(string _Key, Vector3 _Position = Vector3());
