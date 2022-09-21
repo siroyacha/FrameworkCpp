@@ -24,36 +24,9 @@ Stage::~Stage()
 
 void Stage::Start()
 {	
-
 	Object* pObj = PrototypeManager::GetInstance()->FindObject("Player")->Clone();
 	if (pObj != nullptr)
 		ObjectManager::GetInstance()->SetPlayer(pObj);
-	EnemyTime = GetTickCount64();
-	char* Texture[Max][5] = {
-		{
-			(char*)"¥Â¡¡¥Â¡¡¥Â",
-			(char*)"¥Â¡¡¥Â¡¡¥Â",
-			(char*)"¥Â¡¡¥Â¡¡¥Â",
-			(char*)"¥Â¡¡¥Â¡¡¥Â",
-			(char*)"¥Æ¥Á¥Ê¥Á¥Å"
-		},
-
-		{
-			(char*)"£ª¡¡£ª¡¡£ª",
-			(char*)" £ª £ª £ª",
-			(char*)"  * £ª *",
-			(char*)"  £ª£ª£ª",
-			(char*)"   *£ª*"
-		},
-
-		{
-			(char*)"¡¡¡Î¡Î¡Î¡¡",
-			(char*)"¡¡¡Î¡Î¡Î¡¡",
-			(char*)"¡¡¡Î¡Î¡Î¡¡",
-			(char*)"¡¡¡Î¡Î¡Î¡¡",
-			(char*)"¡¡¡Î¡Î¡Î¡¡"
-		}
-	};
 
 	for (int i = 0; i < Max; ++i)
 	{
@@ -63,16 +36,11 @@ void Stage::Start()
 			int(39 - (7 * 0.5f)));
 		pSkill->Start("Skill");
 
-		((Skill*)pSkill)->SetTexture(Texture[i]);
 		pSkillList.push_back(pSkill);
 	}
 
 	UserInterface::Index = 0;
-
-	for (int i = 0; i < 20; ++i)
-	{
-		ObjectManager::GetInstance()->AddObject(Vector3(rand() % 150, rand() % 40), "Enemy");
-	}
+	EnemyTime = GetTickCount64();
 
 }
 
@@ -119,6 +87,15 @@ void Stage::Update()
 	{
 		if (SkillIndex != (Max - 1))
 			++SkillIndex;
+	}
+
+	for (int i = 0; i < 20; ++i)
+	{
+		if (EnemyTime + 200 < GetTickCount64())
+		{
+			ObjectManager::GetInstance()->AddObject(Vector3(rand() % 150, rand() % 40), "Enemy");
+			EnemyTime = GetTickCount64();
+		}
 	}
 
 	UserInterface::Index = SkillIndex;

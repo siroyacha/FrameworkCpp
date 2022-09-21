@@ -2,6 +2,8 @@
 #include"Enemy.h"
 #include"Player.h"
 #include"Bullet.h"
+#include"Item.h"
+
 PrototypeManager* PrototypeManager::Instance = nullptr;
 
 PrototypeManager::PrototypeManager()
@@ -31,6 +33,9 @@ void PrototypeManager::Initialize()
 
 	Key = "Bullet";
 	ObjectList[Key] = (new Bullet(Info))->Start(Key);
+
+	Key = "Item";
+	ObjectList[Key] = (new Item(Info))->Start(Key);
 }
 
 Object* PrototypeManager::FindObject(string _Key)

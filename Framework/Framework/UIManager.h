@@ -1,6 +1,7 @@
 #pragma once
 #include "Headers.h"
 
+class UserInterface;
 class Object;
 class UIManager
 {
@@ -20,6 +21,8 @@ private:
 	int MaxSize;
 	int NowSize;
 	float Percent;
+
+	UserInterface* Box;
 	/*
 	char* Buffer[9];
 	char* Buffer2[9];

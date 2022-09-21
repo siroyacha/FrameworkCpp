@@ -7,6 +7,7 @@
 #include"CursorManager.h"
 #include"ObjectManager.h"
 #include"StartManager.h"
+#include"ScrollBox.h"
 
 UIManager* UIManager::Instance = nullptr;
 
@@ -22,10 +23,19 @@ void UIManager::Start()
 {
 	pPlayer = StartManager::GetInstance()->LoadPlayer();
 	pBullet = StartManager::GetInstance()->LoadBullet();
+	/*
+	Box = new ScrollBox;
+	Box->Start();
+	Box->SetPosition(int(Info.Position.x - (Info.Scale.x / 2)), int(Info.Position.y - (Info.Scale.y / 2)));
+	Box->SetBoxSize(Info.Scale.x, Info.Scale.y);
+	*/
+
 }
 
 void UIManager::Update()
 {
+	//Box->Update();
+
 	/*
 	MaxSize = pPlayer->GetMaxHP();
 	NowSize = pPlayer->GetHP();
@@ -35,6 +45,7 @@ void UIManager::Update()
 
 void UIManager::Render()
 {
+	//Box->Render();
 	/*
 	for (int i = 0; i < 5; i++)
 	{
@@ -84,5 +95,9 @@ void UIManager::Render()
 }
 
 void UIManager::Release()
-{
+{ 
+	/*
+	delete Box;
+	Box = nullptr;
+	*/
 }
