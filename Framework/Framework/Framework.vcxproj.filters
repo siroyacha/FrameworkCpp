@@ -323,9 +323,6 @@
     <ClInclude Include="MathManager.h">
       <Filter>소스 파일\99.Manager\MathManager</Filter>
     </ClInclude>
-    <ClInclude Include="ObjectFactory.h">
-      <Filter>소스 파일\99.Manager\ObjectFactory</Filter>
-    </ClInclude>
     <ClInclude Include="Item.h">
       <Filter>소스 파일\01.Object\Item</Filter>
     </ClInclude>
@@ -403,6 +400,9 @@
     </ClInclude>
     <ClInclude Include="Skill.h">
       <Filter>소스 파일\01.Object\Skill</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectFactory.h">
+      <Filter>소스 파일\99.Manager\ObjectFactory</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
