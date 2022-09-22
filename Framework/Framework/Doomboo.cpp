@@ -12,6 +12,7 @@ Doomboo::~Doomboo()
 
 void Doomboo::Start()
 {
+	
 }
 
 int Doomboo::Update(Transform& _Transfom)
