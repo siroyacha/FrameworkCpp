@@ -10,6 +10,7 @@
 #include"Doomboo.h"
 #include"EType1.h"
 #include"PrototypeManager.h"
+#include"CollisionManager.h"
 
 Bridge* Enemy::BridgeList[ENEMYID_MAX];
 Enemy::Enemy() : Time(0), pBridge(nullptr)
@@ -106,7 +107,6 @@ int Enemy::Update()
 		Info.Position.y <= 0 || Info.Position.y >= 40)
 		return 1;
 	*/
-
 
 	if (Info.Position.x <= 1)
 		return 1;

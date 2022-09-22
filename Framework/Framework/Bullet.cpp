@@ -59,6 +59,8 @@ Object* Bullet::Start(string _Key)
 	BridgeList[BULLETID::BULLETID_TYPE_3] = new Type3;
 
 	Time = GetTickCount64();
+	
+	Speed = 1.0f;
 
 	return this;
 }
@@ -95,6 +97,7 @@ int  Bullet::Update()
 		pBridge->SetObject(this);
 
 	}
+
 	if (Time + 5000 < GetTickCount64())
 		return 2;
 
