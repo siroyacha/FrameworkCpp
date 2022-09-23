@@ -7,6 +7,7 @@
 #include "MathManager.h"
 #include "ObjectFactory.h"
 #include"ObjectpoolManager.h"
+#include"CollisionManager.h"
 
 ObjectManager* ObjectManager::Instance = nullptr;
 
@@ -19,7 +20,6 @@ ObjectManager::~ObjectManager()
 {
 	Release();
 }
-
 
 void ObjectManager::AddObject(string _Key)
 {

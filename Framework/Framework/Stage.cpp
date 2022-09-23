@@ -11,6 +11,7 @@
 #include"ScrollBox.h"
 #include "Skill.h"
 #include"InputManager.h"
+#include"CollisionManager.h"
 
 Stage::Stage() : EnemyTime(0)
 {

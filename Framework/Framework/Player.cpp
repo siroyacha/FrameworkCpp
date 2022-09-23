@@ -76,7 +76,6 @@ int Player::Update()
 		ObjectManager::GetInstance()->AddObject(Info.Position, "Bullet");
 	
 
-
 	//if (dwKey & KEY_ESCAPE)
 		//Info.Position = Vector3(0.0f, 0.0f);
 
