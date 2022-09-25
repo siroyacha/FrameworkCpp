@@ -14,7 +14,6 @@ public:
 	virtual int Update()PURE;
 	virtual void Render()PURE;
 	virtual void Release()PURE;
-
 	virtual Object* Clone()PURE;
 public:
 	Transform GetTransform() const { return Info; }
@@ -28,6 +27,7 @@ public:
 	void SetDirection(Vector3 _Direction) { Info.Direction = _Direction; }
 	void SetDirection(float _x, float _y) { Info.Direction = Vector3(_x, _y); }
 	void SetTarget(Object* _Target) { Target = _Target; }
+	void Hit(Object* _Object) { Stat.Hp -= (_Object->Stat.Att - Stat.Def); }
 public:
 	Object();
 	Object(Transform _Info) :Info(_Info) {};

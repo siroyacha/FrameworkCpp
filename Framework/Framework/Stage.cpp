@@ -100,6 +100,9 @@ void Stage::Update()
 	}
 
 	UserInterface::Index = SkillIndex;
+	Object* pEnemy = PrototypeManager::GetInstance()->FindObject("Enemy")->Clone();
+	Object* pBullet= PrototypeManager::GetInstance()->FindObject("Bullet")->Clone();
+	ObjectManager::GetInstance()->CollisionObject(pEnemy, pBullet);
 	ObjectManager::GetInstance()->Update();
 }
 

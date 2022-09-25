@@ -59,7 +59,10 @@ Object* Bullet::Start(string _Key)
 	BridgeList[BULLETID::BULLETID_TYPE_3] = new Type3;
 
 	Time = GetTickCount64();
-	
+
+	Stat.Att = 10;
+	Stat.Lv = 1;;
+
 	Speed = 1.0f;
 
 	return this;

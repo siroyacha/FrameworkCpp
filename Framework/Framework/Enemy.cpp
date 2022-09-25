@@ -33,7 +33,13 @@ Object* Enemy::Start(string _Key)
 	Info.Direction = Vector3(-1.0f, 0.0f);
 	*/
 	Speed = 0.5f;
-	
+
+	Stat.Hp = 10;
+	Stat.Def = 0;
+	Stat.MaxHP = 100;
+	Stat.Lv = 1;
+	Stat.Exp = 0;
+
 	BridgeList[ENEMYID::ENEMYID_GOOLOPS] = new Goolops;
 	BridgeList[ENEMYID::ENEMYID_MUTANT] = new Mutant;
 	BridgeList[ENEMYID::ENEMYID_DOOMBOO] = new Doomboo;
@@ -107,9 +113,14 @@ int Enemy::Update()
 		Info.Position.y <= 0 || Info.Position.y >= 40)
 		return 1;
 	*/
+	if (Stat.Hp <= 0)
+		return 1;
 
 	if (Info.Position.x <= 1)
 		return 1;
+
+	if (Time + 5000 < GetTickCount64())
+		return 2;
 
 	return 0;
 }

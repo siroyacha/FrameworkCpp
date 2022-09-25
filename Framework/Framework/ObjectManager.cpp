@@ -21,6 +21,14 @@ ObjectManager::~ObjectManager()
 	Release();
 }
 
+void ObjectManager::CollisionObject(Object* _Object1, Object* _Object2)
+{
+	if (CollisionManager::RectCollision(_Object1->GetTransform(), _Object2->GetTransform()))
+	{
+		_Object1->Hit(_Object2);
+	}
+}
+
 void ObjectManager::AddObject(string _Key)
 {
 	if (!ObjectpoolManager::GetInstance()->FindObject(_Key))
