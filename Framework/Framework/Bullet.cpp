@@ -1,6 +1,7 @@
 ﻿#include "Bullet.h"
 #include "CursorManager.h"
 #include "MathManager.h"
+#include"ObjectManager.h"
 #include"Bridge.h"
 #include"Type1.h"
 #include"Type2.h"
@@ -58,12 +59,19 @@ Object* Bullet::Start(string _Key)
 	BridgeList[BULLETID::BULLETID_TYPE_3] = new Type3;
 
 	Time = GetTickCount64();
+	
+	Speed = 1.0f;
 
 	return this;
 }
 
 int  Bullet::Update()
 {
+	Vector3 PlayerPosition = ObjectManager::GetInstance()->GetPlayer()->GetPosition();
+	Info.Direction = MathManager::GetDirection(PlayerPosition, Vector3(10.0f, 10.0f));
+
+	Info.Position += Info.Direction * (Speed * 0.5f);
+
 	if (pBridge)
 	{
 		pBridge->Update(Info);
@@ -89,7 +97,6 @@ int  Bullet::Update()
 		pBridge->SetObject(this);
 
 	}
-	Info.Position += Info.Direction * (Speed * 0.5f);
 
 	if (Time + 5000 < GetTickCount64())
 		return 2;
@@ -105,7 +112,6 @@ void Bullet::Render()
 {
 	if (pBridge)
 		pBridge->Render();
-	//CursorManager::GetInstance()->WriteBuffer(Info.Position, (char*)"*", 12);
 }
 
 void Bullet::Release()

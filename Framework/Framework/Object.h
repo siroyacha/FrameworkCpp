@@ -4,6 +4,7 @@
 class Object
 {
 protected:
+	Infomation Stat;
 	Transform Info;
 	Object* Target;
 	string Key;

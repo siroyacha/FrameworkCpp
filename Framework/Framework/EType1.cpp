@@ -1,5 +1,7 @@
 #include "EType1.h"
 #include"CursorManager.h"
+#include"ObjectManager.h"
+#include"PrototypeManager.h"
 #include"Enemy.h"
 
 EType1::EType1()

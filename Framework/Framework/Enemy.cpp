@@ -8,9 +8,11 @@
 #include"Goolops.h"
 #include"Mutant.h"
 #include"Doomboo.h"
+#include"EType1.h"
 #include"PrototypeManager.h"
+#include"CollisionManager.h"
 
-Bridge* Enemy::BridgeList[3];
+Bridge* Enemy::BridgeList[ENEMYID_MAX];
 Enemy::Enemy() : Time(0), pBridge(nullptr)
 {
 	for (int i = 0; i < 3; ++i)
@@ -30,12 +32,12 @@ Object* Enemy::Start(string _Key)
 	Info.Scale = Vector3(0.0f, 0.0f);
 	Info.Direction = Vector3(-1.0f, 0.0f);
 	*/
-
-	//Speed = 0.2f;
+	Speed = 0.5f;
 	
 	BridgeList[ENEMYID::ENEMYID_GOOLOPS] = new Goolops;
 	BridgeList[ENEMYID::ENEMYID_MUTANT] = new Mutant;
 	BridgeList[ENEMYID::ENEMYID_DOOMBOO] = new Doomboo;
+	BridgeList[ENEMYID::ENEMYID_ETYPE1] = new EType1;
 	Time = GetTickCount64() - 7000;
 	pBridge = nullptr;
 	return this;
@@ -43,18 +45,23 @@ Object* Enemy::Start(string _Key)
 
 int Enemy::Update()
 {
-	Info.Position.x -= 1;
+	Vector3 PlayerPosition = ObjectManager::GetInstance()->GetPlayer()->GetPosition();
+	Info.Direction = MathManager::GetDirection(Info.Position, PlayerPosition);
+
+	Info.Position += Info.Direction * Speed;
 	if (pBridge)
+	{
 		pBridge->Update(Info);
+	}
 	else
 	{
-		if (Time + 7000 < GetTickCount64())
+		if (Time + 700 < GetTickCount64())
 		{
-			//Time = GetTickCount64();
+			Time = GetTickCount64();
 
 			srand(int(Time * GetTickCount64()));
-
-			switch (rand()%3)
+			int test = rand() % 4;
+			switch (test)
 			{
 			case ENEMYID::ENEMYID_GOOLOPS:
 				pBridge = BridgeList[ENEMYID::ENEMYID_GOOLOPS]->Clone();
@@ -64,7 +71,10 @@ int Enemy::Update()
 					break;
 			case ENEMYID::ENEMYID_DOOMBOO:
 				pBridge = BridgeList[ENEMYID::ENEMYID_DOOMBOO]->Clone();
-					break;
+				break;
+			case ENEMYID::ENEMYID_ETYPE1:
+				pBridge = BridgeList[ENEMYID::ENEMYID_ETYPE1]->Clone();
+				break;
 			}
 			pBridge->Start();
 			pBridge->SetObject(this);
@@ -98,7 +108,6 @@ int Enemy::Update()
 		return 1;
 	*/
 
-
 	if (Info.Position.x <= 1)
 		return 1;
 
@@ -109,7 +118,6 @@ void Enemy::Render()
 {
 	if (pBridge)
 		pBridge->Render();
-	//CursorManager::GetInstance()->WriteBuffer(Info.Position, (char*)"@");
 }
 
 void Enemy::Release()

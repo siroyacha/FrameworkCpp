@@ -22,6 +22,15 @@ Object* Player::Start(string _Key)
 	Info.Rotation = Vector3(0.0f, 0.0f);
 	Info.Scale = Vector3(2.0f, 1.0f);
 
+	Stat.Hp = 100;
+	Stat.Def = 0;
+	Stat.MaxHP = 100;
+	Stat.Money = 0;
+	Stat.Score = 0;
+	Stat.Stage_Lv = 1;
+	Stat.Lv = 1;
+	Stat.Exp = 0;
+
 	Target = nullptr;
 
 	return this;
@@ -66,7 +75,6 @@ int Player::Update()
 	if (dwKey & KEY_SPACE)	
 		ObjectManager::GetInstance()->AddObject(Info.Position, "Bullet");
 	
-
 
 	//if (dwKey & KEY_ESCAPE)
 		//Info.Position = Vector3(0.0f, 0.0f);

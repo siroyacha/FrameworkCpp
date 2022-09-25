@@ -7,6 +7,7 @@
 #include "MathManager.h"
 #include "ObjectFactory.h"
 #include"ObjectpoolManager.h"
+#include"CollisionManager.h"
 
 ObjectManager* ObjectManager::Instance = nullptr;
 
@@ -19,7 +20,6 @@ ObjectManager::~ObjectManager()
 {
 	Release();
 }
-
 
 void ObjectManager::AddObject(string _Key)
 {
@@ -38,9 +38,10 @@ void ObjectManager::AddObject(Vector3 _Position, string _Key)
 
 	if (ObjectpoolManager::GetInstance()->CheckObject(_Key))
 		ObjectpoolManager::GetInstance()->SwitchingObject2(_Key, _Position);
-	else
 	*/
-		ObjectpoolManager::GetInstance()->SwitchingObject(_Key, _Position);
+	else
+		ObjectpoolManager::GetInstance()->AddObject(_Key);
+	ObjectpoolManager::GetInstance()->SwitchingObject(_Key, _Position);
 }
 
 void ObjectManager::Update()

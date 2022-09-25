@@ -11,6 +11,7 @@ private:
 	ULONGLONG Time;
 public:
 	void SetBridge(Bridge* _Bridge) { pBridge = _Bridge; }
+	void SetTarget(Object* _Player) { Target = _Player; }
 public:
 	virtual Object* Start(string _Key)override;
 	virtual int Update()override;
