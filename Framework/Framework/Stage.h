@@ -5,8 +5,6 @@ class Object;
 class Stage :public Scene
 {
 private:
-	vector<Object*> pSkillList;
-private:
 	ULONGLONG EnemyTime;
 public:
 	virtual void Start()override;

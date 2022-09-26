@@ -2,6 +2,9 @@
 #include "SceneManager.h"
 #include "InputManager.h"
 #include"CursorManager.h"
+#include"Player.h"
+#include"PrototypeManager.h"
+#include"ObjectManager.h"
 
 Menu::Menu()
 {
@@ -13,6 +16,10 @@ Menu::~Menu()
 
 void Menu::Start()
 {
+	Object* pObj = PrototypeManager::GetInstance()->FindObject("Player")->Clone();
+	if (pObj != nullptr)
+		ObjectManager::GetInstance()->SetPlayer(pObj);
+
 	Buffer[0] = (char*)"S t a r t";
 	Buffer[1] = (char*)"O p t i o n";
 	Buffer[2] = (char*)"S t o r e";

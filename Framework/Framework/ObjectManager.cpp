@@ -8,6 +8,7 @@
 #include "ObjectFactory.h"
 #include"ObjectpoolManager.h"
 #include"CollisionManager.h"
+#include"SceneManager.h"
 
 ObjectManager* ObjectManager::Instance = nullptr;
 
@@ -19,14 +20,6 @@ ObjectManager::ObjectManager() : pPlayer(nullptr)
 ObjectManager::~ObjectManager()
 {
 	Release();
-}
-
-void ObjectManager::CollisionObject(Object* _Object1, Object* _Object2)
-{
-	if (CollisionManager::RectCollision(_Object1->GetTransform(), _Object2->GetTransform()))
-	{
-		_Object1->Hit(_Object2);
-	}
 }
 
 void ObjectManager::AddObject(string _Key)
@@ -55,6 +48,14 @@ void ObjectManager::AddObject(Vector3 _Position, string _Key)
 void ObjectManager::Update()
 {
 	pPlayer->Update();
+	if (((Player*)pPlayer)->GetScore() > 10)
+	{
+		SceneManager::GetInstance()->SetScene(SCENEID::STAGECLEAR);
+	}
+	if (pPlayer->Update())
+	{
+		SceneManager::GetInstance()->SetScene(SCENEID::GAMEOVER);
+	}
 	ObjectpoolManager::GetInstance()->Update();
 }
 

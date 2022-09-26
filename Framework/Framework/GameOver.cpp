@@ -1,10 +1,10 @@
 #include "GameOver.h"
-
 #include"Player.h"
 #include "SceneManager.h"
 #include "InputManager.h"
 #include"CursorManager.h"
 #include"StartManager.h"
+#include"ObjectManager.h"
 
 
 GameOver::GameOver():CountDown(0)
@@ -32,7 +32,7 @@ void GameOver::Start()
 	CountDown = 10;
 	Time = GetTickCount64();
 
-	pPlayer = StartManager::GetInstance()->LoadPlayer();
+	pPlayer = ObjectManager::GetInstance()->GetPlayer();
 }
 
 void GameOver::Update()
@@ -49,15 +49,15 @@ void GameOver::Update()
 void GameOver::Render()
 {
 	/*
+	*/
 	for (int i = 0; i < MaxSize; ++i)
 		CursorManager::GetInstance()->WriteBuffer((150.0f / 2) - (Length / 2), 15.0f + i, Buffer[i], 10);
 
-	CursorManager::GetInstance()->WriteBuffer(74.0f, 29.0f, pPlayer->GetScore());
+	CursorManager::GetInstance()->WriteBuffer(74.0f, 29.0f, ((Player*)pPlayer)->GetScore());
 	CursorManager::GetInstance()->WriteBuffer(64.0f, 31.0f, (char*)" 점을 획득하셨습니다");
 
 	CursorManager::GetInstance()->WriteBuffer(62.0f, 40.0f, CountDown);
 	CursorManager::GetInstance()->WriteBuffer(64.0f, 40.0f, (char*)" 초후 게임이 종료됩니다");
-	*/
 }
 
 void GameOver::Release()

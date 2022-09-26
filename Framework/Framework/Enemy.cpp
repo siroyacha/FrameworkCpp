@@ -35,6 +35,7 @@ Object* Enemy::Start(string _Key)
 	Speed = 0.5f;
 
 	Stat.Hp = 10;
+	Stat.Att = 10;
 	Stat.Def = 0;
 	Stat.MaxHP = 100;
 	Stat.Lv = 1;
@@ -51,7 +52,8 @@ Object* Enemy::Start(string _Key)
 
 int Enemy::Update()
 {
-	Vector3 PlayerPosition = ObjectManager::GetInstance()->GetPlayer()->GetPosition();
+	Object* pPlayer = ObjectManager::GetInstance()->GetPlayer();
+	Vector3 PlayerPosition = pPlayer->GetPosition();
 	Info.Direction = MathManager::GetDirection(Info.Position, PlayerPosition);
 
 	Info.Position += Info.Direction * Speed;
@@ -107,9 +109,9 @@ int Enemy::Update()
 		}
 	}
 	*/
-	if (CollisionManager::RectCollision(
-		ObjectManager::GetInstance()->GetPlayer()->GetTransform(), Info))
+	if (CollisionManager::RectCollision(pPlayer->GetTransform(), Info))
 	{
+		pPlayer->Hit(this);
 		return 1;
 	}
 

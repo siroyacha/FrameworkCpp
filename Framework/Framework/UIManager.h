@@ -22,16 +22,7 @@ private:
 	int NowSize;
 	float Percent;
 
-	UserInterface* Box;
-	/*
-	char* Buffer[9];
-	char* Buffer2[9];
-	char* Buffer3[9];
-	int Cursor;
-
-	int Color;
-	ULONGLONG Time;
-	*/
+	vector<Object*> pSkillList;
 public:
 	void Start();
 	void Update();

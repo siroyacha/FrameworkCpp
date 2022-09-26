@@ -72,19 +72,25 @@ int Player::Update()
 			Info.Position.x = 0;
 	}
 
-	if (dwKey & KEY_SPACE)	
+	if (dwKey & KEY_SPACE)
+	{
 		ObjectManager::GetInstance()->AddObject(Info.Position, "Bullet");
+	}
 	
 
 	//if (dwKey & KEY_ESCAPE)
 		//Info.Position = Vector3(0.0f, 0.0f);
-
+	if (Stat.Hp <= 0)
+	{
+		return 1;
+	}
 	return 0;
 }
 
 void Player::Render()
 {
 	CursorManager::GetInstance()->WriteBuffer(Info.Position, (char*)"#");
+	CursorManager::GetInstance()->WriteBuffer(20.0f,5.0f, Stat.Hp);
 }
 
 void Player::Release()
