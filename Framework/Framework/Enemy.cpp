@@ -106,21 +106,23 @@ int Enemy::Update()
 			Time = GetTickCount64();
 		}
 	}
-
-	Info.Position += Info.Direction * Speed;
+	*/
+	if (CollisionManager::RectCollision(
+		ObjectManager::GetInstance()->GetPlayer()->GetTransform(), Info))
+	{
+		return 1;
+	}
 
 	if (Info.Position.x <= 0 || Info.Position.x >= 150 ||
 		Info.Position.y <= 0 || Info.Position.y >= 40)
 		return 1;
-	*/
 	if (Stat.Hp <= 0)
 		return 1;
 
-	if (Info.Position.x <= 1)
-		return 1;
-
+	/*
 	if (Time + 5000 < GetTickCount64())
 		return 2;
+	*/
 
 	return 0;
 }

@@ -142,7 +142,7 @@ void ObjectpoolManager::Update()
 				iter2 = iter->second.erase(iter2);
 			}
 			else
-				++iter2;
+				++iter2;			
 		}
 	}
 }
