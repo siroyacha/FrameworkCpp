@@ -33,15 +33,6 @@ void ObjectManager::AddObject(Vector3 _Position, string _Key)
 {
 	if (!ObjectpoolManager::GetInstance()->FindObject(_Key))
 		ObjectpoolManager::GetInstance()->AddObject(_Key);
-	/*
-	if (ObjectpoolManager::GetInstance()->FindObject(_Key))
-		ObjectpoolManager::GetInstance()->LoadObject(_Key);
-
-	if (ObjectpoolManager::GetInstance()->CheckObject(_Key))
-		ObjectpoolManager::GetInstance()->SwitchingObject2(_Key, _Position);
-	*/
-	else
-		ObjectpoolManager::GetInstance()->AddObject(_Key);
 	ObjectpoolManager::GetInstance()->SwitchingObject(_Key, _Position);
 }
 

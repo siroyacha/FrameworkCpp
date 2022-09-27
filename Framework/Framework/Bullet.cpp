@@ -1,4 +1,5 @@
 ﻿#include "Bullet.h"
+#include"Player.h"
 #include "CursorManager.h"
 #include "MathManager.h"
 #include"ObjectManager.h"
@@ -22,37 +23,8 @@ Bullet::~Bullet()
 Object* Bullet::Start(string _Key)
 {
 	Key = _Key;
-	/*
-	Info.Position = Vector3(0.0f, 0.0f);
-	Info.Rotation = Vector3(0.0f, 0.0f);
-	Info.Scale = Vector3(1.0f, 1.0f);
-	Info.Direction = Vector3(0.0f, 0.0f);
-
-	Speed = 1.0f;
-	*/
 
 	Target = nullptr;
-
-	/*
-	switch (rand() % 4)
-	{
-	case 0: //
-		Info.Position = Vector3(float(rand() % 148), 0.0f);
-		break;
-	case 1: //
-		Info.Position = Vector3(float(rand() % 148), 39.0f);
-		break;
-
-	case 2: //
-		Info.Position = Vector3(0.0f, float(rand() % 40));
-		break;
-	case 3: //
-		Info.Position = Vector3(148.0f, float(rand() % 40));
-		break;
-	}
-	*/
-
-	//Info.Direction = MathManager::GetDirection(Info.Position, Target->GetPosition());
 
 	BridgeList[BULLETID::BULLETID_TYPE_1] = new Type1;
 	BridgeList[BULLETID::BULLETID_TYPE_2] = new Type2;
@@ -70,8 +42,8 @@ Object* Bullet::Start(string _Key)
 
 int  Bullet::Update()
 {
-	Vector3 PlayerPosition = ObjectManager::GetInstance()->GetPlayer()->GetPosition();
-	Info.Direction = MathManager::GetDirection(PlayerPosition, Vector3(10.0f, 10.0f));
+	Object* pPlayer= ObjectManager::GetInstance()->GetPlayer();
+	Info.Direction = MathManager::GetDirection(pPlayer->GetPosition(), Vector3(10.0f, 10.0f));
 
 	Info.Position += Info.Direction * (Speed * 0.5f);
 
@@ -84,7 +56,7 @@ int  Bullet::Update()
 		Time = GetTickCount64();
 
 		srand(int(Time * GetTickCount64()));
-		switch (rand() % 3)
+		switch (((Player*)pPlayer)->GetBulletType())
 		{
 		case BULLETID::BULLETID_TYPE_1:
 			pBridge = BridgeList[BULLETID::BULLETID_TYPE_1]->Clone();

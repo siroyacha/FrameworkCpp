@@ -2,6 +2,7 @@
 #include"PrototypeManager.h"
 #include"Object.h"
 #include"CursorManager.h"
+#include"CollisionManager.h"
 
 ObjectpoolManager* ObjectpoolManager::Instance = nullptr;
 
@@ -145,6 +146,20 @@ void ObjectpoolManager::Update()
 				++iter2;			
 		}
 	}
+	if (DisableList.size() < 50)
+	{
+		DisableList.clear();
+	}
+	/*
+	auto Citer = EnableList.find("Enemy");
+	if (Citer != EnableList.end())
+	{
+		if (CollisionManager::RectCollision())
+		{
+
+		}
+	}
+	*/
 }
 
 void ObjectpoolManager::Render()

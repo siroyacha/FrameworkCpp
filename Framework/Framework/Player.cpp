@@ -5,7 +5,7 @@
 #include "CursorManager.h"
 #include"ObjectManager.h"
 
-Player::Player()
+Player::Player() :BulletType(0)
 {
 }
 
@@ -45,15 +45,15 @@ int Player::Update()
 		Info.Position.y--;
 
 		if (Info.Position.y < 0)
-			Info.Position.y = 39;
+			Info.Position.y = 0;
 	}
 
 	if (dwKey & KEY_DOWN)
 	{
 		Info.Position.y++;
 
-		if (Info.Position.y > 39)
-			Info.Position.y = 0;
+		if (Info.Position.y > 59)
+			Info.Position.y = 59;
 	}
 
 	if (dwKey & KEY_LEFT)
@@ -76,10 +76,19 @@ int Player::Update()
 	{
 		ObjectManager::GetInstance()->AddObject(Info.Position, "Bullet");
 	}
-	
 
-	//if (dwKey & KEY_ESCAPE)
-		//Info.Position = Vector3(0.0f, 0.0f);
+	if (KEY_Q & dwKey)
+	{
+		if (BulletType != 0)
+			--BulletType;
+	}
+
+	if (KEY_E & dwKey)
+	{
+		if (BulletType != (Max - 1))
+			++BulletType;
+	}
+	
 	if (Stat.Hp <= 0)
 	{
 		return 1;
@@ -90,7 +99,8 @@ int Player::Update()
 void Player::Render()
 {
 	CursorManager::GetInstance()->WriteBuffer(Info.Position, (char*)"#");
-	CursorManager::GetInstance()->WriteBuffer(20.0f,5.0f, Stat.Hp);
+	CursorManager::GetInstance()->WriteBuffer(20.0f, 5.0f, Stat.Hp);
+	CursorManager::GetInstance()->WriteBuffer(20.0f,6.0f, BulletType);
 }
 
 void Player::Release()
