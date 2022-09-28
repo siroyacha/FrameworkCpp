@@ -6,6 +6,7 @@ class Bridge
 {
 protected:
 	Object* pObject;
+	Infomation Dumy;
 public:
 	void SetObject(Object* _Object) { pObject = _Object; }
 public:

@@ -22,6 +22,8 @@ Object* Player::Start(string _Key)
 	Info.Rotation = Vector3(0.0f, 0.0f);
 	Info.Scale = Vector3(2.0f, 1.0f);
 
+	BulletType = 0;
+
 	Stat.Hp = 100;
 	Stat.Def = 0;
 	Stat.MaxHP = 100;
@@ -77,13 +79,13 @@ int Player::Update()
 		ObjectManager::GetInstance()->AddObject(Info.Position, "Bullet");
 	}
 
-	if (KEY_Q & dwKey)
+	if (dwKey & KEY_Q)
 	{
 		if (BulletType != 0)
 			--BulletType;
 	}
 
-	if (KEY_E & dwKey)
+	if (dwKey & KEY_E)
 	{
 		if (BulletType != (Max - 1))
 			++BulletType;
@@ -100,7 +102,6 @@ void Player::Render()
 {
 	CursorManager::GetInstance()->WriteBuffer(Info.Position, (char*)"#");
 	CursorManager::GetInstance()->WriteBuffer(20.0f, 5.0f, Stat.Hp);
-	CursorManager::GetInstance()->WriteBuffer(20.0f,6.0f, BulletType);
 }
 
 void Player::Release()

@@ -171,9 +171,4 @@ void ObjectpoolManager::Render()
 			(*iter2)->Render();
 		}
 	}
-
-	CursorManager::GetInstance()->WriteBuffer(125, 0, (int)EnableList["Enemy"].size());
-	CursorManager::GetInstance()->WriteBuffer(125, 1, (int)DisableList["Enemy"].size());
-	CursorManager::GetInstance()->WriteBuffer(125, 3, (int)EnableList["Bullet"].size());
-	CursorManager::GetInstance()->WriteBuffer(125, 4, (int)DisableList["Bullet"].size());
 }

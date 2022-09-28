@@ -26,20 +26,7 @@ Enemy::~Enemy()
 Object* Enemy::Start(string _Key)
 {
 	Key = _Key;
-	/*
-	Info.Position = Vector3(0.0f, 0.0f);
-	Info.Rotation = Vector3(0.0f, 0.0f);
-	Info.Scale = Vector3(0.0f, 0.0f);
-	Info.Direction = Vector3(-1.0f, 0.0f);
-	*/
 	Speed = 0.5f;
-
-	Stat.Hp = 10;
-	Stat.Att = 10;
-	Stat.Def = 0;
-	Stat.MaxHP = 100;
-	Stat.Lv = 1;
-	Stat.Exp = 0;
 
 	BridgeList[ENEMYID::ENEMYID_GOOLOPS] = new Goolops;
 	BridgeList[ENEMYID::ENEMYID_MUTANT] = new Mutant;
@@ -89,26 +76,6 @@ int Enemy::Update()
 		}
 	}
 
-	/*
-	if (Time + 200 < GetTickCount64())
-	{
-		Vector3 PlayerPosition = PrototypeManager::GetInstance()->FindObject("Player")->Clone()->GetPosition();
-		if (Info.Position.x>PlayerPosition.x)
-		{
-			Object* pBullet = PrototypeManager::GetInstance()->FindObject("Bullet")->Clone();
-
-			if (pBullet != nullptr)
-			{
-				pBullet->SetTarget(PrototypeManager::GetInstance()->FindObject("Player")->Clone());
-				pBullet->SetDirection(
-					MathManager::GetDirection(Info.Position, PlayerPosition));
-
-				ObjectManager::GetInstance()->AddObject(pBullet);
-			}
-			Time = GetTickCount64();
-		}
-	}
-	*/
 	if (CollisionManager::RectCollision(pPlayer->GetTransform(), Info))
 	{
 		pPlayer->Hit(this);
@@ -120,11 +87,6 @@ int Enemy::Update()
 		return 1;
 	if (Stat.Hp <= 0)
 		return 1;
-
-	/*
-	if (Time + 5000 < GetTickCount64())
-		return 2;
-	*/
 
 	return 0;
 }

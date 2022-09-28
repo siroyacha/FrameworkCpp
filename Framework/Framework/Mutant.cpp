@@ -21,19 +21,13 @@ void Mutant::Start()
 
 int Mutant::Update(Transform& _Transfom)
 {
-	/*
-	Vector3 PlayerPosition = ObjectManager::GetInstance()->GetPlayer()->GetPosition();
-	if (_Transfom.Position.x > PlayerPosition.x)
-	{
-		Object* pBullet = ObjectFactory<Bullet>::CreateObject(_Transfom.Position);
+	Dumy.Att = 20;
+	Dumy.Hp = 10;
+	Dumy.Def = 0;
+	Dumy.Score = 10;
+	Dumy.Exp = 10;
+	Dumy.Lv = 1;
 
-		pBullet->SetTarget(ObjectManager::GetInstance()->GetPlayer());
-		pBullet->SetDirection(
-			MathManager::GetDirection(_Transfom.Position, PlayerPosition));
-
-		ObjectManager::GetInstance()->AddObject(pBullet);
-	}
-	*/
 	return 0;
 }
 

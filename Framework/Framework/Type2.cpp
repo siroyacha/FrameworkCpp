@@ -12,7 +12,9 @@ Type2::~Type2()
 
 void Type2::Start()
 {
-
+	Dumy.Att = 20;
+	Dumy.Hp = 10;
+	Dumy.Lv = 1;
 }
 
 int Type2::Update(Transform& _Transfom)

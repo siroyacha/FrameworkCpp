@@ -15,7 +15,12 @@ EType1::~EType1()
 
 void EType1::Start()
 {
-
+	Dumy.Att = 20;
+	Dumy.Hp = 10;
+	Dumy.Def = 0;
+	Dumy.Score = 10;
+	Dumy.Exp = 10;
+	Dumy.Lv = 1;
 }
 
 int EType1::Update(Transform& _Transfom)

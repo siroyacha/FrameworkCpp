@@ -12,7 +12,12 @@ Goolops::~Goolops()
 
 void Goolops::Start()
 {
-
+	Dumy.Att = 20;
+	Dumy.Hp = 10;
+	Dumy.Def = 0;
+	Dumy.Score = 10;
+	Dumy.Exp = 10;
+	Dumy.Lv = 1;
 }
 
 int Goolops::Update(Transform& _Transfom)

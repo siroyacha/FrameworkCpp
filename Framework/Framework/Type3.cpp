@@ -12,11 +12,16 @@ Type3::~Type3()
 
 void Type3::Start()
 {
-
+	Dumy.Att = 20;
+	Dumy.Hp = 10;
+	Dumy.Lv = 1;
 }
 
 int Type3::Update(Transform& _Transfom)
 {
+	Dumy.Att = 20;
+	Dumy.Hp = 10;
+	Dumy.Lv = 1;
 	return 0;
 }
 
@@ -28,4 +33,5 @@ void Type3::Render()
 
 void Type3::Release()
 {
+
 }

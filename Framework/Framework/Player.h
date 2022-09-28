@@ -10,6 +10,7 @@ public:
 	int GetStageLV() { return Stat.Stage_Lv; }
 	void StageLV_Up() { ++Stat.Stage_Lv; }
 	int GetScore() { return Stat.Score; }
+	void AddScore(int _Scroe) { Stat.Score = Stat.Score + _Scroe; }
 	void SetMoney(int _Money) { Stat.Money = Stat.Money + _Money; }
 	void SetExp(int _Exp) { Stat.Exp = Stat.Exp + _Exp; }
 	int GetBulletType() { return BulletType; }

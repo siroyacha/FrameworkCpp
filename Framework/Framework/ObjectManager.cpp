@@ -38,14 +38,16 @@ void ObjectManager::AddObject(Vector3 _Position, string _Key)
 
 void ObjectManager::Update()
 {
-	pPlayer->Update();
-	if (((Player*)pPlayer)->GetScore() > 10)
-	{
-		SceneManager::GetInstance()->SetScene(SCENEID::STAGECLEAR);
-	}
 	if (pPlayer->Update())
 	{
 		SceneManager::GetInstance()->SetScene(SCENEID::GAMEOVER);
+	}
+	else
+	{
+		if (((Player*)pPlayer)->GetScore() > 10)
+		{
+			SceneManager::GetInstance()->SetScene(SCENEID::STAGECLEAR);
+		}
 	}
 	ObjectpoolManager::GetInstance()->Update();
 }

@@ -12,6 +12,7 @@ private:
 public:
 	void SetBridge(Bridge* _Bridge) { pBridge = _Bridge; }
 	void SetTarget(Object* _Player) { Target = _Player; }
+	void SetStat(Infomation _Stat) { Stat = _Stat; }
 public:
 	virtual Object* Start(string _Key)override;
 	virtual int Update()override;
