@@ -150,16 +150,6 @@ void ObjectpoolManager::Update()
 	{
 		DisableList.clear();
 	}
-	/*
-	auto Citer = EnableList.find("Enemy");
-	if (Citer != EnableList.end())
-	{
-		if (CollisionManager::RectCollision())
-		{
-
-		}
-	}
-	*/
 }
 
 void ObjectpoolManager::Render()
