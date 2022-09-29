@@ -9,6 +9,8 @@ private:
 private:
 	Bridge* pBridge;
 	ULONGLONG Time;
+	Object* pPlayer;
+	Vector3 PlayerPosition;
 public:
 	void SetBridge(Bridge* _Bridge) { pBridge = _Bridge; }
 	void SetTarget(Object* _Player) { Target = _Player; }

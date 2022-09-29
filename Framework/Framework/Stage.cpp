@@ -27,15 +27,16 @@ void Stage::Start()
 void Stage::Update()
 {
 	DWORD dwKey = InputManager::GetInstance()->GetKey();
-
+	/*
 	for (int i = 0; i < 20; ++i)
 	{
-		if (EnemyTime + 2000 < GetTickCount64())
+		if (EnemyTime + 200 < GetTickCount64())
 		{
 			ObjectManager::GetInstance()->AddObject(Vector3(rand() % 150, rand() % 40), "Enemy");
 			EnemyTime = GetTickCount64();
 		}
 	}
+	*/
 
 	ObjectManager::GetInstance()->Update();
 	UIManager::GetInstance()->Update();

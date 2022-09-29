@@ -34,7 +34,10 @@ void UIManager::Start()
 
 void UIManager::Update()
 {
-
+	for (vector<Object*>::iterator iter = pSkillList.begin(); iter != pSkillList.end(); ++iter)
+	{
+		(*iter)->Update();
+	}
 }
 
 void UIManager::Render()

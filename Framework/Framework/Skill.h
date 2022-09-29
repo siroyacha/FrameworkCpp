@@ -7,6 +7,7 @@ class Skill : public Object
 private:
 	char* Texture[5];
 	UserInterface* Box;
+	Object* pPlayer;
 public:
 	virtual Object* Start(string _Key)override;
 	virtual int Update()override;

@@ -1,6 +1,8 @@
 #include "Skill.h"
 #include "ScrollBox.h"
+#include"Player.h"
 #include "CursorManager.h"
+#include "ObjectManager.h"
 
 Skill::Skill()
 {
@@ -30,12 +32,20 @@ Object* Skill::Start(string _Key)
 	Texture[2] = (char*)"¦¢¡¡¦¢¡¡¦¢";
 	Texture[3] = (char*)"¦¢¡¡¦¢¡¡¦¢";
 	Texture[4] = (char*)"¦¦¦¡¦ª¦¡¦¥";
+	
+	pPlayer = ObjectManager::GetInstance()->GetPlayer();
 
 	return nullptr;
 }
 
 int Skill::Update()
 {
+	if (((Player*)pPlayer)->GetMove_X() != 0 ||
+		((Player*)pPlayer)->GetMove_Y() != 0)
+	{
+		Info.Position.x += ((Player*)pPlayer)->GetMove_X();
+		Info.Position.y += ((Player*)pPlayer)->GetMove_Y();
+	}
 	Box->Update();
 	return 0;
 }

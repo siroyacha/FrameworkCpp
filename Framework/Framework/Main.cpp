@@ -1,5 +1,4 @@
-// ** Framework v34.0
-// ** 27일 끝내기
+// ** Framework v35.0
 #include "MainUpdate.h"
 
 int main(void)

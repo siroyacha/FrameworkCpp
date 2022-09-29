@@ -28,6 +28,13 @@ Object* Enemy::Start(string _Key)
 	Key = _Key;
 	Speed = 0.5f;
 
+	Stat.Hp = 10;
+	Stat.Att = 10;
+	Stat.Def = 0;
+	Stat.MaxHP = 100;
+	Stat.Lv = 1;
+	Stat.Exp = 0;
+
 	BridgeList[ENEMYID::ENEMYID_GOOLOPS] = new Goolops;
 	BridgeList[ENEMYID::ENEMYID_MUTANT] = new Mutant;
 	BridgeList[ENEMYID::ENEMYID_DOOMBOO] = new Doomboo;
@@ -39,8 +46,8 @@ Object* Enemy::Start(string _Key)
 
 int Enemy::Update()
 {
-	Object* pPlayer = ObjectManager::GetInstance()->GetPlayer();
-	Vector3 PlayerPosition = pPlayer->GetPosition();
+	pPlayer = ObjectManager::GetInstance()->GetPlayer();
+	PlayerPosition = pPlayer->GetPosition();
 	Info.Direction = MathManager::GetDirection(Info.Position, PlayerPosition);
 
 	Info.Position += Info.Direction * Speed;

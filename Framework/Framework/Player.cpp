@@ -5,7 +5,7 @@
 #include "CursorManager.h"
 #include"ObjectManager.h"
 
-Player::Player() :BulletType(0)
+Player::Player() :BulletType(0), SideCounter(0)
 {
 }
 
@@ -33,7 +33,10 @@ Object* Player::Start(string _Key)
 	Stat.Lv = 1;
 	Stat.Exp = 0;
 
-	Target = nullptr;
+	Move_X = 0;
+	Move_Y = 0;
+	Time = GetTickCount64();
+	SideCounter = 1;
 
 	return this;
 }
@@ -44,34 +47,48 @@ int Player::Update()
 
 	if (dwKey & KEY_UP)
 	{
-		Info.Position.y--;
-
-		if (Info.Position.y < 0)
-			Info.Position.y = 0;
+		Info.Position.y -= SideCounter;
+		if (SideCounter == -1)
+		{
+			Move_Y = -1;
+			if (Info.Position.y == 56)
+				Info.Position.y = 55;
+		}
 	}
 
 	if (dwKey & KEY_DOWN)
 	{
-		Info.Position.y++;
-
-		if (Info.Position.y > 59)
-			Info.Position.y = 59;
+		Info.Position.y += SideCounter;
+		if (SideCounter == -1)
+		{
+			Move_Y = 1;
+			if (Info.Position.y == 4)
+				Info.Position.y = 5;
+		}
 	}
 
 	if (dwKey & KEY_LEFT)
 	{
-		Info.Position.x -= 2;
-
-		if (Info.Position.x < 0)
-			Info.Position.x = 148;
+		Info.Position.x -= 2 * SideCounter;
+		if (SideCounter == -1)
+		{
+			Move_X = -2;
+			if (Info.Position.x == 142)
+				Info.Position.x = 140;
+		}
+		if (Info.Position.x == 142 && SideCounter == -1)
+			Info.Position.x = 140;
 	}
 
 	if (dwKey & KEY_RIGHT)
 	{
-		Info.Position.x += 2;
-
-		if (Info.Position.x > 150)
-			Info.Position.x = 0;
+		Info.Position.x += 2 * SideCounter;
+		if (SideCounter == -1)
+		{
+			Move_X = 2;
+			if (Info.Position.y == 8)
+				Info.Position.y = 10;
+		}
 	}
 
 	if (dwKey & KEY_SPACE)
@@ -90,7 +107,25 @@ int Player::Update()
 		if (BulletType != (Max - 1))
 			++BulletType;
 	}
-	
+
+	if (SideCounter == 1)
+	{
+		if (Info.Position.x <= 10 || Info.Position.x >= 140 ||
+			Info.Position.y <= 5 || Info.Position.y >= 55)
+			SideCounter = -1;
+	}
+
+
+	if (SideCounter == -1)
+	{
+		if (Time + 500 < GetTickCount64())
+		{
+			SideCounter = 1;
+			Move_X = 0;
+			Move_Y = 0;
+			Time = GetTickCount64();
+		}
+	}
 	if (Stat.Hp <= 0)
 	{
 		return 1;
